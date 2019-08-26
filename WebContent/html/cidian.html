@@ -1,0 +1,2772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高速桥梁监测系统集成管理平台</title>
+    <link rel="shortcut icon" href="../font/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../font2/iconfont.css">
+	<link href="../style/bootstrap.min.css" rel="stylesheet">
+    <link href="../style/style.css" rel="stylesheet">
+    <link href="../style/style2.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/jquery.dataTables.min.css">
+    <link href="../js/toastr/toastr.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/font-awesome.min.css">
+    
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-skins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/font.css">
+    <!-- SmartAdmin RTL Support  -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-rtl.min.css">
+	<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../img/favicon/favicon.ico" type="image/x-icon">
+	<!-- Specifying a Webpage Icon for Web Clip 
+		 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+	<link rel="apple-touch-icon" href="../img/splash/sptouch-icon-iphone.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../img/splash/touch-icon-ipad.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../img/splash/touch-icon-iphone-retina.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../img/splash/touch-icon-ipad-retina.png">
+	<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- Startup image for web apps -->
+	<link rel="apple-touch-startup-image" href="../img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+	<link rel="apple-touch-startup-image" href="../img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+	<link rel="apple-touch-startup-image" href="../img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+    <style>
+        body{
+			background: #fff;
+		}
+        .UpperPart{
+            display: flex;
+            justify-content:space-between;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 12px;
+        }
+        
+        		
+	
+	 .sort { 
+	 list-style-type: none;
+	 padding: 0 0 0 20px;
+/* 	 padding-top: 10px; */
+	 }
+	 .sort  li{ 
+	 	width: 100px;;
+	 	height: 30px;
+	 	margin: 3px 0 3px 3px;
+/* 	 	margin-top: 5px; */
+	 }
+	 
+	 /* timeline */
+	.timeline {
+	  position: relative;
+	  margin: 0 0 30px 0;
+	  padding: 0;
+	  list-style: none;
+	}
+	.timeline:before {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  bottom: 0;
+	  width: 4px;
+	  background: #ddd;
+	  left: 31px;
+	  margin: 0;
+	  border-radius: 2px;
+	}
+	.timeline > li {
+	  position: relative;
+	  margin-right: 10px;
+	  margin-bottom: 15px;
+	}
+	.timeline > li:before,
+	.timeline > li:after {
+	  content: " ";
+	  display: table;
+	}
+	.timeline > li:after {
+	  clear: both;
+	}
+	.timeline > li > .timeline-item {
+	  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	  border-radius: 3px;
+	  margin-top: 0;
+	  background: #fff;
+	  color: #444;
+	  margin-left: 60px;
+	  margin-right: 15px;
+	  padding: 0;
+	  position: relative;
+	}
+	.timeline > li > .timeline-item > .time {
+	  color: #999;
+	  float: right;
+	  padding: 10px;
+	  font-size: 12px;
+	}
+	.timeline > li > .timeline-item > .timeline-header {
+	  margin: 0;
+	  color: #555;
+	  border-bottom: 1px solid #f4f4f4;
+	  padding: 10px;
+	  font-size: 16px;
+	  line-height: 1.1;
+	}
+	.timeline > li > .timeline-item > .timeline-header > a {
+	  font-weight: 600;
+	}
+	.timeline > li > .timeline-item > .timeline-body,
+	.timeline > li > .timeline-item > .timeline-footer {
+	  padding: 10px;
+	}
+	.timeline > li > .fa,
+	.timeline > li > .glyphicon,
+	.timeline > li > .ion {
+	  width: 30px;
+	  height: 30px;
+	  font-size: 15px;
+	  line-height: 30px;
+	  position: absolute;
+	  color: #666;
+	  background: #d2d6de;
+	  border-radius: 50%;
+	  text-align: center;
+	  left: 18px;
+	  top: 0;
+	}
+	.timeline > .time-label > span {
+	  font-weight: 600;
+	  padding: 5px;
+	  display: inline-block;
+	  background-color: #fff;
+	  border-radius: 4px;
+	}
+	.timeline-inverse > li > .timeline-item {
+	  background: #f0f0f0;
+	  border: 1px solid #ddd;
+	  -webkit-box-shadow: none;
+	  box-shadow: none;
+	}
+	.timeline-inverse > li > .timeline-item > .timeline-header {
+	  border-bottom-color: #ddd;
+	}
+	
+	nav>.pager{
+		position: inherit;
+	}
+	
+	
+	.tcenter{
+				text-align: center;
+				cursor: pointer;
+	}
+	.well{
+		padding: 10px;
+	}
+	
+	#inputDiv{margin:12px;border:0;padding:0;}
+	
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+            <div>
+                <p style="font-size:28px;margin: 0px;"><img src="../img/qiaoLogo.png" alt="" style="width:48px;height:50%;">&nbsp;高速桥梁监测系统集成管理平台</p>
+            </div>
+            <div style="display:flex;">
+	                <div class="renyuan zhuashou"><a href="#"><img src="../img/登陆人.png" alt="">&nbsp;<span id="uname"></span></a></div>
+	                <div style="padding-top:5px;">丨</div>
+	                <div class="renyuan zhuashou"><a href="#" id="logOut"><img src="../img/退出.png" alt="">&nbsp;退出</a></div>
+	        </div>
+        </header>
+        <div>
+        	<div class="caidanlan">
+        			<div class="box1 yihang3" id="boxa">
+		                <p style="padding-top:10px;"><a href="./index.html" ><!-- <span class="glyphicon glyphicon-home" aria-hidden="true" style="color:#fff;font-size:16px;"></span> -->首页</a></p>
+		            </div>
+		            
+		            <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxb">
+					     <p><!-- <i class="iconfont icon-qiaoliang" style="color:#fff;font-size:20px;"></i> -->桥梁信息</p>
+					      
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxc">
+		                <p><!-- <i class="iconfont icon-jiancedianguanli"></i> -->测点管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect2">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxd">
+		                <p><!-- <i class="iconfont icon-shujuguanli"></i> -->数据管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect3">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxe">
+		                <p><!-- <i class="iconfont icon-yujing" style="font-size:20px;"></i> -->分析预警</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect4">
+					      
+					    </ul>
+				  </div>
+				   <div class="box1" id="boxf" >
+		                <p><a href="./report.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告</a></p>
+		            </div>
+		            <div class="box1active" id="boxg" >
+		                <p><a href="./cidian.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据</a></p>
+		            </div>
+        	</div>
+        </div>
+    
+    
+    
+    
+    <div style="margin-top:10px;background:#fff;height:100%;">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active" id="cd_basic_sjlg"><a href="#diyi" aria-controls="diyi" role="tab" data-toggle="tab">监测子系统</a></li>
+       <!-- <li role="presentation" id="cd_basic_jcfl"><a href="#dier" aria-controls="dier" role="tab" data-toggle="tab">监测分类</a></li>-->
+          <li role="presentation" id="cd_basic_jclx"><a href="#disan" aria-controls="disan" role="tab" data-toggle="tab">监测类型</a></li>
+          <li role="presentation" id="cd_basic_sjlwzbz"><a href="#disi" aria-controls="disi" role="tab" data-toggle="tab">数据量完整标准</a></li>
+          <li role="presentation" id="cd_basic_dxtz"><a href="#message" aria-controls="message" role="tab" data-toggle="tab">短信通知</a></li>
+          <li role="presentation" id="cd_basic_jcql"><a href="#diba" aria-controls="diba" role="tab" data-toggle="tab">监测桥梁</a></li>
+       <!--  <li role="presentation"><a href="#diliu" aria-controls="diliu" role="tab" data-toggle="tab">路线字典</a></li> -->
+       <!--  <li role="presentation"><a href="#diqi" aria-controls="diqi" role="tab" data-toggle="tab">结构类型</a></li> -->
+        </ul>
+      
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="diyi">
+                <div class="col-md-12 yihang2" style="margin-top:12px; margin-bottom: 10px;">
+                	<!-- <div class="col-sm-12 col-md-12 "> </div> -->
+					<div class="pull-left"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>		
+	                <div class="pull-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">新建监测子系统</button></div>
+                </div>
+                <table class="table table-bordered table-condensed" id="basic_sjlg">
+                    <thead>
+                        <tr>
+                            <th>监测子系统</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                       <!--  <tr>
+                            <td>
+                                <button class="construct btn btn-warning btn-xs" data-toggle="modal" data-target="#change">修改</button>
+								<button class="del btn btn-warning btn-xs">删除</button>
+                            </td>
+                        </tr>
+                        -->
+                </table>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="dier">
+                <div class="col-md-12 yihang2" style="margin-top:12px; margin-bottom: 10px;">
+					<div class="pull-left"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>		
+	                <div class="pull-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">新建监测分类</button></div>
+                </div>
+                <table class="table table-bordered table-condensed" id="basic_jcfl">
+                    <thead>
+                        <tr>
+                            <th>监测分类</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="disan">
+              <div class="col-md-12 yihang2" style="margin-top:12px; margin-bottom: 10px;">
+                    <!-- <div class="col-sm-12 col-md-12 "></div> -->
+					<div class="pull-left"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>		
+                    <div class="pull-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">新建监测类型</button></div>
+                </div>
+                <table class="table table-bordered table-condensed" id="basic_jclx">
+                    <thead>
+                        <tr>
+                            <th>监测类型</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="disi">
+                <div class="col-md-12" style="margin-top:12px; margin-bottom: 10px;">
+                    <div class="pull-left yihang">
+                        <label>切换桥梁:</label>
+                        <select class="form-control" style="width:180px;" id="changeBrg">
+                        </select>
+						<div class="pull-left col-xs-5"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>		
+                    </div>
+		            <div class="pull-right yihang2">
+		            	<div class="pull-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal4" id="show_savebzz">新建</button></div>
+		                <!-- <div class="col-sm-12 col-md-12 "></div> -->
+		            </div>
+                </div>
+                <table class="table table-bordered table-condensed" id="basic_sjlwzbz">
+                    <thead>
+                        <tr>
+                            <th>监测子系统</th>
+                            <th>标准大小(M)</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                        <!-- <tr>
+                            <td>动态称重</td>
+                            <td>50</td>
+                            <td>
+                                <button class="construct btn btn-warning btn-xs" data-toggle="modal" data-target="#change4">修改</button>
+                                <button class="del btn btn-warning btn-xs">删除</button>
+                            </td>
+                        </tr>
+                         -->
+                </table>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane" id="diba">
+                <div class="col-md-12 yihang2" style="margin-top:12px; margin-bottom: 10px;">
+                    <!-- <div class="col-sm-12 col-md-12 "></div> -->
+					<div class="pull-left"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>		
+                    <div class="pull-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal8" id="newqljc">新建监测桥梁</button></div>
+                </div>
+                <table class="table table-bordered table-condensed" id="brgSystem">
+                    <thead>
+                        <tr>
+                            <th>监测子系统</th>
+                            <th>桥梁编号</th>
+                            <th>目录名</th>
+                            <th>开始时间</th>
+                            <th>监测时间</th>
+                            <th>通道号</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+          </div>
+
+          <!-- <div role="tabpanel" class="tab-pane" id="diliu">
+            <div class="col-md-12 yihang2" style="margin-top:12px; margin-bottom: 10px;">
+					<div class="pull-left"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>		
+            </div>
+            <table class="table table-bordered table-condensed" id="dic_hw">
+                <thead>
+                    <tr>
+                        <th>
+                       		<div class="dataTables_sizing" >路线字典</div>
+                        </th>
+                        <th>
+                        	<div class="dataTables_sizing" >路线名称</div>
+                        </th>
+                        <th>
+                        	<div class="dataTables_sizing" >路线等级</div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+          </div> -->
+
+          <div role="tabpanel" class="tab-pane" id="message">
+            	<!-- #MAIN CONTENT -->
+			<div id="content">
+				<section id="widget-grid"><!-- widget grid -->
+			        <!-- row -->			
+			        <div class="row">
+			            <!-- SINGLE GRID -->
+			            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			                <!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-colorbutton="false"	
+									data-widget-editbutton="false"
+									data-widget-togglebutton="false"
+									data-widget-deletebutton="false"
+									data-widget-fullscreenbutton="false"
+									data-widget-custombutton="false">
+								<header>
+									<span class="widget-icon"> <i class="glyphicon glyphicon-earphone"></i> </span>
+									<h2>号码绑定</h2>
+								</header>
+								<!-- widget div-->
+								<div>
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+									</div>
+									<!-- end widget edit box -->
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+										<ul class="timeline">
+								            <li>
+								                <i id="step1-state" class="fa fa-info bg-aqua"></i>
+								                <div class="timeline-item">
+								                    <span class="time"><i class="fa fa-clock-o"></i></span>
+								                    <h3 class="timeline-header no-border"><a>步骤一：</a> 选择桥梁</h3>
+								                    <div class="timeline-body" id="step1" style="display: block;">
+								                    	<div id="inputDiv" class="col-md-12" style="width: 100%">
+								                    			<div class="col-md-12">
+									                    			<label class="control-label" style="width:6%">结构物名称</label>
+									                    			<select id="scanStruct" class="form" style="width:38%;height:31px">
+									                    			</select>
+									                    			<div class="col-md-6">
+									                    				<label class="control-label" style="width:10%">通知类型</label>
+										                    			<select id="monitorType" class="form" style="width:65%;height:31px">
+										                    				<option>无数据</option>
+										                    				<option>数据异常</option>
+										                    				<option>黄色告警</option>
+										                    				<option>红色告警</option>
+										                    			</select>
+									                    			</div>
+								                    			</div>
+								                    	</div>
+								                        <nav aria-label="...">
+								                            <ul class="pager">
+								                                <li class="next"><a style='color:black' id="step1-next" href="#">下一步</a></li>
+								                            </ul>
+								                        </nav>
+								                    </div>
+								                </div>
+								            </li>
+								            <li>
+								                <i id="step2-state" class="fa fa-info bg-aqua"></i>
+								                <div class="timeline-item">
+								                    <span class="time"><i class="fa fa-clock-o"></i></span>
+								                    <h3 class="timeline-header"><a href="#">步骤二：</a>修改号码<span class="widget-icon"> <i title="多个号码请用,号隔开" class="glyphicon glyphicon-question-sign"></i> </span></h3>
+								                    <div class="timeline-body" id="step2" style="display: none;">
+								                    	<div id="phoneNo">
+								                    	</div>	
+								                        <nav aria-label="...">
+								                            <ul class="pager">
+								                                <li class="previous"><a style='color:black' id="step2-previous" href="#">上一步</a></li>
+								                                <li class="next"><a style='color:black' onclick="stepOk()" href="#">确定</a></li>
+								                            </ul>
+								                        </nav>
+								                    </div>
+								                </div>
+								            </li>
+								        </ul>
+									</div>
+									<!-- end widget content -->
+								</div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+			            </article><!-- END GRID -->
+			        </div><!-- end row -->								        
+			    </section><!-- end widget grid -->
+			</div>
+          </div>
+
+        </div>
+      
+    </div>
+
+<!-- diyi Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建监测子系统</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测子系统</td>
+                                <td>
+                                    <input type="text" class="form-control" id="jcflName">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id="save_sjgl">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model结束 -->
+<!-- diyi change Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="change">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改监测子系统</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测子系统</td>
+                                <td>
+                                    <input type="text" class="form-control" id="update_jcflval">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id = "update_sjgl">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model结束 -->
+<!-- di4 Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal4">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测子系统</td>
+                                <td>
+                                    <select class="select_sjlbz form-control" style="width:180px;">
+                        			</select>
+                                </td>
+                                <td style="width:120px;">标准值</td>
+                                <td>
+                                    <input type="text" class="form-control" id="bzz">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="close_sjlwzbz">取消</button>
+            <button type="button" class="btn btn-success" id = "save_sjlwzbz">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal8">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测子系统</td>
+                                <td>
+                                    <select class="form-control" style="width:180px;" id="select_qljc">
+                        			</select>
+                                </td>
+                                 <td style="width:120px;">桥梁</td>
+                                <td>
+                                    <select class="form" style="width:180px;" id="select_ql">
+                        			</select>
+                                </td>
+                            </tr>
+                           <!--  <tr>
+                                <td style="width:120px;">桥梁</td>
+                                <td>
+                                    <select class="select_ql form-control" style="width:180px;">
+                        			</select>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="width:120px;">标准值</td>
+                                <td>
+                                    <input type="text" class="form-control" id="bzz">
+                                </td>
+                            </tr> -->
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="close_sjlwzbz">取消</button>
+            <button type="button" class="btn btn-success" id = "save_qljc">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建监测分类</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测分类</td>
+                                <td>
+                                    <input type="text" class="form-control" id="jcflName">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id="save_jcfl">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal3">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建监测类型</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测类型</td>
+                                <td>
+                                    <input type="text" class="form-control" id="jclxName">
+                                </td>
+                               <!--  <td style="width:120px;">监测分类</td>
+                                <td>
+                                    <select class="select_jcfl form-control" style="width:180px;">
+                        			</select>
+                                </td> -->
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id="save_jclx">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="change2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测分类</td>
+                                <td>
+                                    <input type="text" class="form-control" id="update_jcflval">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id="update_jcfl">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="change3">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测类型</td>
+                                <td>
+                                    <input type="text" class="form-control" id="update_jclxval">
+                                </td>
+                               <!--  <td style="width:120px;">监测分类</td>
+                                <td>
+                                    <select class="select_jcfl form-control" style="width:180px;">
+                        			</select>
+                                </td> -->
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id="update_jclx">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- model4结束 -->
+<!-- di4 change Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="change4">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">监测子系统</td>
+                                <td>
+                                    <select class="select_sjlbz form-control" style="width:180px">
+                        			</select>
+                                </td>
+                                <td style="width:120px;">标准值</td>
+                                <td>
+                                    <input type="text" class="form-control" id="update_bzz">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id="update_sjlwzbz">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- 信息删除确认 -->  
+<div class="modal fade" id="delcfmModel">  
+  <div class="modal-dialog">  
+    <div class="modal-content message_align">  
+      <div class="modal-header">  
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>  
+        <h4 class="modal-title">提示信息</h4>  
+      </div>  
+      <div class="modal-body">  
+        <p>您确认要删除吗？</p>  
+      </div>  
+      <div class="modal-footer">  
+         <input type="hidden" id="url"/>  
+         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>  
+         <a class="btn btn-success" data-dismiss="modal" id = "del_jcfl">确定</a>  
+      </div>  
+    </div><!-- /.modal-content -->  
+  </div><!-- /.modal-dialog -->  
+</div><!-- /.modal -->  
+
+<!-- model4结束 -->
+<!-- Modal 5 -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="guanyangdanwei">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建管养单位</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>管养单位</td>
+                                <td><input type="text" class="form-control"  id=""></td>
+                            </tr>
+                            <tr>
+                                <td>管养单位简称*</td>
+                                <td><input type="text" class="form-control"  id=""></td>
+                            </tr>
+                            <tr>
+                                <td>工程技术部名称*</td>
+                                <td><input type="text" class="form-control"  id=""></td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>下辖路段名称</th>
+                                    <th>
+                                        <button class="del btn btn-warning btn-xs" id="">添加数据</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>盐淮高速</td>
+                                    <td>
+                                        <button class="del btn btn-warning btn-xs" id="">删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-default"  id="addyiji" data-dismiss="modal">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model 5 结束 -->
+<!-- Modal5 修改一级 -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="xgguanyangdanwei">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改评定分类</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>
+                    <form class="form-inline">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>管养单位</td>
+                                <td><input type="text" class="form-control"  id=""></td>
+                            </tr>
+                            <tr>
+                                <td>管养单位简称*</td>
+                                <td><input type="text" class="form-control"  id=""></td>
+                            </tr>
+                            <tr>
+                                <td>工程技术部名称*</td>
+                                <td><input type="text" class="form-control"  id=""></td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>下辖路段名称</th>
+                                    <th>
+                                        <button class="btn btn-warning btn-xs">添加数据</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>盐淮高速</td>
+                                    <td>
+                                        <button class="del btn btn-warning btn-xs" id="">删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success"  data-dismiss="modal" id="">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model5结束 -->
+<!-- Modal 5二级 -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="fenqu">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建分区名称</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>分区名称</td>
+                                <td><input type="text" class="form-control" id=""></td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-default"  data-dismiss="modal"  id="">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model 5 结束 -->
+<!-- Modal 5 修改二级 -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="xgfenqu">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改分区</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>
+                    <form class="form-inline">
+                        <span>分区:</span>   
+                        <input type="text" class="form-control"  id="">
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success"  data-dismiss="modal"  >保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model5结束 -->
+
+<!-- diliu 6Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal6">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">路线编号</td>
+                                <td>
+                                    <input type="text" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:120px;">路线名称</td>
+                                <td>
+                                    <input type="text" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:120px;">路线等级</td>
+                                <td>
+                                    <input type="text" class="form-control">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id = "save_lxzd">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model6结束 -->
+<!-- 修改diliu Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="change6">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <td style="width:120px;">路线编号</td>
+                                <td>
+                                    <input type="text" class="form-control" id="highway_no">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:120px;">路线名称</td>
+                                <td>
+                                    <input type="text" class="form-control" id="highway_name">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:120px;">路线等级</td>
+                                <td>
+                                    <input type="text" class="form-control" id="highway_level">
+                                </td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success" id="update_lxzd">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- 修改model6结束 -->
+
+<!-- Modal 7 -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModalyiji">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建评定分类</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>评定分类</td>
+                                <td><input type="text" class="form-control"  id="yiji"></td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-default"  id="addyiji" data-dismiss="modal">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model 7 结束 -->
+<!-- Modal 7 二级 -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModalerji">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>新建桥型</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>     
+                    <form class="form-inline">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>桥型</td>
+                                <td><input type="text" class="form-control" id="zenjiaerji"></td>
+                            </tr>
+                        </table> 
+                    </form>  
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-default"  data-dismiss="modal"  id="adderji">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model 7 结束 -->
+<!-- Modal7 修改一级 -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="xiugaiyiji">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改评定分类</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>
+                    <form class="form-inline">
+                        <span>评定分类:</span>   
+                        <input type="text" class="form-control" id="xgyijiType">
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success"  data-dismiss="modal" id="changeyiji">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model7结束 -->
+<!-- Modal 7 修改二级 -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="changeerji">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>修改桥型</b></h4>
+        </div>
+        <div class="modal-body">
+                <div>
+                    <form class="form-inline">
+                        <span>桥型:</span>   
+                        <input type="text" class="form-control"  id="xgerjiType">
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-success"  data-dismiss="modal"  onclick="xiugaierji()">保存</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- model结束 -->
+
+
+
+
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="../js/plugin/pace/pace.min.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+<script src="../js/app.config.js"></script>
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-treeview.js" ></script>
+
+<!-- JARVIS WIDGETS -->
+<script src="../js/smartwidgets/jarvis.widget.min.js"></script>
+<script src="../js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+<script src="../js/plugin/sparkline/jquery.sparkline.min.js"></script>
+<script src="../js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<script src="../js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="../js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+<script src="../js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+<script src="../js/plugin/fastclick/fastclick.min.js"></script>
+<script src="../js/app.min.js"></script>
+<script src="../js/speech/voicecommand.min.js"></script>
+<script src="../js/smart-chat-ui/smart.chat.ui.min.js"></script>
+<script src="../js/smart-chat-ui/smart.chat.manager.min.js"></script>
+<script src="../js/plugin/flot/jquery.flot.cust.min.js"></script>
+<script src="../js/plugin/flot/jquery.flot.resize.min.js"></script>
+<script src="../js/plugin/flot/jquery.flot.time.min.js"></script>
+<script src="../js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="../js/plugin/moment/moment.min.js"></script>
+<script src="../js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+<script src="../js/plugin/jquery-form/jquery-form.min.js"></script>
+
+<script src="../js/common-scripts.js"></script>
+<script src="../js/myTool.js"></script>
+<script src="../js/caidan.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/toastr/toastr.min.js"></script>
+<script src="../js/login.js"></script>
+<script src="../js/libs/jquery-ui-1.10.3.min.js"></script>
+<script src="../js/plugin/select2/select2.min.js"></script>
+<script src="../js/check/select2Fix.js"></script>
+<script src="../js/notification/SmartNotification.min.js"></script>
+<script>
+    $(document).ready( function () {
+    	getScan_struct();
+    	showUserName();
+//    	initTable_dic_hw();
+    	initDt_basic();
+    	initTable_basicData_jcfl(0);
+    	initMenu();
+    	selectAllBrgAdmin();
+    	initTable_basicData(0);
+    	initBasicSjlbz(1);
+    	initTable_Brg(0);
+    	var bridge_id = $("#changeBrg option:selected").val();
+		initTable_basicData_bz(bridge_id,0);
+	});
+    	$("#cd_basic_sjlg").on("click", function(){
+    		initTable_basicData(0);
+    	});
+//   	$("#cd_basic_jcfl").on("click", function(){
+//    		initTable_basicData(2);
+//    	});
+    	$("#cd_basic_jclx").on("click", function(){
+    		initTable_basicData_jcfl(0);
+    	});
+    	$("#cd_basic_jcql").on("click", function(){
+    		initTable_Brg(0);
+//    		selectAllBrgAdmin();
+    	});
+    	$("#cd_basic_sjlwzbz").on("click", function(){
+    		initMenu();
+    		var bridge_id = $("#changeBrg option:selected").val();
+    		initTable_basicData_bz(bridge_id,0);
+    	});
+    	
+    	$("#save_sjgl").on("click", function(){
+    		saveBasicData(1);
+    	});
+    	$("#save_qljc").on("click", function(){
+    		saveBrgSystem();
+    	});
+    	$("#newqljc").on("click", function(){
+    		$("#select_ql").select2().val("00464b82c36742409b7e85982ae2a9e3").trigger("change");
+    		$("#select_qljc").val(1);
+    	});
+    	$("#save_jclx").on("click", function(){
+//    		var basic_data_id = $("#myModal3 .select_jcfl option:selected").val();
+    		var name = $("#myModal3 #jclxName").val();
+    		saveBasicData_jcfl(name);
+    	});
+    	$("#save_sjlwzbz").on("click", function(){
+    		initMenu();
+    		var basic_data_id = $("#myModal4 .select_sjlbz option:selected").val();
+    		var bridge_id = $("#changeBrg option:selected").val();
+    		var standard = $("#bzz").val();
+    		saveBasicData_bz(standard,bridge_id,basic_data_id);
+    	});
+    	
+    	$("#show_savebzz").on("click", function(){
+    		clearWzbz();
+    	});
+    	
+		$("#close_sjlwzbz").on("click", function(){
+			clearWzbz();
+    	});
+    	
+    	$("#changeBrg").on("change",function(){
+    		var bridge_id = $("#changeBrg option:selected").val();
+    		initTable_basicData_bz(bridge_id,0);
+        });
+        
+//    $("#diliu #searchData").on("input", function(e){
+//		var d = $("#diliu #searchData").val();
+//		table_lxzd.search(d).draw(true);
+//	});
+    
+    $("#diyi #searchData").on("input", function(e){
+		var d = $("#diyi #searchData").val();
+		table_basicData_sjgl.search(d).draw(true);
+	});
+//    $("#dier #searchData").on("input", function(e){
+//		var d = $("#dier #searchData").val();
+//		table_basicData_jcfl.search(d).draw(true);
+//	});
+    $("#disan #searchData").on("input", function(e){
+		var d = $("#disan #searchData").val();
+		table_basicData_jclx.search(d).draw(true);
+	});
+    $("#disi #searchData").on("input", function(e){
+		var d = $("#disi #searchData").val();
+		table_basicData_bz.search(d).draw(true);
+	});
+    
+    $("#diba #searchData").on("input", function(e){
+		var d = $("#diba #searchData").val();
+		table_brg.search(d).draw(true);
+	});
+    
+    var table_lxzd=$("#dic_hw").DataTable({
+        "deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "searching": true,
+        "lengthChange": false,
+        "bStateSave": true,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+//		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+				 	{ "data": "highway_no" },
+	            	{ "data": "highway_name" },
+	            	{ "data": "highway_level" }
+		         ],
+		         "columnDefs": [
+		 						{	
+		 								 "class": "tcenter",
+//		 								    "targets": 3,
+		 								    "searchable": false,
+		 								    "render": function(data, type, full) {
+		 								  	  		return ''
+		 								        }
+		 								  }
+		 						],
+        "order": [[0, 'asc']],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+    var edit1 = "<button class='upda construct btn btn-warning btn-xs' onclick='update_basic_sjlg(this)' data-toggle='modal' data-target='#change'>修改</button><button class='del btn btn-warning btn-xs' onclick='basic_sjlg(this)' data-toggle='modal' data-target='#delcfmModel'>删除</button>";
+    var table_basicData_sjgl=$("#basic_sjlg").DataTable({
+        "deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "searching": true,
+        "lengthChange": false,
+        "bStateSave": true,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+//		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+	            	{ "data": "name"  },
+	            	{ "data": null  }
+		         ],
+		         "columnDefs": [
+		 						{	
+		 								 "class": "tcenter",
+		 								    "targets": 1,
+		 								    "searchable": false,
+		 								    "render": function(data, type, full) {
+		 								  	  		return edit1;
+		 								        }
+		 								  }
+		 						],
+		"order": [[0, 'asc']],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+    
+    var edit4 = "<button class='upda construct btn btn-warning btn-xs'  data-toggle='modal' data-target='#change4'>修改</button><button class='del btn btn-warning btn-xs' data-toggle='modal' data-target='#delcfmModel'>删除</button>";
+    var table_basicData_bz=$("#basic_sjlwzbz").DataTable({
+        "deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "searching": true,
+        "lengthChange": false,
+        "bStateSave": true,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+//		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+	            	{ "data": "basicName" },
+	            	{ "data": "standard" },
+	            	{ "data": null }
+		         ],
+		         "columnDefs": [
+		 						{	
+		 								 "class": "tcenter",
+		 								    "targets": 2,
+		 								    "searchable": false,
+		 								    "render": function(data, type, full) {
+		 								  	  		return edit4;
+		 								        }
+		 								  }
+		 						],
+		"order": [[0, 'asc']],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+    var edit2 = "<button class='construct btn btn-warning btn-xs' onclick='update_basic_jcfl(this)' data-toggle='modal' data-target='#change2'>修改</button><button class='del btn btn-warning btn-xs' data-toggle='modal' onclick='basic_jcfl(this)'  data-target='#delcfmModel'>删除</button>";
+    var table_basicData_jcfl=$("#basic_jcfl").DataTable({
+        "deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "searching": true,
+        "lengthChange": false,
+        "bStateSave": true,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+//		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+	            	{ "data": "name"  },
+	            	{ "data": null  }
+		         ],
+		         "columnDefs": [
+		 						{	
+		 								 "class": "tcenter",
+		 								    "targets": 1,
+		 								    "searchable": false,
+		 								    "render": function(data, type, full) {
+		 								  	  		return edit2;
+		 								        }
+		 								  }
+		 						],
+		"order": [[0, 'asc']],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+    
+    var edit3 = "<button class='construct btn btn-warning btn-xs' onclick='updatebasic_jclx(this)' data-toggle='modal' data-target='#change3'>修改</button><button class='del btn btn-warning btn-xs' data-toggle='modal' onclick='basic_jclx(this)' data-target='#delcfmModel'>删除</button>";
+    var table_basicData_jclx=$("#basic_jclx").DataTable({
+        "deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "searching": true,
+        "lengthChange": false,
+        "bStateSave": true,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+//		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+	            	{ "data": "name" },
+	            	{ "data": null  }
+		         ],
+		         "columnDefs": [
+		 						{	
+		 								 "class": "tcenter",
+		 								    "targets": 1,
+		 								    "searchable": false,
+		 								    "render": function(data, type, full) {
+		 								  	  		return edit3;
+		 								        }
+		 						}
+		 						],
+		"order": [[0, 'asc']],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+    
+    
+    
+    var edit8 = "<button class='del btn btn-warning btn-xs' data-toggle='modal' onclick='delBrgSystem(this)' data-target='#delcfmModel'>删除</button>";
+    var table_brg=$("#brgSystem").DataTable({
+        "deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "searching": true,
+        "lengthChange": false,
+        "bStateSave": true,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+	            	{ "data": "mode",'render':function(data,type,row){
+                        if(data == "w"){
+                            return "动态称重";
+                        }else if(data == "s"){
+                            return "健康监测";
+                        }else if(data == "f"){
+                            return "风速风向";
+                        }else if(data == "g"){
+                            return "GPS";
+                        }else if(data == "c"){
+                            return "除湿系统";
+                        }else if(data == "k"){
+                            return "施工监测";
+                        }else{
+                        	return "";
+                        }
+                    }},
+	            	{ "data": "brg_name" },
+	            	{ "data": "dir_name" },
+	            	{ "data": "monitor_starttime",'render':function(data,type,row){
+                        if(data !=null){
+                            return data;
+                        }else{
+                            return "";
+                        }
+                    }},
+	            	{ "data": "out_time",'render':function(data,type,row){
+                        if(data !=null){
+                            return data;
+                        }else{
+                            return "";
+                        }
+                    }},
+	            	{ "data": "brg_pass_no",'render':function(data,type,row){
+                        if(data !=null){
+                            return data;
+                        }else{
+                            return "";
+                        }
+                    }},
+	            	{ "data": null  }
+		         ],
+		         "columnDefs": [
+		 						{	
+		 								 "class": "tcenter",
+		 								    "targets": 6,
+		 								    "searchable": false,
+		 								    "orderable":false,
+		 								    "aTargets":[3,4,5],
+		 								    "render": function(data, type, full) {
+		 								  	  		return edit8;
+		 								        }
+		 						}
+		 						],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+    
+    
+    function initTable_Brg(lx){
+    	var api=$("#brgSystem").dataTable().api();
+		var len=api.rows( {page:'current'} ).data().length;
+		var page=api.page.info().page;
+    	myTool.mask.show('查询中...');
+		$.ajax({
+			type: 'POST',
+			url: '../BrgCardServlet',
+			dataType: 'json',
+			data: {
+				type:"selectAllBrgSystem"
+			},
+			error : function(msg) {
+				errMessage("请求BrgCardServlet失败");
+		    },
+			success : function(json) {   
+				 if(json.success=="fail"){
+					 switch (json.error) {
+						case 1:
+							//toastr.error("没有数据");
+							break;
+						case 2:
+							toastr.error("服务器错误");
+							break;
+						default:
+							break;
+						}
+					 $("#brgSystem").dataTable().fnClearTable();
+				 }else{
+					 $("#brgSystem").dataTable().fnClearTable(); 
+					var data = json.obj;
+					$("#brgSystem").DataTable().rows.add(data).draw(false);
+					if(len==1 && lx == 1){
+                    	$('#brgSystem').DataTable().page(page-1).draw( false );
+                    	//alert("重绘上一页！");
+                    }else{
+                    	$('#brgSystem').DataTable().page(page).draw( false );
+                    	//alert("重绘本页！");
+                    }
+				 }
+				 myTool.mask.hide();
+			}
+		});
+	}
+    
+    function saveBrgSystem(){
+    	if ($("#myModal8 #select_qljc").val() == "") {
+            toastr.error("请选择监测子系统!");
+            return false;
+        }
+    	if ($("#myModal8 #select_ql").val() == "") {
+            toastr.error("请选择桥梁!");
+            return false;
+        }
+    		$.ajax({
+                type: 'POST',
+                url: '../BrgCardServlet',
+                dataType: 'json',
+                data: {
+                    type: "addBrgSystem",
+                    mode: $("#myModal8 #select_qljc option:selected").val(),
+                    bridge_id: $("#myModal8 #select_ql option:selected").val()
+                },
+                error: function (msg) {
+                    toastr.error("请求BrgCardServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("添加桥梁监测成功");
+    	                    $('#myModal8').modal('hide');
+    	                    initTable_Brg(0);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("添加桥梁检测失败");
+    	                }
+    				}
+            });
+    }
+    
+    
+    function deleteSystem(id){
+		$.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "delSystem",
+                id:id
+            },
+            error: function (msg) {
+                toastr.error("请求BasicDataServlet失败");
+            },
+            success: function (json) {
+	                if (json.success == "success") {
+	                    toastr.success("删除成功");
+	                    $('#del_jcfl').modal('hide');
+	                    initTable_Brg(1);
+	                    /* location.reload([true]) */
+	                } else {
+	                    toastr.error("删除失败");
+	                }
+				}
+        });
+}
+    
+    
+    function delBrgSystem(th) {
+    	$('#del_jcfl').unbind('click').on("click",function(){
+    		var tr = $(th).closest('tr');
+    		var data = $('#brgSystem').DataTable().row(tr).data();
+    		deleteSystem(data.id);
+    	});
+	}
+    
+   
+    function initTable_basicData_bz(bridge_id,lx){
+    	var api=$("#basic_sjlwzbz").dataTable().api();
+		var len=api.rows( {page:'current'} ).data().length;
+		var page=api.page.info().page;
+    	myTool.mask.show('查询中...');
+		$.ajax({
+			type: 'POST',
+			url: '../BasicDataServlet',
+			dataType: 'json',
+			data: {
+				type:"selectBasicStandard",
+				bridge_id: bridge_id
+			},
+			error : function(msg) {
+				errMessage("请求BasicDataServlet失败");
+		    },
+			success : function(json) {   
+				 if(json.success=="fail"){
+					 switch (json.error) {
+						case 1:
+							//toastr.error("没有数据");
+							break;
+						case 2:
+							toastr.error("服务器错误");
+							break;
+						default:
+							break;
+						}
+					 $("#basic_sjlwzbz").dataTable().fnClearTable();
+				 }else{
+					$("#basic_sjlwzbz").dataTable().fnClearTable(); 
+					var data = json.obj;
+					$("#basic_sjlwzbz").DataTable().rows.add(data).draw(false);
+					if (len == 1 && lx == 1) {
+						$('#basic_sjlwzbz').DataTable().page(page-1).draw( false );
+					}else{
+		                $('#basic_sjlwzbz').DataTable().page(page).draw( false );
+					}
+				 }
+				 myTool.mask.hide();
+			}
+		});
+	}
+    
+    function saveBasicData_bz(standard,bridge_id,basic_data_id){
+    	if ($("#myModal4 #bzz").val() == "") {
+            toastr.error("请输入标准值!");
+            return false;
+        }
+    	if ($("#myModal4 .select_sjlbz").val() == "") {
+            toastr.error("请选择监测子系统!");
+            return false;
+        }
+    		$.ajax({
+                type: 'POST',
+                url: '../BasicDataServlet',
+                dataType: 'json',
+                data: {
+                    type: "saveBasicDataStandard",
+                    basic_data_id: basic_data_id,
+                    bridge_id: bridge_id,
+                    standard: standard
+                },
+                error: function (msg) {
+                    toastr.error("请求BasicDataServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("添加数据量完整标准成功");
+    	                    $('#myModal4').modal('hide');
+    	                    clearWzbz();
+    	                    initTable_basicData_bz(bridge_id,0);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("添加数据量完整标准失败");
+    	                }
+    				}
+            });
+    }
+    
+    function updateBasicData_bz(id,standard,bridge_id,basic_data_id){
+    	if ($("#change4 #update_bzz").val() == "") {
+            toastr.error("请输入标准值!");
+            return false;
+        }
+    	if ($("#change4 .select_sjlbz").val() == "") {
+            toastr.error("请选择监测子系统!");
+            return false;
+        }
+    		$.ajax({
+                type: 'POST',
+                url: '../BasicDataServlet',
+                dataType: 'json',
+                data: {
+                    type: "updateBasicDataStandard",
+                    basic_data_id: basic_data_id,
+                    standard: standard,
+                    id:id
+                },
+                error: function (msg) {
+                    toastr.error("请求BasicDataServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("修改数据量完整标准成功");
+    	                    $('#change4').modal('hide');
+    	                    initTable_basicData_bz(bridge_id,0);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("修改数据量完整标准失败");
+    	                }
+    				}
+            });
+    }
+    
+    function deleteBasicData_bz(id,bridge_id){
+		$.ajax({
+            type: 'POST',
+            url: '../BasicDataServlet',
+            dataType: 'json',
+            data: {
+                type: "deleteBasicDataStandard",
+                id:id
+            },
+            error: function (msg) {
+                toastr.error("请求BasicDataServlet失败");
+            },
+            success: function (json) {
+	                if (json.success == "success") {
+	                    toastr.success("删除成功");
+	                    $('#del_jcfl').modal('hide');
+	                    initTable_basicData_bz(bridge_id,1);
+	                    /* location.reload([true]) */
+	                } else {
+	                    toastr.error("删除失败");
+	                }
+				}
+        });
+}
+    
+    function deletebasic_wzlbz(th) {
+    	$('#del_jcfl').on("click",function(){
+    		rowIndex = $(th).parents("tr").index();
+    		var id = $('#basic_sjlwzbz').DataTable().rows(rowIndex).data()[0];
+    		var bridge_id = $("#changeBrg option:selected").val();
+    		$(th).unbind('click');
+    		deleteBasicData_bz(id.id,bridge_id);
+    	});
+    	
+	}
+ //   onclick='deletebasic_wzlbz(this)'
+    $('#basic_sjlwzbz').unbind('click',".del").on("click",".del",function(){
+    	var tr = $(this).closest('tr');
+		var data = $('#basic_sjlwzbz').DataTable().row(tr).data();
+    	$('#del_jcfl').unbind('click').on("click",function(){
+    		var bridge_id = $("#changeBrg option:selected").val();
+    		deleteBasicData_bz(data.id,bridge_id);
+    	});
+	});
+ 
+    $('#basic_sjlwzbz').unbind('click',".upda").on("click",".upda",function(){
+    	var tr = $(this).closest('tr');
+		var data = $('#basic_sjlwzbz').DataTable().row(tr).data();
+		$("#change4 .select_sjlbz").val(data.basicId);
+		$("#change4 #update_bzz").val(data.standard);
+    	$('#update_sjlwzbz').unbind('click').on("click",function(){
+    		var basic_data_id = $("#change4 .select_sjlbz option:selected").val();
+    		var bridge_id = $("#changeBrg option:selected").val();
+    		var standard = $("#change4 #update_bzz").val();
+    		updateBasicData_bz(data.id,standard,bridge_id,basic_data_id);
+    	});
+	});
+    
+    function  clearWzbz() {
+//    	$("#myModal4 .select_sjlbz").val(1);
+		initBasicSjlbz(1);
+//		$("#changeBrg").val(bridge_id);
+		$("#myModal4 #bzz").val('');
+	}
+    
+    function initTable_basicData_jcfl(lx){
+    	var api=$("#basic_jclx").dataTable().api();
+		var len=api.rows( {page:'current'} ).data().length;
+		var page=api.page.info().page;
+    	myTool.mask.show('查询中...');
+		$.ajax({
+			type: 'POST',
+			url: '../BasicDataServlet',
+			dataType: 'json',
+			data: {
+				type:"selectAllBasicjclx"
+			},
+			error : function(msg) {
+				errMessage("请求BasicDataServlet失败");
+		    },
+			success : function(json) {   
+				 if(json.success=="fail"){
+					 switch (json.error) {
+						case 1:
+							//toastr.error("没有数据");
+							break;
+						case 2:
+							toastr.error("服务器错误");
+							break;
+						default:
+							break;
+						}
+					 $("#basic_jclx").dataTable().fnClearTable();
+				 }else{
+					 $("#basic_jclx").dataTable().fnClearTable(); 
+					var data = json.obj;
+					$("#basic_jclx").DataTable().rows.add(data).draw(false);
+					if(len == 1 && lx == 1){
+                    	$('#basic_jclx').DataTable().page(page-1).draw( false );
+                    }else{
+                    	$('#basic_jclx').DataTable().page(page).draw( false );
+                    }
+				 }
+				 myTool.mask.hide();
+			}
+		});
+	}
+    
+    
+    function saveBasicData_jcfl(name){
+    	if ($("#myModal3 #jclxName").val() == "") {
+            toastr.error("请输入监测类型信息!");
+            return false;
+        }
+//    	if ($("#myModal3 .select_jcfl").val() == "") {
+//            toastr.error("请选择监测分类!");
+//            return false;
+//        }
+    		$.ajax({
+                type: 'POST',
+                url: '../BasicDataServlet',
+                dataType: 'json',
+                data: {
+                    type: "saveBasicDatajclx",
+                    name: name
+//                    basic_data_id: basic_data_id
+                },
+                error: function (msg) {
+                    toastr.error("请求BasicDataServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("添加监测类型成功");
+    	                    $('#myModal3').modal('hide');
+    	                    clearJclx();
+    	                    initTable_basicData_jcfl(0);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("添加监测类型失败");
+    	                }
+    				}
+            });
+    }
+    
+    function updateBasicData_jcfl(id,name){
+    	if ($("#change3 #update_jclxval").val() == "") {
+            toastr.error("请输入监测类型信息!");
+            return false;
+        }
+//    	if ($("#change3 .select_jcfl").val() == "") {
+//            toastr.error("请选择监测分类!");
+//            return false;
+//        }
+    		$.ajax({
+                type: 'POST',
+                url: '../BasicDataServlet',
+                dataType: 'json',
+                data: {
+                    type: "updateBasicDataJclx",
+                    id:id,
+                    name: name
+                },
+                error: function (msg) {
+                    toastr.error("请求BasicDataServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("修改监测类型成功");
+    	                    $('#change3').modal('hide');
+    	                    initTable_basicData_jcfl(0);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("修改监测类型失败");
+    	                }
+    				}
+            });
+    }
+    
+    function basic_jclx(th) {
+    	$('#del_jcfl').unbind('click').on("click",function(){
+    		var tr = $(th).closest('tr');
+    		var data = $('#basic_jclx').DataTable().row(tr).data();
+    		deleteBasicDataJcfl(data.id);
+    	});
+	}
+    
+    function updatebasic_jclx(th) {
+    	var tr = $(th).closest('tr');
+		var data = $('#basic_jclx').DataTable().row(tr).data();
+//    	$("#change3 .select_jcfl").val(data.basic_data_id);
+		$("#change3 #update_jclxval").val(data.name);
+    	$('#update_jclx').unbind('click').on("click",function(){
+//    		var basic_data_id = $("#change3 .select_jcfl option:selected").val();
+    		var name = $("#change3 #update_jclxval").val();
+    		updateBasicData_jcfl(data.id,name);
+    	});
+	}
+    
+    function deleteBasicDataJcfl(id){
+		$.ajax({
+            type: 'POST',
+            url: '../BasicDataServlet',
+            dataType: 'json',
+            data: {
+                type: "deleteBasicDataJclx",
+                id:id
+            },
+            error: function (msg) {
+                toastr.error("请求BasicDataServlet失败");
+            },
+            success: function (json) {
+	                if (json.success == "success") {
+	                    toastr.success("删除成功");
+	                    $('#del_jcfl').modal('hide');
+	                    initTable_basicData_jcfl(1);
+	                    /* location.reload([true]) */
+	                } else {
+	                    toastr.error("删除失败");
+	                }
+				}
+        });
+}
+    
+    function clearJclx() {
+    	$("#myModal3 .select_jcfl").val(1);
+		$("#myModal3 #jclxName").val('');
+	}
+    
+    function saveBasicData(type){
+    	if ($("#myModal #jcflName").val() == "" && type == 1) {
+            toastr.error("请输入数据管理分类信息!");
+            return false;
+        }
+    	if ($("#myModal2 #jcflName").val() == "" && type == 2) {
+            toastr.error("请输入监测分类信息!");
+            return false;
+        }
+    	if (type==1) {
+    		$.ajax({
+                type: 'POST',
+                url: '../BasicDataServlet',
+                dataType: 'json',
+                data: {
+                    type: "saveBasicData",
+                    name: $("#myModal #jcflName").val(),
+                    bdstype:type
+                },
+                error: function (msg) {
+                    toastr.error("请求BasicDataServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("添加数据管理分类成功");
+    	                    $('#myModal').modal('hide');
+    	                    $("#myModal #jcflName").val('');
+    	                    initTable_basicData(0);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("添加数据管理分类失败");
+    	                }
+    				}
+            });
+    	}
+    }
+    
+    function update_basic_sjlg(th) {
+    	var tr = $(th).closest('tr');
+    	var data = $('#basic_sjlg').DataTable().row(tr).data();
+    	$("#change #update_jcflval").val(data.name);
+    	$("#update_sjgl").unbind('click').on("click",function(){
+    		if ($("#change #update_jcflval").val() == "") {
+                toastr.error("请输入数据管理分类信息!");
+                return false;
+            }
+    		var name = $("#change #update_jcflval").val();
+    		updateBasicData(1,data.basicid,name);
+    	});
+	}
+    
+//    function update_basic_jcfl(th) {
+//    	var tr = $(th).closest('tr');
+//		var data = $('#basic_jcfl').DataTable().row(tr).data();
+//    	$("#change2 #update_jcflval").val(data.name);
+//    	$("#update_jcfl").unbind('click').on("click",function(){
+//    		if ($("#change2 #update_jcflval").val() == "") {
+//                toastr.error("请输入监测分类信息!");
+//                return false;
+//            }
+//    		var name = $("#change2 #update_jcflval").val();
+//   		updateBasicData(2,data.basicid,name);
+//    	});
+//	}
+    
+    
+    
+    function updateBasicData(type,id,name){
+    	if (type==1) {
+    		$.ajax({
+                type: 'POST',
+                url: '../BasicDataServlet',
+                dataType: 'json',
+                data: {
+                    type: "updateBasicData",
+                    name: name,
+                    id:id
+                },
+                error: function (msg) {
+                    toastr.error("请求BasicDataServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("修改数据管理分类成功");
+    	                    $('#change').modal('hide');
+    	                    initTable_basicData(0);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("修改数据管理分类失败");
+    	                }
+    				}
+            });
+    	}
+        
+    }
+    
+    
+    function basic_sjlg(th) {
+    	$('#del_jcfl').unbind('click').on("click",function(){
+    		var tr = $(th).closest('tr');
+    		var data = $('#basic_sjlg').DataTable().row(tr).data();
+    		deleteBasicData(1,data.basicid);
+    	});
+	}
+    
+//    function basic_jcfl(th) {
+//    	$('#del_jcfl').unbind('click').on("click",function(){
+//    		var tr = $(th).closest('tr');
+//    		var data = $('#basic_jcfl').DataTable().row(tr).data();
+//   		deleteBasicData(2,data.basicid);
+//    	});
+//	}
+    
+    function deleteBasicData(type,id){
+    		$.ajax({
+                type: 'POST',
+                url: '../BasicDataServlet',
+                dataType: 'json',
+                data: {
+                    type: "deleteBasicData",
+                    id:id
+                },
+                error: function (msg) {
+                    toastr.error("请求BasicDataServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("删除成功");
+    	                    $('#del_jcfl').modal('hide');
+    	                    initTable_basicData(1);
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("删除失败");
+    	                }
+    				}
+            });
+    }
+
+    
+    function initTable_basicData(lx){
+    	myTool.mask.show('查询中...');
+		$.ajax({
+			type: 'POST',
+			url: '../BasicDataServlet',
+			dataType: 'json',
+			data: {
+				type:"selectBsicData",
+				bdstype:1
+			},
+			error : function(msg) {
+				errMessage("请求BasicDataServlet失败");
+		    },
+			success : function(json) {  
+				var data = json.obj;
+					var api=$("#basic_sjlg").dataTable().api();
+					var len=api.rows( {page:'current'} ).data().length;
+					var page=api.page.info().page;
+					 if(json.success=="fail"){
+						 switch (json.error) {
+							case 1:
+								//toastr.error("没有数据");
+								break;
+							case 2:
+								toastr.error("服务器错误");
+								break;
+							default:
+								break;
+							}
+						 $("#basic_sjlg").dataTable().fnClearTable();
+					 }else{
+						$("#basic_sjlg").dataTable().fnClearTable(); 
+						$("#basic_sjlg").DataTable().rows.add(data).draw(false);
+						if(len==1 && lx == 1){
+	                    	$('#basic_sjlg').DataTable().page(page-1).draw( false );
+	                    	//alert("重绘上一页！");
+	                    }else{
+	                    	$('#basic_sjlg').DataTable().page(page).draw( false );
+	                    	//alert("重绘本页！");
+	                    }
+					 }
+				myTool.mask.hide();
+			}
+		});
+	}
+    
+    /*初始化表格*/
+	function initTable_dic_hw(){
+		$.ajax({
+			type: 'POST',
+			url: '../LineMgrServlet',
+			dataType: 'json',
+			data: {
+				type:"initTable"
+			},
+			error : function(msg) {
+				errMessage("请求LineMgrServlet失败");
+		    },
+			success : function(json) {   
+				 if(json.success=="fail"){
+					 switch (json.error) {
+						case 1:
+							//toastr.error("没有数据");
+							break;
+						case 2:
+							toastr.error("服务器错误");
+							break;
+						default:
+							break;
+						}
+					 $("#dic_hw").dataTable().fnClearTable();
+				 }else{
+					 $("#dic_hw").dataTable().fnClearTable(); 
+					var data = json.obj;
+					$("#dic_hw").DataTable().rows.add(data).draw(false);
+				 }
+			}
+		});
+	}
+    
+    function initDt_basic() {
+        $.ajax({
+            type: 'POST',
+            url: '../DicStructTypeServlet',
+            dataType: 'json',
+            data: {
+                type: "initBridgeType"
+            },
+            error: function (msg) {
+                errMessage("请求DicStructTypeServlet失败");
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    switch (json.error) {
+                        case 1:
+                        	//toastr.error("没有数据");
+                            break;
+                        case 2:
+                        	toastr.error("服务器错误");
+                            break;
+                        default:
+                            break;
+                    }
+                    $('#dt_basic').find('tbody').empty();
+                } else {
+                    $('#dt_basic').find('tbody').empty();
+                    var data = json.obj;
+                    //alert(JSON.stringify(data));
+                    for (var i = 0; i < data.length; i++) {
+                        //table.row.add(data[i]).draw(false);
+                        var data2 = data[i].ll;
+                        //alert(JSON.stringify(data2));
+                        for (var j = 0; j < data2.length; j++) {
+                            if (j == 0) {
+                                $('#dt_basic').append('<tr><td>' + data2[j].brg_type_id + '</td><td >' + data2[j].brg_type_name + '</td><td rowspan="' + data2.length + '" style="vertical-align: middle !important;">' + data[i].brg_base_type + '</td></tr>')
+                            } else {
+                                $('#dt_basic').append('<tr><td>' + data2[j].brg_type_id + '</td><td>' + data2[j].brg_type_name + '</td></tr>')
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    
+    function initBasicJcfl(){
+		$.ajax({
+            type: 'POST',
+            url: '../BasicDataServlet',
+            dataType: 'json',
+            data: {
+                type: "selectBasicData"
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                	var arr = json.obj;
+                	$("select.select_jcfl").html('');
+                    for (var i = 0; i < arr.length; i++) {
+                        $("select.select_jcfl").append('<option value='+arr[i].basicid+'>'+arr[i].name+'</option>');
+                    }
+                }else {
+                    toastr.error("初始监测分类出错");
+                }
+            }
+        });
+	}
+    
+    function initBasicSjlbz(type){
+		$.ajax({
+            type: 'POST',
+            url: '../BasicDataServlet',
+            dataType: 'json',
+            data: {
+                type: "selectBsicData",
+                bdstype: type
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                	var arr = json.obj;
+                	$("select.select_sjlbz").html('');
+                	$("#select_qljc").html('');
+                    for (var i = 0; i < arr.length; i++) {
+                        $("select.select_sjlbz").append('<option value='+arr[i].basicid+'>'+arr[i].name+'</option>');
+                        $("#select_qljc").append('<option value='+arr[i].basicid+'>'+arr[i].name+'</option>');
+                    }
+                }else {
+                    toastr.error("初始监测子系统出错");
+                }
+            }
+        });
+	}
+    
+    function initMenu(){
+		$.ajax({
+            type: 'GET',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "selectAllBrg"
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                	var arr = json.obj;
+                	$("#qiaoSlect").html('');
+                	$("#qiaoSlect2").html('');
+                	$("#qiaoSlect3").html('');
+                	$("#qiaoSlect4").html('');
+                	$("#changeBrg").html('');
+                    for (var i = 0; i < arr.length; i++) {
+                    	$("#qiaoSlect").append('<li><a href="./qiaoliangguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect2").append('<li><a href="./cedianguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect3").append('<li><a href="./shujuguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect4").append('<li><a href="./yujin.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                        $("#changeBrg").append('<option value='+arr[i].bridge_id+'>'+arr[i].bridge_name+'</option>');
+                    }
+                }else {
+                    toastr.error("初始桥梁出错");
+                }
+            }
+        });
+	}
+    
+    
+    function selectAllBrgAdmin(){
+    	myTool.mask.show('查询中...');
+		$.ajax({
+            type: 'GET',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "selectAllBrgAdminId"
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                	var arr = json.obj;
+                	$("#select_ql").empty();
+                    for (var i = 0; i < arr.length; i++) {
+                    	$("#select_ql").append('<option value='+arr[i].bridge_id+'>'+arr[i].bridge_name+'</option>');
+                    }
+                    $("#select_ql").select2();
+                    /*设置默认*/
+					$("#select_ql").select2().val("00464b82c36742409b7e85982ae2a9e3").trigger("change");
+                }else {
+                    toastr.error("初始桥梁出错");
+                }
+                myTool.mask.hide();
+            }
+        });
+	}
+    $.fn.modal.Constructor.prototype.enforceFocus = function () {};
+	
+	var ss;
+	var nn;
+	$('#step1-next').on('click', function () {
+		var monitorType=$("#monitorType").val();
+		var scanStruct=$("#scanStruct").val();
+		$("#phoneNo").html('');
+		$.ajax({
+			type : 'POST',
+			url : '../BrgMonitorServlet',
+			dataType : 'json',
+			data : {
+				type : "selectStaffNumber",
+				monitorType:monitorType,
+				brg_id:scanStruct,
+				item_all:"健康监测"
+			},
+			error : function(msg) {
+				errMessage("请求BrgMonitorServlet失败");
+			},
+			success : function(json) {
+				console.log(json.obj.list1);
+				var name;
+				if(json.obj.list1.length==0){
+					var pn="";
+					name="";
+				}else{
+					var pn=json.obj.list1[0].phone;
+					name=json.obj.list1[0].name;
+				}
+				if(monitorType=='无数据'){
+					$("#phoneNo").append("<label class='control-label' style='width:6%'>"+"监测类型"+"</label>"+
+							"<select id='item_all' onchange='changeItemAll()' class='form' style='width:25%;height:31px'>"+
+								"<option value='动态称重'>"+"动态称重"+"</option>"+
+								"<option selected='selected' value='健康监测'>"+"健康监测"+"</option>"+
+								"<option value='GPS'>"+"GPS"+"</option>"+
+    						"</select>"+
+    						"<label class='control-label' style='margin-left:20px'>"+"号码"+"</label>"+
+							"<input type='text' class='form' style='width:20%;height:31px;margin-left:25px' id='phone' value='"+IsNull(pn)+"'>"+
+							"<label class='control-label' style='margin-left:20px'>"+"姓名"+"</label>"+
+							"<input type='text' class='form' style='width:20%;height:31px;margin-left:25px' id='name' value='"+IsNull(name)+"'>");
+					$('#step1').slideUp('normal', 'swing');
+		            $('#step2').slideDown('normal', 'swing');
+		            $('#step1-state').removeClass('fa-info').addClass('fa-check');
+				}else{
+					selectPhone(json.obj.list2[0]);
+					console.log(ss);
+					if(ss==undefined){
+						ss="";
+					}
+					if(nn==undefined){
+						nn="";
+					}
+						$("#phoneNo").append("<label class='control-label' style='width:6%'>"+"监测类型"+"</label>"+
+								"<select id='item_second' onchange='changeItem()' class='form' style='width:25%;height:31px'>"+
+        						"</select>"+
+        						"<label class='control-label' style='margin-left:20px'>"+"号码"+"</label>"+
+        						"<input type='text' class='form' id='phone2' style='width:25%;height:31px;margin-left:20px' value='"+ss+"'>"+
+        						"<label class='control-label' style='margin-left:20px'>"+"姓名"+"</label>"+
+								"<input type='text'  class='form' style='width:25%;height:31px;margin-left:20px' id='name2' value='"+nn+"'>");
+					if(json.obj.list2.length==0){
+						errMessage("该桥没有传感器");
+						return;
+					}
+					for(var i=0;i<json.obj.list2.length;i++){
+						$("#item_second").append("<option value='"+json.obj.list2[i]+"'>"+json.obj.list2[i]+"</option>");
+					}
+					$('#step1').slideUp('normal', 'swing');
+		            $('#step2').slideDown('normal', 'swing');
+		            $('#step1-state').removeClass('fa-info').addClass('fa-check');
+					
+				}
+			}
+		});
+        
+    });	
+	$('#step2-previous').on('click', function () {
+        $('#step1').slideDown('normal', 'swing');
+        $('#step2').slideUp('normal', 'swing');
+        $('#step2-state').removeClass('fa-check').addClass('fa-info');
+    });
+
+	function IsNull(obj){
+		if(obj=='undefined'||obj==null||obj==""){
+			return "";
+		}else{
+			return obj;
+		}
+	}
+	
+	function selectPhone(obj){
+		var monitorType=$("#monitorType").val();
+		var scanStruct=$("#scanStruct").val();
+		if(obj=='undefined'||obj==null||obj==""){
+			ss="";
+			return;
+		}else{
+			$.ajax({
+				type : 'POST',
+				url : '../BrgMonitorServlet',
+				dataType : 'json',
+				async:false,
+				data : {
+					type : "selectPhone",
+					monitorType:monitorType,
+					brg_id:scanStruct,
+					item_second:obj
+				},
+				error : function(msg) {
+					errMessage("请求BrgMonitorServlet失败");
+				},
+				success : function(json) {
+					ss=json.obj.phone;
+					nn=json.obj.name;
+				}
+    	 });	
+		}
+	}
+	
+	function changeItemAll(){
+		var monitorType=$("#monitorType").val();
+		var scanStruct=$("#scanStruct").val();
+		var item_all=$("#item_all").val();
+		$("#phone").html('');
+		$.ajax({
+			type : 'POST',
+			url : '../BrgMonitorServlet',
+			dataType : 'json',
+			data : {
+				type : "selectPhoneOfWu",
+				monitorType:monitorType,
+				brg_id:scanStruct,
+				item_all:item_all
+			},
+			error : function(msg) {
+				errMessage("请求BrgMonitorServlet失败");
+			},
+			success : function(json) {
+				var ss=json.obj.phone;
+				var nn=json.obj.name
+				$("#phone").val(ss);
+				$("#name").val(nn);
+			}
+	 });
+	}
+	
+	
+	function changeItem(){
+			var monitorType=$("#monitorType").val();
+			var scanStruct=$("#scanStruct").val();
+			var item_second=$("#item_second").val();
+			$("#phone2").html('');
+			$.ajax({
+				type : 'POST',
+				url : '../BrgMonitorServlet',
+				dataType : 'json',
+				data : {
+					type : "selectPhone",
+					monitorType:monitorType,
+					brg_id:scanStruct,
+					item_second:item_second
+				},
+				error : function(msg) {
+					errMessage("请求BrgMonitorServlet失败");
+				},
+				success : function(json) {
+					var ss=json.obj.phone;
+					var nn=json.obj.name;
+					console.log(ss);
+					$("#phone2").val(ss);
+					$("#name2").val(nn);
+				}
+    	 });
+	}
+	
+	function stepOk(){
+		var monitorType=$("#monitorType").val();
+		if(monitorType=='无数据'){
+			var scanStruct=$("#scanStruct").val();
+			var phone=$("#phone").val();
+			var name =$("#name").val();
+			if(phone==null||phone==''){
+				errMessage("电话不可为空");
+				return;
+			}
+			$.ajax({
+				type : 'POST',
+				url : '../BrgMonitorServlet',
+				dataType : 'json',
+				data : {
+					type : "updatePhoneOfwu",
+					monitorType:monitorType,
+					brg_id:scanStruct,
+					phone:phone,
+					name:name,
+					item_all:$("#item_all").val()
+				},
+				error : function(msg) {
+					errMessage("请求BrgMonitorServlet失败");
+				},
+				success : function(json) {
+					if(json.obj>=1){
+						successMessage("修改成功");
+					}else{
+						errMessage("修改失败");
+					}
+					
+				}
+    	 });
+		}else{
+			var scanStruct=$("#scanStruct").val(); 
+			var phone2=$("#phone2").val();
+			var name2 =$("#name2").val();
+			var item_second=$("#item_second").val();
+			if(item_second==null||item_second==''){
+				errMessage("监测类型不能为空");
+				return;
+			}
+			if(phone2==null||phone2==''){
+				errMessage("电话不可为空");
+				return;
+			}
+			$.ajax({
+				type : 'POST',
+				url : '../BrgMonitorServlet',
+				dataType : 'json',
+				data : {
+					type : "updatePhoneOfAbnormal",
+					monitorType:monitorType,
+					brg_id:scanStruct,
+					phone2:phone2,
+					name2:name2,
+					item_second:item_second
+				},
+				error : function(msg) {
+					errMessage("请求BrgMonitorServlet失败");
+				},
+				success : function(json) {
+					if(json.obj>=1){
+						successMessage("修改成功");
+					}else{
+						errMessage("修改失败");
+					}
+					
+				}
+    	 });
+		}
+		//setTimeout("window.location.href='cidian.html'",1500); 
+	}
+	
+	function errMessage(info) {
+		$.smallBox({
+			title : "处理信息",
+			content : "<i class='fa fa-clock-o'></i> <i>" + info + "</i>",
+			color : "#C46A69",
+			iconSmall : "fa fa-times fa-2x fadeInRight animated",
+			timeout : 3000
+		});
+	}
+
+	function successMessage(info) {
+		$.smallBox({
+			title : "处理信息",
+			content : "<i class='fa fa-clock-o'></i> <i>" + info + "</i>",
+			color : "#659265",
+			iconSmall : "fa fa-times fa-2x fadeInRight animated",
+			timeout : 3000
+		});
+	}
+	function getScan_struct() {
+    	 $.ajax({
+				type : 'POST',
+				url : '../WeightHealthServlet',
+				dataType : 'json',
+				data : {
+					type : "getScan_struct"
+				},
+				error : function(msg) {
+					errMessage("请求PrjMgrServlet失败");
+				},
+				success : function(json) {
+					if(json.success=="success"){
+						var data = json.obj;
+						$("#scanStruct").empty();
+						for (var i = 0; i < data.length; i++) {
+							$("#scanStruct").append("<option value='"+data[i].bridge_id+"'>"+data[i].bridge_name+"<option>");
+						}
+						$("#scanStruct").select2();
+						/*设置默认*/
+						$("#scanStruct").select2().val("G15320682L0130").trigger("change");
+					}
+				}
+    	 });		
+	}
+</script>
+</body>
+</html>

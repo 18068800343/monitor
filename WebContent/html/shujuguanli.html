@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>高速桥梁监测系统集成管理平台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="../font/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" media="screen" href="../style/bootstrap.min.css">
+	<link rel="stylesheet" href="../font/iconfont.css">
+	<link rel="stylesheet" href="../font2/iconfont.css">
+	<link href="../style/style.css" rel="stylesheet">
+	<link href="../style/style2.css" rel="stylesheet">
+	<link href="../js/toastr/toastr.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style/jquery.dataTables.min.css">
+	<style>
+		@media screen  and (max-height:1200px) {
+		    body{
+		   		height:1058px;
+				background:#fff;
+			}
+			#right{
+		   		height:895px;
+			}
+		}
+		
+		@media screen and (max-height:1050px) {
+		    body{
+		   		height:910px;
+				background:#fff;
+			}
+			#right{
+		   		height:745px;
+			}
+		}
+		@media screen and (max-height:900px) {
+		    body{
+		   		height:760px;
+				background:#fff;
+			}
+			#right{
+		   		height:650px;
+			}
+		}
+		.yihang{
+			display:flex;
+			align-items: center;
+		}
+	</style>
+	
+</head>
+
+<body>
+
+		<section>
+			<!-- header -->
+			<header class="header">
+            <div>
+                <p style="font-size:28px;margin: 0px;"><img src="../img/qiaoLogo.png" alt="" style="width:48px;height:50%;">&nbsp;高速桥梁监测系统集成管理平台</p>
+            </div>
+            <div style="display:flex;">
+	                <div class="renyuan zhuashou"><a href="#"><img src="../img/登陆人.png" alt="">&nbsp;<span id="uname"></span></a></div>
+	                <div style="padding-top:5px;">丨</div>
+	                <div class="renyuan zhuashou"><a href="#" id="logOut"><img src="../img/退出.png" alt="">&nbsp;退出</a></div>
+	        </div>
+        </header>
+        <div>
+        	<div class="caidanlan">
+        			<div class="box1 yihang3" id="boxa">
+		                <p style="padding-top:10px;"><a href="./index.html" ><!-- <span class="glyphicon glyphicon-home" aria-hidden="true" style="color:#fff;font-size:16px;"></span> -->首页</a></p>
+		            </div>
+		            
+		            <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxb">
+					     <p><!-- <i class="iconfont icon-qiaoliang" style="color:#fff;font-size:20px;"></i> -->桥梁信息</p>
+					      
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxc">
+		                <p><!-- <i class="iconfont icon-jiancedianguanli"></i> -->测点管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect2">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxd">
+		                <p><!-- <i class="iconfont icon-shujuguanli"></i> -->数据管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect3">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxe">
+		                <p><!-- <i class="iconfont icon-yujing" style="font-size:20px;"></i> -->分析预警</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect4">
+					      
+					    </ul>
+				  </div>
+				   <div class="box1" id="boxf" >
+		                <p><a href="./report.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告</a></p>
+		            </div>
+		            <div class="box1" id="boxg" >
+		                <p><a href="./cidian.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据</a></p>
+		            </div>
+        	</div>
+        </div>
+			
+			
+		</section>
+<div style="font-size:18px;font-weigh:700;margin-left:12px;margin-top:5px;">当前桥梁名称:<span><B id="qiaomingcheng"></B></span></div>
+	<div>
+
+		<div>
+			
+			<div class="row">
+				<div class="col-md-8" id="left">
+					<div style="background:#fff;">
+					
+						<div class="yihang2"  style="margin:40px 15px 10px 0px;">
+							<div></div>
+							<div>
+								<a class="btn btn-primary" role="button" id="goqiaoliang">查看当前桥桥梁信息</a>
+								<a class="btn btn-primary" role="button" id="gocedian">查看当前桥测点管理</a>
+								<a class="btn btn-primary " role="button" id="gofenxi">查看当前桥分析预警</a>
+							</div>
+						</div>
+							
+						<div class="yihang" >
+							<div class="col-md-12">
+                                   <table class="table table-bordered table-striped" id="dataFullTable">
+                                   	<thead>
+                                   		<tr>
+                                   			<th>桥梁名称</th>
+                                   			<th>子系统类型</th>
+                                   			<th>无数据接入情况</th>
+                                   			<th>数据量日完整率</th>
+                                   			<th>数据量月完整率</th>
+                                   			<th>数据量年完整率</th>
+                                   		</tr>
+                                   	</thead>
+                                   	<tbody>
+                                   	</tbody>
+                                   </table>
+							</div>
+						</div>
+						<div style="text-align:right;margin:0px 12px 0px 0px;" >
+								<a role="button" class="btn btn-primary"  id="shujutable">前往数据页面</a>
+							</div>
+						<hr>
+						<div class="leftTop yihang2">
+							<div>数据趋势图</div>
+						</div>
+						<div class="yihang2" style="margin-top:3px;">
+							<div></div>
+							<div>
+								<form class="form-inline">
+									  <div class="form-group">
+										    <label>时间筛选:</label>
+										    <select class="form-control" style="width:180px;" id="dataFull">
+												<option value="day">日完整率</option>
+												<option value="month">月完整率</option>
+											</select>
+									 </div>
+								</form>
+							</div>
+						</div>
+						<div id="canvas1" style="width:100%;height:400px;"></div>
+					</div>
+					
+				</div>
+				<div class="col-md-4"  id="right">
+					<div class="leftTop yihang2">
+						<div></div>
+						<div><span class="glyphicon glyphicon-list  zhuashou"  aria-hidden="true" title="BIM全屏" id="quanping" style="margin-right:15px;"></span></div>
+					</div>
+					<iframe id="mainIframe" name="mainIframe" src="./ModelView-HT/ModelViewer.html?model=BIMModel" frameborder="0" scrolling="auto"  style="width:100%;height:100%;"></iframe>
+				</div>
+			
+			</div>
+					
+		</div>
+		
+	</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <h4 class="modal-title" id="myModalLabel">添加系统</h4>
+		</div>
+		<div class="modal-body">
+			<table class="table table-bordered table-condensed">
+				<tr>
+					<td>管养单位</td>
+					<td>
+						<select class="form-control" style="width:180px;">
+							<option>华通公司</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>所属路段</td>
+					<td>
+						<select class="form-control" style="width:180px;">
+							<option>南京路12号</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>桥梁名称</td>
+					<td>
+						<select class="form-control" style="width:180px;">
+							<option>金门大桥</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		  <button type="button" class="btn btn-primary">保存</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common-scripts.js"></script>
+	<script src="../js/caidan.js"></script>
+	<script src="../js/echarts.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/laydate/laydate.js"></script>
+	<script src="../js/toastr/toastr.min.js"></script>
+    <script src="../js/myTool.js"></script>
+	<script src="../js/login.js"></script>
+	<!-- <script src="./js/main.js"></script> -->
+	<script>
+		var id;
+	 	$(document).ready( function () {
+	 		showUserName();
+	 		var thisHref=location.href;
+			id=thisHref.split("?")[1];
+			var brgString = getBrgStringById(id)
+			if(brgString ==null ||brgString =="" || brgString ==undefined){
+				$("#right").hide();
+				$("#left").attr("style","width:100%");
+			}else{
+			$("#mainIframe").attr("src","./ModelView-HT/ModelViewer.html?model="+brgString);
+			}
+	 		$("#m_type").trigger("change");
+	    	initMenu();
+	    	initDataManageTable();
+	    	initDayEcharts();
+	    	$("#dataFull").trigger("change");
+	    	getCurSensorIDS();
+	    	qiaomingcheng();
+		});
+		
+	 	function qiaomingcheng(){
+	        $.ajax({
+	            type: 'POST',
+	            url: "../BrgCardServlet",
+	            dataType: 'json',
+	            data: {
+	            	type:'getBrgName',
+	            	id:id
+	            },
+	            success: function (json) {
+	            	console.log(json)
+			        $("#qiaomingcheng").text(json.obj)
+	            }
+	        });
+	    }
+	
+	
+	
+	
+	function initMenu(){
+		$.ajax({
+            type: 'GET',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "selectAllBrg"
+            },
+            error: function (msg) {
+                toastr.error("请求BrgCardServlet失败");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                	var arr = json.obj;
+                	$("#qiaoSlect").html('')
+                	$("#qiaoSlect2").html('')
+                	$("#qiaoSlect3").html('')
+                	$("#qiaoSlect4").html('')
+                    for (var i = 0; i < arr.length; i++) {
+                    	$("#qiaoSlect").append('<li><a href="./qiaoliangguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect2").append('<li><a href="./cedianguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect3").append('<li><a href="./shujuguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect4").append('<li><a href="./yujin.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                        $("#changeBrg").append('<option value='+arr[i].bridge_id+'>'+arr[i].bridge_name+'</option>')
+                    }
+                    $("#changeBrg").val(id);
+                }else {
+                    toastr.error("初始桥梁出错");
+                }
+            }
+        });
+	}
+	
+    $("#goqiaoliang").click(function(){
+    	//console.log(id)
+    	$(this).attr("href","./qiaoliangguanli.html?"+id+"")
+    })
+    $("#gocedian").click(function(){
+    	//console.log(id)
+    	$(this).attr("href","./cedianguanli.html?"+id+"")
+    })
+    $("#gofenxi").click(function(){
+    	//console.log(id)
+    	$(this).attr("href","./yujin.html?"+id+"")
+    })
+	
+	 $("#shujutable").click(function(){
+		 //var bid=$("#scanStruct").val()
+     	$("#shujutable").attr('href',"shujuguanli2.html?"+id+""); 
+	 })
+	 
+	       function formatEndTime(end_time){
+			if(end_time=='0'){
+				return '>7天';
+			}
+			var nowtime=new Date().getTime();
+			var endtime=new Date(end_time).getTime();
+			var i=parseInt((nowtime-endtime)/3600000);
+			if(i<=24){
+				return i+'小时';
+			}else{
+				i=parseInt(i/24);
+				if(i<=7){
+					return i+'天';
+				}else{
+					return '>7天';
+				}
+			}
+		}
+	function initDataManageTable(){
+        $.ajax({
+            type: 'post',
+            url: '../Index2Servlet',
+            data: {
+                type: "initDataManageTable",
+                brg_id:id
+            },
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+                var obj = data.obj;
+                dataALL = obj;
+                $("#dataFullTable tbody").html('');
+                for(var i in obj){
+                	if(obj[i].bgco!="1"){
+                		$("#dataFullTable").append("<tr><td>"
+                				+obj[i].bridge_name
+                				+"</td><td>"
+                				+obj[i].brg_type
+                				+"</td><td>"
+                				+formatEndTime(obj[i].bgco)
+                				+"</td><td>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].count+"'>"+obj[i].count+"</div></div></div>"
+                				+"</td><td>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].day_count+"'>"+obj[i].day_count+"</div></div></div>"
+                				+"</td><td>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].month_count+"'>"+obj[i].month_count+"</div></div></div>"
+                				+"</td></tr>");
+                        }else{
+                		$("#dataFullTable").append("<tr><td>"
+                				+obj[i].bridge_name
+                				+"</td><td>"
+                				+obj[i].brg_type
+                				+"</td><td>正常"
+                				+"</td><td>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].count+"'>"+obj[i].count+"</div></div></div>"
+                				+"</td><td>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].day_count+"'>"+obj[i].day_count+"</div></div></div>"
+                				+"</td><td>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].month_count+"'>"+obj[i].month_count+"</div></div></div>"
+                				+"</td></tr>");
+                        }
+                	}
+            },
+            error: function () {
+            }
+        })
+	}
+	
+	function initDayEcharts(data,x){
+		var myChart1 = echarts.init(document.getElementById('canvas1'));
+		var data_legend=[];
+		var option_series=[];
+		
+		for(var obj in data){
+			if(obj=="w"){
+				var option_serie = {
+			            name:'动态称重',
+			            type:'line',
+			            data:data[obj]
+			        }
+				option_series.push(option_serie);
+				data_legend.push("动态称重")
+			}else if(obj=="s"){
+				var option_serie = {
+			            name:'健康监测',
+			            type:'line',
+			            data:data[obj]
+			        }
+				option_series.push(option_serie);
+				data_legend.push("健康监测")
+			}else if(obj=="f"){
+				var option_serie = {
+			            name:'风速风向',
+			            type:'line',
+			            data:data[obj]
+			        }
+				option_series.push(option_serie);
+				data_legend.push("风速风向")
+			}else if(obj=="g"){
+				var option_serie = {
+			            name:'GPS',
+			            type:'line',
+			            data:data[obj]
+			        }
+				option_series.push(option_serie);
+				data_legend.push("GPS")
+			}
+		}
+		option1 = {
+			    title: {
+			        text: ''
+			    },
+			    tooltip: {
+			        trigger: 'axis'
+			    },
+			    legend: {
+			        data:data_legend
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '4%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    toolbox: {
+			        feature: {
+			            saveAsImage: {}
+			        }
+			    },
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data: x
+			    },
+			    yAxis: {
+			        type: 'value'
+			    },
+			    series: option_series
+			};
+	
+		 myChart1.setOption(option1);
+	}
+	$("#dataFull").bind("change",function(){
+		$.ajax({
+            type: 'post',
+            url: '../Index2Servlet',
+            data: {
+            	brg_id:id,
+                type: "initDataFullEcharts",
+                data_type:$("#dataFull").val()
+            },
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+            	var json = data.obj.map;
+            	var x = data.obj.x
+            	initDayEcharts(json,x)
+            }
+        })
+		//initDayEcharts(data);
+	});
+	 function showMask(){
+    	$("#cover").show();		
+   	 }
+	 function hidMask(){
+   		$("#cover").css('display','none');
+   	 }
+	 
+	 var flag=true;
+	    $("#quanping").click(function(){
+	    	if(flag==true){
+	    		$("#left").hide();
+	        	$("#right").removeClass("col-md-4");
+	        	flag = false;
+	    	}else{
+	    		$("#left").show();
+	        	$("#right").addClass("col-md-4");
+	    		 flag = true;
+	    	}
+	    })
+    function getBrgStringById(id){
+    	if(id=="G15320902L0020"){
+    		return "YCD";
+    	}else if(id=="G15320682L0130"){
+    		return "LSH";
+    	}else if(id=="G15320921L0010"){
+    		return "GHT";
+    	}else if(id=="G15320705L0010"){
+    		return "XSH";
+    	}else if(id=="9dfbf3236c7844d189dc34ed95d1618c"){
+    		return "SBGG";
+    	}else if(id=="6f78200f27d54b5394ba8200162cb917"){
+    		return "XYH";
+    	}
+    }   
+		function getCurSensorIDS(){
+			var bridge_id;
+			bridge_id = id;
+	        $.ajax({
+	            type: 'POST',
+	            url:'../TestPointServlet',
+	            dataType: 'json',
+	            data: {
+	            	type: "getCurSensorIDS",
+	                bridge_id:bridge_id
+	            },
+	            error: function (msg) {
+	                toastr.error("系统错误！");
+	            },
+	            success: function (json) {
+	            	var obj = json.obj;
+	            	setModelSensor(json.obj.curSensorIDS,json.obj.curSensorStates);
+	            }
+	        });
+	    }
+	    function setModelSensor(curSensorIDS,curSensorStates){
+	    	var childWindow = $("#mainIframe")[0].contentWindow; //表示获取了嵌入在iframe中的子页面的window对象。  []将JQuery对象转成DOM对象，用DOM对象的contentWindow获取子页面window对象。
+	  	    setTimeout(function(){
+	  	    	mainIframe.window.setModel(curSensorIDS, curSensorStates)
+	  	    	},3000);
+	    }
+	</script>
+</body>
+
+</html>

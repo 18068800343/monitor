@@ -1,0 +1,4054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高速桥梁监测系统集成管理平台</title>
+	<link rel="stylesheet" href="../font/iconfont.css">
+	<link rel="stylesheet" href="../font2/iconfont.css">
+	<link href="../style/bootstrap.min.css" rel="stylesheet">
+	<link href="../style/style.css" rel="stylesheet">
+	<link href="../js/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../style/style2.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-skins.min.css">
+</head>
+<style>
+
+</style>
+<body>	
+    
+	<section>
+		<!-- header -->
+		<header class="header">
+            <div>
+                <p style="font-size:28px;margin: 0px;"><img src="../img/qiaoLogo.png" alt="" style="width:48px;height:50%;">&nbsp;高速桥梁监测系统集成管理平台</p>
+            </div>
+            <div style="display:flex;">
+	                <div class="renyuan zhuashou"><a href="#"><img src="../img/登陆人.png" alt="">&nbsp;<span id="uname"></span></a></div>
+	                <div style="padding-top:5px;">丨</div>
+	                <div class="renyuan zhuashou"><a href="#" id="logOut"><img src="../img/退出.png" alt="">&nbsp;退出</a></div>
+	        </div>
+        </header>
+        <div>
+        	<div class="caidanlan">
+        			<div class="box1 yihang3" id="boxa">
+		                <p style="padding-top:10px;"><a href="./index.html" ><!-- <span class="glyphicon glyphicon-home" aria-hidden="true" style="color:#fff;font-size:16px;"></span> -->首页</a></p>
+		            </div>
+		            
+		            <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxb">
+					     <p><!-- <i class="iconfont icon-qiaoliang" style="color:#fff;font-size:20px;"></i> -->桥梁信息</p>
+					      
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxc">
+		                <p><!-- <i class="iconfont icon-jiancedianguanli"></i> -->测点管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect2">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxd">
+		                <p><!-- <i class="iconfont icon-shujuguanli"></i> -->数据管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect3">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxe">
+		                <p><!-- <i class="iconfont icon-yujing" style="font-size:20px;"></i> -->分析预警</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect4">
+					      
+					    </ul>
+				  </div>
+				   <div class="box1" id="boxf" >
+		                <p><a href="./report.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告</a></p>
+		            </div>
+		            <div class="box1" id="boxg" >
+		                <p><a href="./cidian.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据</a></p>
+		            </div>
+        	</div>
+        </div>
+		
+		
+	</section>
+
+	<!-- 面包屑 -->
+    <div class="mianbao">
+    	<ul class="breadcrumb">
+    		<li></li>
+			<li class="active">桥梁卡片</li>
+		</ul>
+	</div>
+
+	
+ 	<!-- TAB切换 -->
+ 	<div class="container-fluid">
+		<div class="row">
+	  		<div class="col-xs-12 col-sm-12">
+	  			<div class="panel panel-default">
+					<ul class="chuli">
+						<li class="active_cl">
+							 <a href="#">行政识别数据</a>
+						</li>
+						<li>
+							 <a href="#">结构技术数据</a>
+						</li>
+						<li>
+							 <a href="#">档案资料</a>
+						</li>
+						<li>
+							 <a href="#">最近技术状况评定</a>
+						</li>
+						<li>
+							 <a href="#">修建工程记录</a>
+						</li>
+						<li>
+							 <a href="#">桥梁照片</a>
+						</li>
+					</ul>
+				</div>
+				   
+	  		</div>
+	  	</div>
+	  </div>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<!-- 结构类型tab1 -->
+	  		<div class="col-xs-12 col-sm-12 bh_tab tab_on">
+	  			<div class="panel panel-default  w_r">
+	  				<div class="w_search">
+						<div class="col-sm-12 col-md-12 text-align-right" style="text-align:right;">
+							<div class="widget-body-toolbar bg-color-white">
+								<!-- <button type="submit" class="btn btn-primary "  onclick="changebcai()">修改</button> -->
+							</div>
+						</div>
+						<table id="table1" class="table table-bordered table-striped">
+							<tbody>
+								<!-- <tr>
+									<th>1</th>
+									<th>路线编号</th>
+									<td>G8888</td>
+									<th>2</th>
+									<th>路线名称</th>
+									<td>通用路线</td>
+									<th>3</th>
+									<th>路线等级</th>
+									<td>高速公路</td>
+								</tr>
+								<tr>
+									<th>4</th>
+									<th>桥梁编号</th>
+									<td>G25320721L0330</td>
+									<th>5</th>
+									<th>桥梁名称</th>
+									<td>城南枢纽互通式立交D匝道桥</td>
+									<th>6</th>
+									<th>桥位桩号</th>
+									<td>DKO+316.499</td>
+								</tr>
+								<tr>
+									<th>7</th>
+									<th>功能类型</th>
+									<td></td>
+									<th>8</th>
+									<th>下穿通道名</th>
+									<td></td>
+									<th>9</th>
+									<th>下穿通道桩号</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th>10</th>
+									<th>设计载荷</th>
+									<td></td>
+									<th>11</th>
+									<th>通行载重</th>
+									<td></td>
+									<th>12</th>
+									<th>弯斜坡度</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th>13</th>
+									<th>桥面铺装</th>
+									<td></td>
+									<th>14</th>
+									<th>管养单位</th>
+									<td>通用</td>
+									<th>15</th>
+									<th>建成年限</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th>16</th>
+									<th>所属路段</th>
+									<td>通用</td>
+									<th>17</th>
+									<th>所属分区</th>
+									<td>通用</td>
+									<th>18</th>
+									<th>跨径组成</th>
+									<td data-sp=""></td>
+								</tr>
+								<tr>
+									<th>19</th>
+									<th>桥梁分类</th>
+									<td></td>
+									<th>20</th>
+									<th>经纬坐标</th>
+									<td></td>
+									<th></th>
+									<th></th>
+									<td></td>
+								</tr> -->
+							</tbody>
+						</table>
+	  				</div>
+				</div>
+	  		</div>
+<!-- Modal -->
+<div class="modal fade  bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="Modal1">
+	<div class="modal-dialog  modal-lg" role="document" style="width:60%;">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">修改行政识别数据</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped">
+                    <tr>
+                        <th>1</th>
+                        <td><label>路线编号</label>
+                        </td>
+                        <td style="width: 230px "><input class="form-control"
+                                                         id="roadline_no" value="" placeholder="" type="text"
+                                                         readonly="readonly">
+                        </td>
+                        <th>2</th>
+                        <td><label>路线名称</label>
+                        </td>
+                        <td style="width: 230px"><select style="width: 100%" class="form-control"
+                                                         id="roadline_name"></select>
+                        </td>
+                        <th>3</th>
+                        <td><label>路线等级</label>
+                        </td>
+                        <td style="width: 230px"><input class="form-control"
+                                                        id="roadline_level" readonly="readonly" value="" placeholder=""
+                                                        type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td><label>桥梁编号</label>
+                        </td>
+                        <td><input class="form-control" id="bridge_no" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <th>5</th>
+                        <td><label>桥梁名称</label>
+                        </td>
+                        <td><input class="form-control" id="bridge_name" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <th>6</th>
+                        <td><label>桥位桩号</label><font style="color: red">*</font>
+                        </td>
+                        <td><input class="form-control" id="bridge_pile_no" value=""
+                                   placeholder="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <td><label>功能类型</label>
+                        </td>
+                        <td><select class="combobox form-control" id="function_type">
+                            <option value="" selected="selected">请选择</option>
+                        </select></td>
+                        <th>8</th>
+                        <td><label>下穿通道名</label>
+                        </td>
+                        <td><input class="form-control" id="beneath_path_name"
+                                   value="" placeholder="" type="text">
+                        </td>
+                        <th>9</th>
+                        <td><label>下穿通道号</label>
+                        </td>
+                        <td><input class="form-control" id="beneath_path_pile_no"
+                                   value="" placeholder="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <td><label>设计载荷</label>
+                        </td>
+                        <td><select class="combobox form-control" id="design_load">
+                            <option value="" selected="selected">请选择</option>
+                        </select></td>
+                        <th>11</th>
+                        <td><label>通行载重</label>
+                        </td>
+                        <td>
+                            <select class="combobox form-control" id="pass_load">
+                                <option value="" selected="selected">请选择</option>
+                            </select>
+                            <!--
+							<input class="form-control" id="pass_load" value=""
+								placeholder="" type="text">
+								 -->
+                        </td>
+                        <th>12</th>
+                        <td><label>弯斜坡度</label>
+                        </td>
+                        <td><input class="form-control" id="skew_slope" value=""
+                                   placeholder="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>13</th>
+                        <td><label>桥面铺装</label>
+                        </td>
+                        <td><select class="combobox form-control" id="deck_pavement">
+                            <option value="" selected="selected">请选择</option>
+                        </select></td>
+                        <th>14</th>
+                        <td><label>管养单位</label><font style="color: red">*</font>
+                        </td>
+                        <td>
+                            <select class="form-control" id="maintain_org" style="width: 100%">
+                            </select>
+                        </td>
+                        <th>15</th>
+                        <td><label>建成年限</label><font style="color: red">*</font>
+                        </td>
+                        <td><input class="form-control" id="build_year" value=""
+                                   placeholder="" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>16</th>
+                        <td><label>所属路段</label><font style="color: red">*</font></td>
+                        <td><select class="form-control" id="edit_section" style="width: 100%"></select>
+                        </td>
+                        <th>17</th>
+                        <td><label>所属分区</label><font style="color: red">*</font></td>
+                        <td><select class="form-control" id="edit_zone" style="width: 100%"></select>
+                        </td>
+                        <th>18</th>
+                        <td><label>跨径组成</label></td>
+                        <td><input type="text" class="form-control" id="edit_span_built">
+                        </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <th>19</th>
+                        <td><label>桥梁分类</label></td>
+                        <td><select class="form-control select2" id="edit_brg_type" style="width: 100%">
+                            <option value="特大桥">特大桥</option>
+                            <option value="大桥">大桥</option>
+                            <option value="中桥">中桥</option>
+                            <option value="小桥">小桥</option>
+                        </select>
+                        </td>
+                        <th>20</th>
+                        <td><label>经纬度坐标</label></td>
+                        <td><input type="text" class="form-control" id="edit_location" title="双击拾取坐标">
+                        </td>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="savexzsj()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal -->
+
+	  		<!-- 桥梁部件tab2 -->
+	  		<div class="col-xs-12 col-sm-12 bh_tab">
+	  			<div class="panel panel-default  w_r">
+	  				<div class="w_search">
+						<div class="col-sm-12 col-md-12 text-align-right" style="text-align:right;">
+							<div class="widget-body-toolbar bg-color-white">
+								<!-- <button onclick="changebcst()" type="submit" class="btn btn-primary" >修改</button> -->
+							</div>
+						</div>
+						<table id="table2" class="table table-bordered table-striped">
+							<tbody>
+								
+							</tbody>
+						</table>
+	  				</div>
+				</div>
+	  		</div>
+<!-- Modal 结构技术数据 -->
+<div class="modal fade  bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="Modal2">
+	<div class="modal-dialog  modal-lg" role="document" style="width:85%;">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">结构技术数据</h4>
+			</div>
+			<div class="modal-body">
+				 <fieldset style="margin-top: 30px">
+		            <table id="tb22" class="table table-bordered table-striped ">
+		            </table>
+        		</fieldset>
+				<!-- <table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td>桥长(m)</td>
+							<td>
+								<input type="text" class="form-control" style="width:180px;">
+							</td>
+							<td>桥面总宽(m)</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+							<td>车行道宽(m)</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+						</tr>
+						<tr>
+							<td>桥面标高(m)</td>
+							<td>
+								<input type="text" class="form-control" style="width:180px;">
+							</td>
+							<td>桥下净高(m)</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+							<td>桥上净高(m)</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+						</tr>
+						<tr>
+							<td>引道总宽(m)</td>
+							<td>
+								<input type="text" class="form-control" style="width:180px;">
+							</td>
+							<td>引道路面宽(m)</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+							<td>引道线形(m)</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+						</tr>
+						<tr>
+							<td>伸缩缝类型</td>
+							<td>
+								<select id="" class="form-control" style="width:180px;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>支座类型</td>
+							<td>
+								<select id="" class="form-control" style="width:180px;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>地震动峰值加速度系数</td>
+							<td>
+								<select id="" class="form-control" style="width:180px;">
+									<option>123</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>桥台护坡</td>
+							<td>
+								<select id="" class="form-control" style="width:180px;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>护墩体</td>
+							<td>
+								<select id="" class="form-control" style="width:180px;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>调治构造物</td>
+							<td>
+								<select id="" class="form-control" style="width:180px;">
+									<option>123</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>常水位</td>
+							<td>
+								<input type="text" class="form-control" style="width:180px;">
+							</td>
+							<td>设计水位</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+							<td>历史洪水位</td>
+							<td><input type="text" class="form-control" style="width:180px;"></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th colspan="8">上部结构</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>跨号1</td>
+							<td>1-1</td>
+							<td>桥型1</td>
+							<td>12312</td>
+							<td>跨径1(m)</td>
+							<td>20</td>
+							<td>材料1</td>
+							<td>351</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th colspan="10">下部结构</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>墩台号1</td>
+							<td><input type="text" class="form-control" style="width:80%;"></td>
+							<td>墩台形式1</td>
+							<td>
+								<select id="" class="form-control" style="width:100%;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>材料1</td>
+							<td>
+								<select id="" class="form-control" style="width:100%;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>基础形式1</td>
+							<td>
+								<select id="" class="form-control" style="width:100%;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>涉水1</td>
+							<td><input type="checkbox"></td>
+						</tr>
+						<tr>
+							<td>墩台号2</td>
+							<td><input type="text" class="form-control" style="width:80%;"></td>
+							<td>墩台形式2</td>
+							<td>
+								<select id="" class="form-control" style="width:100%;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>材料2</td>
+							<td>
+								<select id="" class="form-control" style="width:100%;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>基础形式2</td>
+							<td>
+								<select id="" class="form-control" style="width:100%;">
+									<option>123</option>
+								</select>
+							</td>
+							<td>涉水2</td>
+							<td><input type="text" class="form-control" style="width:100%;"></td>
+						</tr>
+					</tbody>
+				</table> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="saveJgjssj()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal 结构技术数据 结束-->
+			
+			<!-- 桥梁构件tab3 -->
+	  		<div class="col-xs-12 col-sm-12 bh_tab">
+	  			<div class="panel panel-default  w_r">
+	  				<div class="w_search">
+						<div class="col-sm-12 col-md-12 text-align-right" style="text-align:right;">
+							<div class="widget-body-toolbar bg-color-white">
+								<!-- <button onclick="changebcd()" type="submit" class="btn btn-primary">修改</button> -->
+							</div>
+						</div>
+						<table id="table3" class="table table-bordered table-striped">
+							<tbody>
+							</tbody>
+						</table>
+	  				</div>
+				</div>
+	  		</div>
+<!-- Modal 档案资料 -->
+<div class="modal fade  bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="Modal3">
+	<div class="modal-dialog  modal-lg" role="document" style='width:60%;'>
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">修改档案资料</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped">
+                    <tr>
+                        <th>42</th>
+                        <th>
+                        <td><label>设计图纸</label>
+                        </td>
+                        <td style="width: 200px"><select
+                                class="combobox form-control"
+                                onchange="this.parentNode.nextSibling.value=this.value"
+                                id="blueprint_state">
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                        <th>43</th>
+                        <td><label>设计文件</label>
+                        </td>
+                        <td style="width: 200px"><select
+                                class="combobox form-control"
+                                onchange="this.parentNode.nextSibling.value=this.value"
+                                id="design_file_state">
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                        <th>44</th>
+                        <th>
+                        <td><label>施工文件</label>
+                        </td>
+                        <td style="width: 200px"><select
+                                class="combobox form-control"
+                                onchange="this.parentNode.nextSibling.value=this.value"
+                                id="construct_file_state">
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>45</th>
+                        <th>
+                        <td><label>竣工图纸</label>
+                        </td>
+                        <td><select class="combobox form-control"
+                                    onchange="this.parentNode.nextSibling.value=this.value"
+                                    id="complete_file_state">
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                        <th>46</th>
+                        <td><label>验收文件</label>
+                        </td>
+                        <td><select class="combobox form-control"
+                                    onchange="this.parentNode.nextSibling.value=this.value"
+                                    id="acceptance_file_state">
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                        <th>47</th>
+                        <th>
+                        <td><label>行政文件</label>
+                        </td>
+                        <td><select class="combobox form-control"
+                                    onchange="this.parentNode.nextSibling.value=this.value"
+                                    id=administrate_file_state>
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>48</th>
+                        <th>
+                        <td><label>定期检查报告</label>
+                        </td>
+                        <td><select class="combobox form-control"
+                                    onchange="this.parentNode.nextSibling.value=this.value"
+                                    id="regular_report_state">
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                        <th>49</th>
+                        <td><label>特殊检查报告</label>
+                        </td>
+                        <td><select class="combobox form-control"
+                                    onchange="this.parentNode.nextSibling.value=this.value"
+                                    id="special_report_state">
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                        <th>50</th>
+                        <th>
+                        <td><label>历次维修资料</label>
+                        </td>
+                        <td><select class="combobox form-control"
+                                    onchange="this.parentNode.nextSibling.value=this.value"
+                                    id=history_maintain_state>
+                            <option value="" selected="selected">请选择</option>
+                            <option value="无">无</option>
+                            <option value="全">全</option>
+                            <option value="不全">不全</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>51</th>
+                        <th>
+                        <td><label>档案号</label>
+                        </td>
+                        <td><input class="form-control" id="document_no" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <th>52</th>
+                        <td><label>存档案</label>
+                        </td>
+                        <td><input class="form-control" id="document" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <th>52</th>
+                        <th>
+                        <td><label>建档年/月</label>
+                        </td>
+                        <td><input class="form-control" id="document_time" value=""
+                                   placeholder="" type="text">
+                        </td>
+                    </tr>
+                </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="saveDazl()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal 档案资料 结束-->
+		
+			<!-- 结构类型与部构件关系tab4 -->
+	  		<div class="col-xs-12 col-sm-12 bh_tab">
+	  			<div class="panel panel-default  w_r">
+	  				<div class="w_search">
+						<div class="col-sm-12 col-md-12 text-align-right" style="text-align:right;">
+							<div class="widget-body-toolbar bg-color-white">
+								<!-- <button onclick="new_nearly_eva()" type="submit" class="btn btn-primary"  data-toggle="modal" data-target="#Modal4">增加
+								</button> -->
+							</div>
+						</div>
+						<table id="table4" class="table table-bordered table-striped">
+
+							<tbody>
+								<tr>
+									<th>53</th>
+									<th>54</th>
+									<th>55</th>
+									<th>56</th>
+									<th>57</th>
+									<th>58</th>
+									<th>59</th>
+									<th>60</th>
+									<th>61</th>
+									<th>62</th>
+									<th>63</th>
+									<th style="text-align: center;" colspan="2">64</th>
+								</tr>
+								<tr>
+									<th>检查年月</th>
+									<th>定期或特殊检查</th>
+									<th>全桥评定等级</th>
+									<th>桥台与基础</th>
+									<th>桥墩与基础</th>
+									<th>地基冲刷</th>
+									<th>上部结构</th>
+									<th>支座</th>
+									<th>经常保养小修</th>
+									<th>处治对策</th>
+									<th>下次检查年份</th>
+									<th style="text-align: center;" colspan="2">操作</th>
+								</tr>
+							</tbody>
+						</table>
+	  				</div>
+				</div>
+	  		</div>
+<!-- Modal 新增数据 -->
+<div class="modal fade  bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="Modal4">
+	<div class="modal-dialog  modal-lg" role="document" style="width:80%;">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">新增数据</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped">
+                    <tr>
+                        <th>54</th>
+                        <th style='width:10%;'>55</th>
+                        <th>56</th>
+                        <th>57</th>
+                        <th>58</th>
+                        <th>59</th>
+                        <th>60</th>
+                        <th>61</th>
+                        <th>62</th>
+                        <th>63</th>
+                        <th>64</th>
+                    </tr>
+                    <tr>
+                        <td><label>检查年月<font style="color: red">*</font></label>
+                        </td>
+                        <td><label>定期或特殊检查</label>
+                        </td>
+                        <td><label>全桥评定等级</label></td>
+                        <td><label>桥台与基础</label>
+                        </td>
+                        <td><label>桥墩与基础</label>
+                        </td>
+                        <td><label>地基冲刷</label>
+                        </td>
+                        <td><label>上部结构</label>
+                        </td>
+                        <td><label>支座</label></td>
+                        <td><label>经常保养小修</label>
+                        </td>
+                        <td><label>处治对策</label>
+                        </td>
+                        <td><label>下次检查年份<font style="color: red">*</font></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" id="chk_date"
+                                    type="text" data-id="54"/>
+                        </td>
+                        <td>
+                          <select class="combobox form-control" style="width:100%;z-index:99;"
+                                id="chk_type" data-id="55">
+                              <option value="定期检查">定期检查</option>
+                              <option value="特殊检查">特殊检查</option>
+                          </select>
+                        </td>
+                        <td> <input class="form-control" id="brg_level" value=""
+                                   placeholder="" type="text"> 
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="brg_level" data-id="56">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->
+                        </td>
+                        <td><input class="form-control" id="abutment_base" value=""
+                                   placeholder="" type="text">
+                           <!--  <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="abutment_base" data-id="57">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->
+                        </td>
+                        <td><input class="form-control" id="pier_base" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="pier_base" data-id="58">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->
+                        </td>
+                        <td><input class="form-control" id="foundation_erosion"
+                                   value="" placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="foundation_erosion" data-id="59">
+                              <option value="" selected="selected">请选择</option>
+                            </select>  -->      
+                        </td>
+                        <td><input class="form-control" id="top_struts" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="top_struts" data-id="60">
+                              <option value="" selected="selected">请选择</option>
+                            </select>   -->      
+                        </td>
+                        <td><input class="form-control" id="support" value=""
+                                   placeholder="" type="text">
+                           <!--  <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="support" data-id="61">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->       
+                        </td>
+                        <td><input class="form-control" id="always_repairs" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="always_repairs" data-id="62">
+                              <option value="" selected="selected">请选择</option>
+                            </select>    -->    
+                        </td>
+                        <td>
+                        	<input class="form-control" id="disposal_strategy" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="disposal_strategy" data-id="63">
+                              <option value="" selected="selected">请选择</option>
+                            </select>    -->    
+                        </td>
+                        <td><input class="form-control" id="next_date" value=""
+                                   placeholder="" type="text">
+                        </td>
+                    </tr>
+
+                </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="savejszkpd()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal 新增数据 结束-->
+
+<!-- Modal 修改数据 -->
+<div class="modal fade  bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="changeModal4">
+	<div class="modal-dialog  modal-lg" role="document" style="width:80%;">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">修改数据</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped">
+                    <tr>
+                        <th>54</th>
+                        <th style='width:10%;'>55</th>
+                        <th>56</th>
+                        <th>57</th>
+                        <th>58</th>
+                        <th>59</th>
+                        <th>60</th>
+                        <th>61</th>
+                        <th>62</th>
+                        <th>63</th>
+                        <th>64</th>
+                    </tr>
+                    <tr>
+                        <td><label>检查年月<font style="color: red">*</font></label>
+                        </td>
+                        <td><label>定期或特殊检查</label>
+                        </td>
+                        <td><label>全桥评定等级</label></td>
+                        <td><label>桥台与基础</label>
+                        </td>
+                        <td><label>桥墩与基础</label>
+                        </td>
+                        <td><label>地基冲刷</label>
+                        </td>
+                        <td><label>上部结构</label>
+                        </td>
+                        <td><label>支座</label></td>
+                        <td><label>经常保养小修</label>
+                        </td>
+                        <td><label>处治对策</label>
+                        </td>
+                        <td><label>下次检查年份<font style="color: red">*</font></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" id="change_chk_date"
+                                    type="text" data-id="54"/>
+                        </td>
+                        <td>
+                          <select class="combobox form-control" style="width:100%;z-index:99;"
+                                id="change_chk_type" data-id="55">
+                              <option value="定期检查">定期检查</option>
+                              <option value="特殊检查">特殊检查</option>
+                          </select>
+                        </td>
+                        <td> <input class="form-control" id="change_brg_level" value=""
+                                   placeholder="" type="text"> 
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="brg_level" data-id="56">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->
+                        </td>
+                        <td><input class="form-control" id="change_abutment_base" value=""
+                                   placeholder="" type="text">
+                           <!--  <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="abutment_base" data-id="57">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->
+                        </td>
+                        <td><input class="form-control" id="change_pier_base" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="pier_base" data-id="58">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->
+                        </td>
+                        <td><input class="form-control" id="change_foundation_erosion"
+                                   value="" placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="foundation_erosion" data-id="59">
+                              <option value="" selected="selected">请选择</option>
+                            </select>  -->      
+                        </td>
+                        <td><input class="form-control" id="change_top_struts" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="top_struts" data-id="60">
+                              <option value="" selected="selected">请选择</option>
+                            </select>   -->      
+                        </td>
+                        <td><input class="form-control" id="change_support" value=""
+                                   placeholder="" type="text">
+                           <!--  <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="support" data-id="61">
+                              <option value="" selected="selected">请选择</option>
+                            </select> -->       
+                        </td>
+                        <td><input class="form-control" id="change_always_repairs" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="always_repairs" data-id="62">
+                              <option value="" selected="selected">请选择</option>
+                            </select>    -->    
+                        </td>
+                        <td>
+                        	<input class="form-control" id="change_disposal_strategy" value=""
+                                   placeholder="" type="text">
+                            <!-- <select class="form-control combobox" style="width:100%;z-index:99;"
+                                id="disposal_strategy" data-id="63">
+                              <option value="" selected="selected">请选择</option>
+                            </select>    -->    
+                        </td>
+                        <td><input class="form-control" id="change_next_date" value=""
+                                   placeholder="" type="text">
+                        </td>
+                    </tr>
+
+                </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="changejszkpd()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal 修改数据 结束-->
+			
+			<!-- 桥梁评定设置tab4 -->
+	  		<div class="col-xs-12 col-sm-12 bh_tab">
+	  			<div class="panel panel-default  w_r">
+	  				<div class="w_search">
+						<div class="col-sm-12 col-md-12 text-align-right" style="text-align:right;">
+							<div class="widget-body-toolbar bg-color-white">
+								<!-- <button type="submit" class="btn btn-primary " data-toggle="modal" data-target="#Modal5">增加
+								</button> -->
+							</div>
+						</div>
+						<table id="table5" class="table table-bordered table-striped">
+
+							<tbody>
+								<tr>
+									<th style="width:8%;">65</th>
+									<th style="width:8%;">施工日期</th>
+									<th>66</th>
+									<th>67</th>
+									<th>68</th>
+									<th>69</th>
+									<th>70</th>
+									<th>71</th>
+									<th>72</th>
+									<th>73</th>
+									<th>74</th>
+									<th>75</th>
+									<th style="text-align: center;;width:12%;" colspan="2">76</th>
+								</tr>
+								<tr>
+									<th>开工</th>
+									<th>竣工</th>
+									<th>修建类别</th>
+									<th>修建原因</th>
+									<th>工程范围</th>
+									<th>工程费用（万元）</th>
+									<th>经费来源</th>
+									<th>质量评定</th>
+									<th>建设单位</th>
+									<th>设计单位</th>
+									<th>施工单位</th>
+									<th>监理单位</th>
+									<th style="text-align: center;" colspan="2">操作</th>
+								</tr>
+							</tbody>
+						</table>
+	  				</div>
+				</div>
+			  </div>
+<!-- Modal 新增数据 -->
+<div class="modal fade  bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="Modal5">
+	<div class="modal-dialog  modal-lg" role="document" style="width:80%;">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">新增数据</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped">
+                    <tr>
+                        <th>66</th>
+                        <th>施工日期</th>
+                        <th>67</th>
+                        <th>68</th>
+                        <th>69</th>
+                        <th>70</th>
+                        <th>71</th>
+                        <th>72</th>
+                        <th>73</th>
+                        <th>74</th>
+                        <th>75</th>
+                        <th>76</th>
+                    </tr>
+                    <tr>
+                        <td><label>施工日期（开工）<font style="color: red">*</font></label>
+                        </td>
+                        <td><label>施工日期（竣工）<font style="color: red">*</font></label>
+                        </td>
+                        <td><label>修建类别</label>
+                        </td>
+                        <td><label>修建原因</label>
+                        </td>
+                        <td><label>工程范围</label>
+                        </td>
+                        <td><label>工程费用（万元）</label>
+                        </td>
+                        <td><label>经费来源</label>
+                        </td>
+                        <td><label>质量评定</label>
+                        </td>
+                        <td><label>建设单位</label>
+                        </td>
+                        <td><label>设计单位</label>
+                        </td>
+                        <td><label>施工单位</label>
+                        </td>
+                        <td><label>监理单位</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" id="start_date" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="finish_date" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="type" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="reason" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="scope" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="cost" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="cost_source" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="evaluate_level" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="build_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="design_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="construct_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="supervise_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><label>备注 : </label>
+                        </td>
+                        <td colspan="12"><input class="form-control"
+                                                style="width: 100%" id="memo" value="" placeholder=""
+                                                type="text">
+                        </td>
+                    </tr>
+                </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="savexjgcjl()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal 新增数据 结束-->
+
+<!-- Modal 修改数据 -->
+<div class="modal fade  bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="changeModal5">
+	<div class="modal-dialog  modal-lg" role="document" style="width:80%;">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">修改数据</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped">
+                    <tr>
+                        <th>66</th>
+                        <th>施工日期</th>
+                        <th>67</th>
+                        <th>68</th>
+                        <th>69</th>
+                        <th>70</th>
+                        <th>71</th>
+                        <th>72</th>
+                        <th>73</th>
+                        <th>74</th>
+                        <th>75</th>
+                        <th>76</th>
+                    </tr>
+                    <tr>
+                        <td><label>施工日期（开工）<font style="color: red">*</font></label>
+                        </td>
+                        <td><label>施工日期（竣工）<font style="color: red">*</font></label>
+                        </td>
+                        <td><label>修建类别</label>
+                        </td>
+                        <td><label>修建原因</label>
+                        </td>
+                        <td><label>工程范围</label>
+                        </td>
+                        <td><label>工程费用（万元）</label>
+                        </td>
+                        <td><label>经费来源</label>
+                        </td>
+                        <td><label>质量评定</label>
+                        </td>
+                        <td><label>建设单位</label>
+                        </td>
+                        <td><label>设计单位</label>
+                        </td>
+                        <td><label>施工单位</label>
+                        </td>
+                        <td><label>监理单位</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" id="change_start_date" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_finish_date" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_type" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_reason" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_scope" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_cost" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_cost_source" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_evaluate_level" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_build_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_design_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_construct_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+                        <td><input class="form-control" id="change_supervise_org" value=""
+                                   placeholder="" type="text">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><label>备注 : </label>
+                        </td>
+                        <td colspan="12"><input class="form-control"
+                                                style="width: 100%" id="change_memo" value="" placeholder=""
+                                                type="text">
+                        </td>
+                    </tr>
+                </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="changexjgcjl()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal 修改数据 结束-->
+			  
+			  <!-- 桥梁评定设置tab4 -->
+	  		<div class="col-xs-12 col-sm-12 bh_tab">
+				<div class="panel panel-default  w_r">
+					<div class="w_search">
+						<div class="col-sm-12 col-md-12 text-align-right" style="text-align:right;">
+							<div class="widget-body-toolbar bg-color-white">
+								<!-- <button  type="submit" onclick="changeMan()" class="btn btn-primary"  data-toggle="modal" data-target="#Modal6">修改
+								</button> -->
+								<!-- </div> -->
+							</div>
+						</div>
+						<table id="table6" class="table table-bordered table-striped">
+
+							<tbody>
+								<tr>
+									<th>77</th>
+									<th>正面照</th>
+									<td colspan="3">
+										<img id="img1" src="../img/logo1.png" width="450px" height="300px">
+									</td>
+									<th>78</th>
+									<th>立面照</th>
+									<td colspan="3">
+										<img id="img2" src="../img/logo1.png" width="450px" height="300px">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table id="table7" class="table table-bordered table-striped">
+							<tbody>
+								<tr>
+									<th>79</th>
+									<th>主管负责人</th>
+									<td></td>
+									<th>80</th>
+									<th>填卡人</th>
+									<td></td>
+									<th>81</th>
+									<th>填卡日期</th>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+			  </div>
+			</div>
+<!-- Modal 负责人 -->
+<div class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="Modal6">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">负责人</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td>主管负责人</td>
+							<td>
+								<select id="charge_man" class="form-control" style="width:80%;">
+									<option>小红</option>
+									<option>小明</option>
+									<option>小张</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>填卡人</td>
+							<td>
+								<select id="fill_man" class="form-control" style="width:80%;">
+									<option>小明</option>
+									<option>小张</option>
+									<option>小红</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>填卡日期</td>
+							<td><input type="text" id="fill_date" class="form-control" style="width:80%;"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="savePerson()">保存</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- Modal 负责人 结束-->
+		</div>
+	</div>
+
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common-scripts.js"></script>
+	<script src="../js/city-picker.data.js"></script>
+	<script src="../js/city-picker.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/mainsanji.js"></script>
+	<script src="../js/echarts.min.js"></script>
+	<script src="../js/caidan.js"></script>
+	<script src="../js/notification/SmartNotification.min.js"></script>
+	<script src="../js/laydate/laydate.js"></script>
+	<script src="../js/toastr/toastr.min.js"></script>
+	<script src="../js/login.js"></script>
+	<script type="text/javascript">
+    var zone;
+    var section;
+    var hw;
+    var inf;
+    var rId;
+    var id5;
+    var i5;
+	$(function(){
+		showUserName();
+		laydate.render({
+			  elem: '#build_year',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#document'//指定元素
+		});
+		laydate.render({
+			  elem: '#fill_date'//指定元素
+		});
+		laydate.render({
+			  elem: '#document_time',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#build_year',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#chk_date',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#next_date',//指定元素
+			  type: 'year'
+		});
+		laydate.render({
+			  elem: '#change_chk_date',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#start_date',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#finish_date',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#change_start_date',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#change_finish_date',//指定元素
+			  type: 'month'
+		});
+		laydate.render({
+			  elem: '#change_next_date',//指定元素
+			  type: 'year'
+		});
+		$('.chuli li').click(function(){
+			var tabIndex=$(this).index();
+			$(this).addClass('active_cl').siblings().removeClass('active_cl');
+			$('.bh_tab').eq(tabIndex).addClass('tab_on').siblings().removeClass('tab_on');
+		});
+		$('.chuli_child li').click(function(){
+			var tabIndex=$(this).index();
+			$(this).addClass('active_cl').siblings().removeClass('active_cl');
+			$('.bh_tab_child').eq(tabIndex).addClass('tab_on_child').siblings().removeClass('tab_on_child');
+		});
+		initBrgCardInfo();
+		initBrgCardStructTech();
+		initBrgCardDocument();
+		initBrgCardConstructPrj();
+		initBrgCardEvaluation();
+		initSelect_rang_A();
+		init_Edit_maintain_org();
+		getZonedata();
+		getSectiondata();
+		init_Edit_line();
+		initStrcuctS();
+		getBridge_id();
+		initMenu();
+	});
+	
+	function initBrgCardInfo() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initTableBridge",
+            },
+            error: function (msg) {
+                toastr.error("请求BrgCardServlet失败");
+            },
+            success: function (json) {
+                if (json.success == "empty") {
+                    toastr.error("请设置当前结构数据");
+                } else {
+                    var data = json.obj;
+                    for (var i = 0; i < data.length; i++) {
+                        hhhbs = data[i].bridge_id;
+                        $('#table1 tbody').append("<tr><th>1</th><th>路线编号</th><td>"
+                            + data[i].highway_no
+                            + "</td><th>2</th><th>路线名称</th><td>"
+                            + data[i].highway_name
+                            + "</td><th>3</th><th>路线等级</th><td>"
+                            + data[i].highway_level
+                            + "</td></tr>");
+                        $('#table1 tbody').append("<tr><th>4</th><th>桥梁编号</th><td>"
+                            + data[i].bridge_no
+                            + "</td><th>5</th><th>桥梁名称</th><td>"
+                            + data[i].bridge_name
+                            + "</td><th>6</th><th>桥位桩号</th><td>"
+                            + data[i].bridge_pile_no
+                            + "</td></tr>");
+                        $('#table1 tbody').append("<tr><th>7</th><th>功能类型</th><td>"
+                            + data[i].function_type
+                            + "</td><th>8</th><th>下穿通道名</th><td>"
+                            + data[i].beneath_path_name
+                            + "</td><th>9</th><th>下穿通道桩号</th><td>"
+                            + data[i].beneath_path_pile_no
+                            + "</td></tr>");
+                        $('#table1 tbody').append("<tr><th>10</th><th>设计载荷</th><td>"
+                            + data[i].design_load
+                            + "</td><th>11</th><th>通行载重</th><td>"
+                            + data[i].pass_load
+                            + "</td><th>12</th><th>弯斜坡度</th><td>"
+                            + data[i].skew_slope
+                            + "</td></tr>");
+                        $('#table1 tbody').append("<tr><th>13</th><th>桥面铺装</th><td>"
+                            + data[i].deck_pavement
+                            + "</td><th>14</th><th>管养单位</th><td>"
+                            + data[i].manage_name
+                            + "</td><th>15</th><th>建成年限</th><td>"
+                            + data[i].build_year
+                            + "</td></tr>");
+                        if (data[i].span_build.length > 20) {
+                            $('#table1 tbody').append("<tr><th>16</th><th>所属路段</th><td>"
+                                + data[i].section_name
+                                + "</td><th>17</th><th>所属分区</th><td>"
+                                + data[i].zone_name
+                                + "</td><th>18</th><th>跨径组成</th><td id='span_view' data-sp='" + data[i].span_build + "'>"
+                                + data[i].span_build.substring(0, 20) + "<a href='#' onclick=showdata()> ...</a>"
+                                + "</td></tr>");
+                        } else {
+                            $('#table1 tbody').append("<tr><th>16</th><th>所属路段</th><td>"
+                                + data[i].section_name
+                                + "</td><th>17</th><th>所属分区</th><td>"
+                                + data[i].zone_name
+                                + "</td><th>18</th><th>跨径组成</th><td id='span_view' data-sp='" + data[i].span_build + "'>"
+                                + data[i].span_build
+                                + "</td></tr>");
+                        }
+                        if (data[i].longitude == "" && data[i].latitude == "") {
+                            $('#table1 tbody').append("<tr><th>19</th><th>桥梁分类</th><td>"
+                                + data[i].bridge_mode
+                                + "</td><th>20</th><th>经纬坐标</th><td>"
+                                + "</td><th></th><th></th><td></td></tr>");
+                        } else {
+                            $('#table1 tbody').append("<tr><th>19</th><th>桥梁分类</th><td>"
+                                + data[i].bridge_mode
+                                + "</td><th>20</th><th>经纬坐标</th><td>"
+                                + data[i].longitude + "," + data[i].latitude
+                                + "</td><th></th><th></th><td></td></tr>");
+
+                        }
+
+                    }
+                }
+            }
+        });
+    }
+	
+	function initBrgCardStructTech() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "TableBridge2",
+            },
+            error: function (msg) {
+                if (hyid == null) {
+
+                } else {
+                    toastr.error("请求BrgCardServlet失败");
+                }
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    toastr.success("结构技术数据没有数据");
+                    data_complete = false;
+                } else {
+                	data_complete = true;
+                    var data = json.obj;
+                    for (var i = 0; i < data.length; i++) {
+                        var brg_top_len = data[i].brgCardTopStruct.length;
+                        var brg_down_len = data[i].brgCardDownStruct.length;
+                        $('#table2').append("<tr><th>21</th><th colspan='2'>桥长(m)</th><td colspan='2'>"
+                            + data[i].bridge_len
+                            + "</td><th>22</th><th colspan='2'>桥面总宽(m)</th><td colspan='2'>"
+                            + data[i].bridge_width
+                            + "</td><th>23</th><th colspan='2'>车行道宽(m)</th><td>"
+                            + data[i].lane_width
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>24</th><th colspan='2'>桥面标高(m)</th><td colspan='2'>"
+                            + data[i].bridge_t_s_height
+                            + "</td><th>25</th><th colspan='2'>桥下净高(m)</th><td colspan='2'>"
+                            + data[i].bridge_b_height
+                            + "</td><th>26</th><th colspan='2'>桥上净高(m)</th><td>"
+                            + data[i].bridge_t_height
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>27</th><th colspan='2'>引道总宽(m)</th><td colspan='2'>"
+                            + data[i].approach_total_width
+                            + "</td><th>28</th><th colspan='2'>引道路面宽(m)</th><td colspan='2'>"
+                            + data[i].approach_width
+                            + "</td><th>29</th><th colspan='2'>引道线形</th><td>"
+                            + data[i].approach_line_type
+                            + "</td></tr>");
+                        if (brg_top_len == 0) {
+                            $('#table2').append("<tr id='topS' ><th>30</th><th>上部结构</th><th>跨号1</th><td colspan='2'></td><th>桥型1</th><td colspan='2'>"
+                                + "</td><th>跨径1(m)</th><td colspan='2'>"
+                                + "</td><th>材料1</th><td colspan='2'>"
+                                + "</tr>");
+                        } else {
+                            for (var k = 0; k < brg_top_len; k++) {
+                                if (k == 0) {
+                                    $('#table2').append("<tr id='topS'><th rowspan='" + brg_top_len + "'>30</th><th rowspan='" + brg_top_len + "'>上部结构</th><th>跨号1</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_hole_no
+                                        + "</td><th>桥型1</th><td colspan='2'><font style='size'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_type
+                                        + "</td><th>跨径1(m)</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_span
+                                        + "</td><th>材料1</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_stuff
+                                        + "</tr>");
+                                } else {
+                                    $('#table2').append("<tr><th>跨号" + parseInt(k + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_hole_no
+                                        + "</td><th>桥型" + parseInt(k + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_type
+                                        + "</td><th>跨径" + parseInt(k + 1) + "(m)</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_span
+                                        + "</td><th>材料" + parseInt(k + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_stuff
+                                        + "</tr>");
+                                }
+                            }
+                            ;
+                        }
+                        ;
+                        if (brg_down_len == 0) {
+                            $('#table2').append("<tr><th>31</th><th>下部结构</th><th>墩台号1</th><td colspan='2'></td><th>墩台形式1</th><td colspan='2'>"
+                                + "</td><th>材料1</th><td colspan='2'>"
+                                + "</td><th>基础形式1</th><td colspan='2'>"
+                                + "</td><th>涉水1</th><td colspan='2'>"
+                                + "</td></tr>");
+
+                        } else {
+                            for (var j = 0; j < brg_down_len; j++) {
+                                if (j == 0) {
+                                	if( data[i].brgCardDownStruct[j].is_wade=='true'){
+                                		data[i].brgCardDownStruct[j].is_wade='是';
+                                	}else{
+                                		data[i].brgCardDownStruct[j].is_wade='否';
+                                	}
+                                    $('#table2').append("<tr><th rowspan='" + brg_down_len + "'>31</th><th rowspan='"
+                                        + brg_down_len + "'>下部结构</th><th>墩台号1</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_pier
+                                        + "</td><th>墩台形式1</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_type
+                                        + "</td><th>材料1</th><td >"
+                                        + data[i].brgCardDownStruct[j].down_struct_stuff
+                                        + "</td><th>基础形式1</th><td >"
+                                        + data[i].brgCardDownStruct[j].down_struct_base_type
+                                        + "</td><th>涉水1</th><td >"
+                                        + data[i].brgCardDownStruct[j].is_wade
+                                        + "</td></tr>");
+                                } else {
+                                	if( data[i].brgCardDownStruct[j].is_wade=='true'){
+                                		data[i].brgCardDownStruct[j].is_wade='是';
+                                	}else{
+                                		data[i].brgCardDownStruct[j].is_wade='否';
+                                	}
+                                	
+                                    $('#table2').append("<tr><th>墩台号" + parseInt(j + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_pier
+                                        + "</td><th>墩台形式" + parseInt(j + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_type
+                                        + "</td><th>材料" + parseInt(j + 1) + "</th><td>"
+                                        + data[i].brgCardDownStruct[j].down_struct_stuff
+                                        + "</td><th>基础形式" + parseInt(j + 1) + "</th><td>"
+                                        + data[i].brgCardDownStruct[j].down_struct_base_type
+                                        + "</td><th>涉水"+ parseInt(j + 1) +"</th><td >"
+                                        + data[i].brgCardDownStruct[j].is_wade
+                                        + "</td></tr>");
+                                }
+                            }
+                            ;
+                        }
+                        ;
+                        $('#table2').append("<tr><th>32</th><th colspan='2'>伸缩缝类型</th><td colspan='2'>"
+                            + data[i].expansion_joint_type
+                            + "</td><th>33</th><th colspan='2'>支座类型</th><td colspan='2'>"
+                            + data[i].support_type
+                            + "</td><th>34</th><th colspan='2'>地震动峰值加速度系数</th><td>"
+                            + data[i].acceleration_factor
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>35</th><th colspan='2'>桥台护坡</th><td colspan='2'>"
+                            + data[i].abutment_slope
+                            + "</td><th>36</th><th colspan='2'>护墩体</th><td colspan='2'>"
+                            + data[i].guard_pier_body
+                            + "</td><th>37</th><th colspan='2'>调治构造物</th><td>"
+                            + data[i].treatment_struct
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>38</th><th colspan='2'>常水位</th><td colspan='2'>"
+                            + data[i].water_level
+                            + "</td><th>39</th><th colspan='2'>设计水位</th><td colspan='2'>"
+                            + data[i].design_level
+                            + "</td><th>40</th><th colspan='2'>历史洪水位</th><td>"
+                            + data[i].his_flood_level
+                            + "</td></tr>");
+                    }
+                }
+            }
+        });
+    }
+	
+	function initBrgCardDocument() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initBrgCardDocument",
+            },
+            error: function (msg) {
+                if (hyid == null) {
+
+                } else {
+                    toastr.error("请求BrgCardServlet失败");
+                }
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    //toastr.success("档案资料没有数据");
+                } else {
+                    var data = json.obj;
+                    for (var i = 0; i < data.length; i++) {
+                        $('#table3').append("<tr><th>41</th><th>设计图纸</th><td>"
+                            + data[i].blueprint_state
+                            + "</td><th>42</th><th>设计文件</th><td>"
+                            + data[i].design_file_state
+                            + "</td><th>43</th><th>施工文件</th><td>"
+                            + data[i].construct_file_state
+                            + "</td></tr>");
+                        $('#table3').append("<tr><th>44</th><th>竣工图纸</th><td>"
+                            + data[i].complete_file_state
+                            + "</td><th>45</th><th>验收文件</th><td>"
+                            + data[i].acceptance_file_state
+                            + "</td><th>46</th><th>行政文件</th><td>"
+                            + data[i].administrate_file_state
+                            + "</td></tr>");
+                        $('#table3').append("<tr><th>47</th><th>定期检查报告</th><td>"
+                            + data[i].regular_report_state
+                            + "</td><th>48</th><th>特殊检查报告</th><td>"
+                            + data[i].special_report_state
+                            + "</td><th>49</th><th>历次维修资料</th><td>"
+                            + data[i].history_maintain_state
+                            + "</td></tr>");
+                        $('#table3').append("<tr><th>50</th><th>档案号</th><td>"
+                            + data[i].document_no
+                            + "</td><th>51</th><th>存档案</th><td>"
+                            + data[i].document
+                            + "</td><th>52</th><th>建档年/月</th><td>"
+                            + data[i].document_time
+                            + "</td></tr>");
+                    }
+                }
+            }
+        });
+    }
+	
+	function initBrgCardConstructPrj() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initBrgCardConstructPrj",
+            },
+            error: function (msg) {
+                if (hyid == null) {
+                } else {
+                    toastr.error("请求BrgCardServlet失败");
+                }
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    //toastr.success("修建工程记录没有数据");
+                } else {
+                    var data = json.obj[0];
+                    var con_prj = json.obj[0].brgCardConstructPrj;
+                    var memo = json.obj[0].brgCardConstructPrjMemo;
+                    var size = con_prj.length;
+                    table5_size = con_prj.length;
+                    if (size != 0) {
+                        for (var i = 0; i < con_prj.length; i++) {
+                            $('#table5').append("<tr><td style='width:80px'>" + con_prj[i].start_date
+                                + "</td><td style='width:80px'>" + con_prj[i].finish_date + "</td><td>"
+                                + con_prj[i].type + "</td><td>" + con_prj[i].reason
+                                + "</td><td>" + con_prj[i].scope + "</td><td>"
+                                + con_prj[i].cost + "</td><td>" + con_prj[i].cost_source
+                                + "</td><td>" + con_prj[i].evaluate_level + "</td><td>"
+                                + con_prj[i].build_org + "</td><td>" + con_prj[i].design_org
+                                + "</td><td>" + con_prj[i].construct_org + "</td><td>"
+                                + con_prj[i].supervise_org + "</td><td><a class='btn btn-primary' id='"
+                                + con_prj[i].r_id + "'onclick='changebccp(this.id," + (parseInt(i) + 2)
+                                + "," + size + ")'>修改</a></td><td><a class='btn btn-primary' id='"
+                                + con_prj[i].r_id + "'onclick='delbccp(this.id," + (parseInt(i) + 2)
+                                + "," + size + ")'>删除</a></td></tr>");
+                        }
+                    }
+                    if (memo.length == 0) {
+                        $('#table5').append("<tr><td><b>备注：</b></td><td colspan='20'></td></tr>");
+                    } else {
+                        $('#table5').append("<tr><td><b>备注：</b></td><td colspan='20'>" + memo[0].memo + "</td></tr>");
+                    }
+                }
+            }
+        });
+    }
+	
+	 /**最近评定数据*/
+    function initBrgCardEvaluation() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initBrgCardEvaluation",
+            },
+            error: function (msg) {
+                if (hyid == null) {
+
+                } else {
+                    toastr.error("请求BrgCardServlet失败");
+                }
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    //toastr.success("最近技术状况评定没有数据");
+                } else {
+                    var data = json.obj;
+                    for (var i = 0; i < data.length; i++) {
+                        $('#table4').append("<tr><td>" + data[i].check_ym + "</td><td>"
+                            + data[i].eva_type + "</td><td>" + data[i].eva_level
+                            + "</td><td>" + data[i].abutment + "</td><td>" + data[i].pier
+                            + "</td><td>" + data[i].erosion + "</td><td>" + data[i].top_structure
+                            + "</td><td>" + data[i].support + "</td><td>" + data[i].is_often_maintain
+                            + "</td><td>" + data[i].treatment + "</td><td>" + data[i].next_time_year
+                            + "</td><td><a class='btn btn-primary' id='" + data[i].r_id + "' onclick='change_nearly_eva(this.id,"
+                            + (parseInt(i) + 2) + ")'>修改</a></td><td><a class='btn btn-primary' id='"
+                            + data[i].r_id + "' onclick='del_nearly_eva(this.id," + (parseInt(i) + 2)
+                            + ")'>删除</a></td> </tr>");
+                    }
+                    
+                    
+                }
+            }
+        });
+    }
+	 
+    function initBrgCardConstructPrj() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initBrgCardConstructPrj",
+            },
+            error: function (msg) {
+                if (hyid == null) {
+                } else {
+                    toastr.error("请求BrgCardServlet失败");
+                }
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    //toastr.success("修建工程记录没有数据");
+                } else {
+                    var data = json.obj[0];
+                    var con_prj = json.obj[0].brgCardConstructPrj;
+                    var memo = json.obj[0].brgCardConstructPrjMemo;
+                    var size = con_prj.length;
+                    table5_size = con_prj.length;
+                    if (size != 0) {
+                        for (var i = 0; i < con_prj.length; i++) {
+                            $('#table5').append("<tr><td style='width:80px'>" + con_prj[i].start_date
+                                + "</td><td style='width:80px'>" + con_prj[i].finish_date + "</td><td>"
+                                + con_prj[i].type + "</td><td>" + con_prj[i].reason
+                                + "</td><td>" + con_prj[i].scope + "</td><td>"
+                                + con_prj[i].cost + "</td><td>" + con_prj[i].cost_source
+                                + "</td><td>" + con_prj[i].evaluate_level + "</td><td>"
+                                + con_prj[i].build_org + "</td><td>" + con_prj[i].design_org
+                                + "</td><td>" + con_prj[i].construct_org + "</td><td>"
+                                + con_prj[i].supervise_org + "</td><td><a class='btn btn-primary' id='"
+                                + con_prj[i].r_id + "'onclick='changebccp(this.id," + (parseInt(i) + 2)
+                                + "," + size + ")'>修改</a></td><td><a class='btn btn-primary' id='"
+                                + con_prj[i].r_id + "'onclick='delbccp(this.id," + (parseInt(i) + 2)
+                                + "," + size + ")'>删除</a></td></tr>");
+                        }
+                    }
+                    if (memo.length == 0) {
+                        $('#table5').append("<tr><td><b>备注：</b></td><td colspan='20'></td></tr>");
+                    } else {
+                        $('#table5').append("<tr><td><b>备注：</b></td><td colspan='20'>" + memo[0].memo + "</td></tr>");
+                    }
+                }
+            }
+        });
+    }
+    
+    function init_Edit_line() {
+        $.ajax({
+            type: 'GET',
+            url: '../NewBrgServlet',
+            dataType: 'json',
+            data: {
+                type: "init_line"
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                    var arr = json.obj;
+                    hw = json.obj;
+                    for (var i = 0; i < arr.length; i++) {
+                        $('#roadline_name').append(
+                            "<option value='" + arr[i].highway_id + "'>"
+                            + arr[i].highway_name + "</option>");
+                    }
+                    /* $('#roadline_name').select2(); */
+                    $('#roadline_name').on("change", function (e) {
+                        $.ajax({
+                            type: 'GET',
+                            url: '../NewBrgServlet',
+                            dataType: 'json',
+                            data: {
+                                type: "getHighway_no",
+                                highway_id: $('#roadline_name').val()
+                            },
+                            error: function (msg) {
+                                toastr.error("系统错误！");
+                            },
+                            success: function (json) {
+                                if (json.success == "success") {
+                                    var data = json.obj[0];
+                                    $("#roadline_no").val(data.highway_no);
+                                    $("#roadline_level").val(data.highway_level);
+                                }
+                            }
+                        });
+                    });
+                }
+                else {
+                    toastr.error("生成路线出错");
+                }
+            }
+        });
+    }
+    
+    /**修改行政识别数据*/
+    var zone_id_page ;
+    function changebcai() {
+        var edit_brg_type = $('#table1 tr:eq(6) td:eq(0)').text();
+        if (edit_brg_type == "") {
+            $('#edit_brg_type').val(null).trigger("change");
+        }
+        else {
+            $('#edit_brg_type').val(edit_brg_type).trigger("change");
+        }
+
+        var highway_name = $('#table1 tr:eq(0) td:eq(1)').text();
+        if (highway_name == "") {
+            $('#roadline_name').val(null).trigger("change");
+        }else {
+            var id = getManage_id(highway_name, "hw");
+            if (id == "") {
+                $('#roadline_name').val(null).trigger("change");
+            } else {
+                $('#roadline_name').val(id).trigger("change");
+            }
+        }
+        var maintain_org = $('#table1 tr:eq(4) td:eq(1)').text();
+        if (maintain_org == "") {
+            $('#maintain_org').val(null).trigger("change");
+        }
+        else {
+            if (getManage_id(maintain_org, "org") == "") {
+                $('#maintain_org').val(null).trigger("change");
+            } else {
+                $('#maintain_org').val(getManage_id(maintain_org, "org")).trigger("change");
+            }
+
+        }
+        var zone_name = $('#table1 tr:eq(5) td:eq(1)').text();
+
+        if (zone_name == "") {
+            $('#edit_zone').empty();
+            $('#edit_zone').val(null).trigger("change");
+        }
+        else {
+            if (getManage_id(zone_name, "zone") == "") {
+                $('#edit_zone').val(null).trigger("change");
+            } else {
+                init_Edit_zone_id(getManage_id(maintain_org, "org"), zone_name);
+            }
+        }
+        var section_name = $('#table1 tr:eq(5) td:eq(0)').text();
+        if (section_name == "") {
+            $('#edit_section').val(null).trigger("change");
+        }
+        else {
+            if (getManage_id(section_name, "section") == "") {
+                $('#edit_section').val(null).trigger("change");
+            } else {
+                init_Edit_section_id(getManage_id(maintain_org, "org"), section_name);
+            }
+        }
+        var highway_no = $('#table1 tr:eq(0) td:eq(0)').text();
+        var highway_level = $('#table1 tr:eq(0) td:eq(2)').text();
+        var bridge_no = $('#table1 tr:eq(1) td:eq(0)').text();
+        var bridge_name = $('#table1 tr:eq(1) td:eq(1)').text();
+        var bridge_pile_no = $('#table1 tr:eq(1) td:eq(2)').text();
+        var function_type = $('#table1 tr:eq(2) td:eq(0)').text();
+        var beneath_path_name = $('#table1 tr:eq(2) td:eq(1)').text();
+        var beneath_path_pile_no = $('#table1 tr:eq(2) td:eq(2)').text();
+        var design_load = $('#table1 tr:eq(3) td:eq(0)').text();
+        var pass_load = $('#table1 tr:eq(3) td:eq(1)').text();
+        var skew_slope = $('#table1 tr:eq(3) td:eq(2)').text();
+        var deck_pavement = $('#table1 tr:eq(4) td:eq(0)').text();
+        var build_year = $('#table1 tr:eq(4) td:eq(2)').text();
+        var edit_span_built = $('#span_view').attr("data-sp");
+        var edit_location = $('#table1 tr:eq(6) td:eq(1)').text();
+        $("#roadline_no").val(highway_no);
+        $("#roadline_level").val(highway_level);
+        $("#bridge_no").val(bridge_no);
+        $("#bridge_name").val(bridge_name);
+        $("#bridge_pile_no").val(bridge_pile_no);
+        
+        $("#function_type").val(function_type);
+        $("#design_load").val(design_load);
+        $("#deck_pavement").val(deck_pavement);
+        $("#pass_load").val(pass_load);
+        
+        $("#function_type").val(function_type);
+        $("#beneath_path_name").val(beneath_path_name);
+        $("#beneath_path_pile_no").val(beneath_path_pile_no);
+        $("#design_load").val(design_load);
+        $("#pass_load").val(pass_load);
+        $("#skew_slope").val(skew_slope);
+        $("#deck_pavement").val(deck_pavement);
+        $("#build_year").val(build_year);
+        $("#edit_span_built").val(edit_span_built);
+        $("#edit_location").val(edit_location);
+        $("#Modal1").modal("show");
+    }
+    
+    function initSelect_rang_A() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initA"
+            },
+            error: function (msg) {
+                toastr.error("请求失败");
+            },
+            success: function (json) {
+                var arr = json.obj;
+                /*插入select选项*/
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].item_id == 7) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#function_type').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#function_type').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    if (arr[i].item_id == 10) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#design_load').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#design_load').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    if (arr[i].item_id == 11) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#pass_load').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#pass_load').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    if (arr[i].item_id == 13) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#deck_pavement').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#deck_pavement').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    function init_Edit_maintain_org() {
+        $.ajax({
+            type: 'GET',
+            url: '../NewBrgServlet',
+            dataType: 'json',
+            data: {
+                type: "init_maintain_org"
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                    var arr = json.obj;
+                    org = json.obj;
+                    for (var i = 0; i < arr.length; i++) {
+                        $('#maintain_org').append(
+                            "<option value='" + arr[i].org_id + "'>"
+                            + arr[i].org_name + "</option>");
+                    }
+                    /* $('#maintain_org').select2(); */
+                    /* if(maintainOrg_id != "null"&&maintainOrg_id!=undefined){
+                     $('#maintain_org').val(maintainOrg_id).trigger("change");
+                     	$('#maintain_org').attr("disabled","true");
+                     	 init_Edit_section_id(maintainOrg_id);
+                        init_Edit_zone_id(maintainOrg_id);
+                    } */
+                    /* $('#edit_brg_type').select2(); */
+                    init_Edit_section_id($('#maintain_org').val());
+                    init_Edit_zone_id($('#maintain_org').val());
+                    $('#maintain_org').on("change", function (e) {
+                        init_Edit_section_id($('#maintain_org').val());
+                        init_Edit_zone_id($('#maintain_org').val());
+                    });
+                }
+                else {
+                    toastr.error("生成管养单位出错");
+                }
+            }
+        });
+    }
+    
+    function init_Edit_section_id(id, section) {
+        /* $('#edit_section').select2(); */
+        $('#edit_section').val(null).trigger("change");
+        $('#edit_section').empty();
+        $.ajax({
+            type: 'GET',
+            url: '../NewBrgServlet',
+            dataType: 'json',
+            data: {
+                type: "init_section_id",
+                id: id
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                    var arr = json.obj;
+                    for (var i = 0; i < arr.length; i++) {
+                        $('#edit_section').append(
+                            "<option value='" + arr[i].section_id + "'>"
+                            + arr[i].section_name + "</option>");
+                        /* $('#edit_section').select2(); */
+                    }
+                    if (section != null) {
+                        $('#edit_section').val(getManage_id(section, "section")).trigger("change");
+                    }
+                }
+                else {
+                    toastr.error("生成所属路线出错");
+                }
+            }
+        });
+    }
+
+    function init_Edit_zone_id(id, name) {
+        /* $('#edit_zone').select2(); */
+        $('#edit_zone').val(null).trigger("change");
+        $('#edit_zone').empty();
+        $.ajax({
+            type: 'GET',
+            url: '../NewBrgServlet',
+            dataType: 'json',
+            data: {
+                type: "init_zone_id",
+                id: id
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                    var arr = json.obj;
+                    for (var i = 0; i < arr.length; i++) {
+                        $('#edit_zone').append(
+                            "<option value='" + arr[i].zone_id + "'>"
+                            + arr[i].zone_name + "</option>");
+                       /*  $('#edit_zone').select2(); */
+                    }
+                    if (name != null && name != "") {
+                        $('#edit_zone').val(getManage_id(name, "zone")).trigger("change");
+                    }
+                }
+                else {
+                    toastr.error("生成所属分区出错");
+                }
+            }
+        });
+    }
+    
+    function getManage_id(name, type) {
+        var id = "";
+        if (type == "hw") {
+            for (var i = 0; i < hw.length; i++) {
+                if (name == hw[i].highway_name) {
+                    id = hw[i].highway_id;
+                }
+            }
+        }
+        else if (type == "org") {
+            for (var i = 0; i < org.length; i++) {
+                if (name == org[i].org_name) {
+                    id = org[i].org_id;
+                    zone_id_page = org[i].org_id.substring(0,5);
+                    
+                }
+            }
+        }
+        else if (type == "zone") {
+            for (var i = 0; i < zone.length; i++) {
+                if (name == zone[i].zone_name) {
+                	var zone_id = zone[i].zone_id.substring(0,5);
+                	if(zone_id==zone_id_page){
+                    id = zone[i].zone_id;
+                	}
+                }
+            }
+        } else if (type == "section") {
+            for (var i = 0; i < section.length; i++) {
+                if (name == section[i].section_name) {
+                    id = section[i].section_id;
+                }
+            }
+        }
+        return id;
+    }
+    
+    
+    
+    function getSectiondata() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "getSectiondata",
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                    section = json.obj;
+                }
+            }
+        });
+    }
+
+    function getZonedata() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "getZonedata",
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                    zone = json.obj;
+                }
+            }
+        });
+    }
+    
+    /************************** 保存行政识别数据 *******************************/
+    function savexzsj(){
+    	if ($("#bridge_pile_no").val() == "") {
+            toastr.error("请输入桥位桩号!");
+            return false;
+        }
+        if ($("#edit_zone").val() == "") {
+            toastr.error("请勾选分区!");
+            return false;
+        }
+        if ($("#build_year").val() == "") {
+            toastr.error("请输入建成年月!");
+            return false;
+        }
+        if ($("#edit_location").val() == "") {
+        	toastr.error("请选择经纬度!");
+            return false;
+        } else {
+            var location = $("#edit_location").val();
+            if (location.indexOf(",") != -1) {
+                var arr = location.split(",");
+                if (arr.length != 2) {
+                    toastr.error("桥梁经纬度格式错误!");
+                    return false;
+                } else {
+                    var patten = /^[0-9]+.?[0-9]*$/;
+                    if (!patten.test(arr[0]) || !patten.test(arr[1])) {
+                        toastr.error("桥梁经纬度格式错误!");
+                        return false;
+                    }
+                }
+            } else {
+                toastr.error("桥梁经纬度格式错误!");
+                return false;
+            }
+        }
+        var roadlineName=$("#roadline_name").find("option:selected").text();
+        var orgName=$("#maintain_org").find("option:selected").text();
+        var sectionName=$("#edit_section").find("option:selected").text();
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "changebcai",
+                highway_id: $("#roadline_name").val(),
+                highway_name: roadlineName,
+                bridge_no: $('#bridge_no').val(),
+                bridge_name: $('#bridge_name').val(),
+                bridge_pile_no: $('#bridge_pile_no').val(),
+                function_type: $('#function_type').val(),
+                beneath_path_name: $('#beneath_path_name').val(),
+                beneath_path_pile_no: $('#beneath_path_pile_no').val(),
+                design_load: $('#design_load').val(),
+                pass_load: $('#pass_load').val(),
+                skew_slope: $('#skew_slope').val(),
+                deck_pavement: $('#deck_pavement').val(),
+                maintain_org: $('#maintain_org').val(),
+                org: orgName,
+                build_year: $('#build_year').val(),
+                edit_section: $('#edit_section').val(),
+                section: sectionName,
+                edit_zone: $('#edit_zone').val(),
+                edit_span_built: $('#edit_span_built').val(),
+                edit_brg_type: $('#edit_brg_type').val(),
+                edit_location: $('#edit_location').val()
+            },
+            error: function (msg) {
+                toastr.error("请求BrgCardServlet失败");
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    switch (json.error) {
+                        case 1:
+                            toastr.error("修改失败");
+                            break;
+                        case 2:
+                            toastr.error("服务器错误");
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    $('#table1 tr:eq(0) td:eq(0)').text($('#roadline_no').val());
+                    $('#table1 tr:eq(0) td:eq(1)').text(roadlineName);
+                    $('#table1 tr:eq(0) td:eq(2)').text($('#roadline_level').val());
+                    $('#table1 tr:eq(1) td:eq(0)').text($('#bridge_no').val());
+                    $('#table1 tr:eq(1) td:eq(1)').text($('#bridge_name').val());
+                    $('#table1 tr:eq(1) td:eq(2)').text($('#bridge_pile_no').val());
+                    $('#table1 tr:eq(2) td:eq(0)').text($('#function_type').val());
+                    $('#table1 tr:eq(2) td:eq(1)').text($('#beneath_path_name').val());
+                    $('#table1 tr:eq(2) td:eq(2)').text($('#beneath_path_pile_no').val());
+                    $('#table1 tr:eq(3) td:eq(0)').text($('#design_load').val());
+                    $('#table1 tr:eq(3) td:eq(1)').text($('#pass_load').val());
+                    $('#table1 tr:eq(3) td:eq(2)').text($('#skew_slope').val());
+                    $('#table1 tr:eq(4) td:eq(0)').text($('#deck_pavement').val());
+                    $('#table1 tr:eq(4) td:eq(1)').text(orgName);
+                    $('#table1 tr:eq(4) td:eq(2)').text($('#build_year').val());
+                    $('#table1 tr:eq(5) td:eq(0)').text(sectionName);
+                    if ($('#edit_zone').text() != undefined) {
+                        $('#table1 tr:eq(5) td:eq(1)').text($('#edit_zone').find("option:selected").text());
+                    } else {
+                        $('#table1 tr:eq(5) td:eq(1)').text("");
+                    }
+                    if ($('#edit_span_built').val().length > 20) {
+                        $('#table1 tr:eq(5) td:eq(2)').html($('#edit_span_built').val().substring(0, 20) + "<a href='#' onclick='showdata()'> ...</a>");
+                        $('#span_view').attr("data-sp", $('#edit_span_built').val());
+                    } else {
+                        $('#table1 tr:eq(5) td:eq(2)').html($('#edit_span_built').val());
+                        $('#span_view').attr("data-sp", $('#edit_span_built').val());
+                    }
+
+
+                    $('#table1 tr:eq(6) td:eq(0)').text($('#edit_brg_type').val());
+                    $('#table1 tr:eq(6) td:eq(1)').text($('#edit_location').val());
+                    /* changetips($('#bridge_name').val(), $('#edit_section').text(), $('#bridge_no').val()); */
+                    $("#Modal1").modal("hide");
+                    toastr.success("保存成功");
+                }
+            }
+        });
+    }
+    
+    function tb2Data() {
+        $("#bridge_len").val($('#table2 tr:eq(0) td:eq(0)').text());
+        $("#bridge_width").val($('#table2 tr:eq(0) td:eq(1)').text());
+        $("#lane_width").val($('#table2 tr:eq(0) td:eq(2)').text());
+        $("#bridge_t_s_height").val($('#table2 tr:eq(1) td:eq(0)').text());
+        $("#bridge_b_height").val($('#table2 tr:eq(1) td:eq(1)').text());
+        $("#bridge_t_height").val($('#table2 tr:eq(1) td:eq(2)').text());
+        $("#approach_total_width").val($('#table2 tr:eq(2) td:eq(0)').text());
+        $("#approach_width").val($('#table2 tr:eq(2) td:eq(1)').text());
+        $("#approach_line_type").val($('#table2 tr:eq(2) td:eq(2)').text());
+
+        var a = "table2 tr:eq(" + parseInt(top_len + 3 + down_len) + ") td:eq(0)";
+        $("#expansion_joint_type").val($("#" + a).text());
+
+        var b = "table2 tr:eq(" + parseInt(top_len + 3 + down_len) + ") td:eq(1)";
+        $("#support_type").val($("#" + b).text());
+
+        var c = "table2 tr:eq(" + parseInt(top_len + 3 + down_len) + ") td:eq(2)";
+        $("#acceleration_factor").val($("#" + c).text());
+
+        var d = "table2 tr:eq(" + parseInt(top_len + 4 + down_len) + ") td:eq(0)";
+        $("#abutment_slope").val($("#" + d).text());
+
+        var e = "table2 tr:eq(" + parseInt(top_len + 4 + down_len) + ") td:eq(1)";
+        $("#guard_pier_body").val($("#" + e).text());
+
+        var f = "table2 tr:eq(" + parseInt(top_len + 4 + down_len) + ") td:eq(2)";
+        $("#treatment_struct").val($("#" + f).text());
+
+        var g = "table2 tr:eq(" + parseInt(top_len + 5 + down_len) + ") td:eq(0)";
+        $("#water_level").val($("#" + g).text());
+
+        var h = "table2 tr:eq(" + parseInt(top_len + 5 + down_len) + ") td:eq(1)";
+        $("#design_level").val($("#" + h).text());
+
+        var i = "table2 tr:eq(" + parseInt(top_len + 5 + down_len) + ") td:eq(2)";
+        $("#his_flood_level").val($("#" + i).text());
+
+        for (var i = 0; i < top_len; i++) {
+            var top_struct_hole_no = "top_struct_hole_no" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3) + ") td:eq(0)";
+            $("#" + top_struct_hole_no).val($("#" + a).text()).trigger("change");
+        }
+        for (var i = 0; i < top_len; i++) {
+            var top_struct_type = "top_struct_type" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3) + ") td:eq(1)";
+            $("#" + top_struct_type).val($("#" + a).text()).trigger("change");
+        }
+        for (var i = 0; i < top_len; i++) {
+            var top_struct_span = "top_struct_span" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3) + ") td:eq(2)";
+            $("#" + top_struct_span).val($("#" + a).text()).trigger("change");
+        }
+        for (var i = 0; i < top_len; i++) {
+            var top_struct_stuff = "top_struct_stuff" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3) + ") td:eq(3)";
+            $("#" + top_struct_stuff).val($("#" + a).text()).trigger("change");
+        }
+
+        for (var i = 0; i < down_len; i++) {
+            var down_struct_pier = "down_struct_pier" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3 + top_len) + ") td:eq(0)";
+            $("#" + down_struct_pier).val($("#" + a).text()).trigger("change");
+        }
+        for (var i = 0; i < down_len; i++) {
+            var down_struct_type = "down_struct_type" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3 + top_len) + ") td:eq(1)";
+            $("#" + down_struct_type).val($("#" + a).text()).trigger("change");
+        }
+        for (var i = 0; i < down_len; i++) {
+            var down_struct_stuff = "down_struct_stuff" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3 + top_len) + ") td:eq(2)";
+            $("#" + down_struct_stuff).val($("#" + a).text()).trigger("change");
+        }
+        for (var i = 0; i < down_len; i++) {
+            var down_struct_base_type = "down_struct_base_type" + parseInt(i + 1);
+            var a = "table2 tr:eq(" + parseInt(i + 3 + top_len) + ") td:eq(3)";
+            $("#" + down_struct_base_type).val($("#" + a).text()).trigger("change");
+        }
+    }
+    
+    function initStrcuctS() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "TableBridge2",
+            },
+            error: function (msg) {
+                if (hyid == null) {
+
+                } else {
+                    toastr.error("请求BrgCardServlet失败");
+                }
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    toastr.success("结构技术数据没有数据");
+                } else {
+                    var data = json.obj;
+                    for (var i = 0; i < data.length; i++) {
+                        var brg_top_len = data[i].brgCardTopStruct.length;
+                        top_len = data[i].brgCardTopStruct.length;
+                        if (top_len < 1) {
+                            top_len = 1;
+                        }
+                        var brg_down_len = data[i].brgCardDownStruct.length;
+                        down_len = data[i].brgCardDownStruct.length;
+                        if (down_len < 1) {
+                            down_len = 1;
+                        }
+                        var tb2 = $("#tb22");
+                        tb2.append("<tr><th style='width:35px'>21</th><td colspan='2' ><label>桥长(m)</label><font style='color: red'>*</font>"
+                            + "</td><td><input class='form-control' id='bridge_len' value='' placeholder='' type='text'>"
+                            + "</td><th style='width:65px'>22</th><td><label>桥面总宽(m)</label></td><td  colspan='2'><input class='form-control' id='bridge_width' value=''"
+                            + "placeholder='' type='text'></td><th style='width:85px' >23</th><td><label>车行道宽(m)</label></td><td colspan='3'><input class='form-control' id='lane_width' value=''"
+                            + "placeholder='' type='text'></td></tr>");
+                        tb2.append("<tr><th>24</th><td colspan='2'><label>桥面标高(m)</label></td><td><input class='form-control' id='bridge_t_s_height'"
+                            + "value='' placeholder='' type='text'></td><th>25</th><td><label>桥下净高(m)</label></td><td colspan='2'><input class='form-control' id='bridge_b_height'"
+                            + "value='' placeholder='' type='text'></td><th>26</th><td><label>桥上净高(m)</label></td>"
+                            + "<td colspan='3'><input class='form-control' id='bridge_t_height' value=''  type='text'></td>"
+                            + "</tr>");
+                        tb2.append("<tr><th>27</th>"
+                            + "<td colspan='2'><label>引道总宽(m)</label></td>"
+                            + "<td><input class='form-control' id='approach_total_width' value=''  type='text'></td>"
+                            + "<th>28</th>"
+                            + "<td><label>引道路面宽(m)</label></td>"
+                            + "<td colspan='2'><input class='form-control' id='approach_width'  value='' ' type='text'></td>"
+                            + "<th>29</th>"
+                            + "<td><label>引道线形</label></td>"
+                            + "<td colspan='3'><input class='form-control' id='approach_line_type' value='' placeholder='' type='text'></td>"
+                            + "</tr>");
+                        if (brg_top_len == 0) {
+                            tb2.append("<tr id='" + "topStruct" + parseInt(j + 1) + "'><th>30</th><th style='width:70px'>上部结构</th><td style='width:50px'><label>跨号1</label></td>"
+                                + "<td style='width: 150px'><input class='form-control' id='top_struct_hole_no1' type='text'></td>"
+                                + "<td>桥型1<font style='color: red'>*</font></td>"
+                                + "<td style='width: 175px'><select class='select2 form-control' style='width:100%' id='top_struct_type1'><option value='' selected='selected'>请选择</option></select></td>"
+                                + "<td style='width: 80px'><label>跨径1(m)</label><font style='color: red'>*</font></td>"
+                                + "<td style='width: 160px'><input class='form-control' id='top_struct_span1'  type='text'></td>"
+                                + "<td><label>材料1</label></td>"
+                                + "<td colspan='3' style='width: 170px'><select class='select2 form-control' style='width:100%' id='top_struct_stuff1'><option value='' selected='selected'>请选择</option></select></td>"
+                                + "</tr>");
+                        } else {
+                            for (var j = 0; j < brg_top_len; j++) {
+                                if (j == 0) {
+                                    tb2.append("<tr  id='" + "topStruct" + parseInt(j + 1) + "' value='" + data[i].brgCardTopStruct[j].top_struct_id + "'><th  rowspan='" + brg_top_len + "'>30</th><th rowspan='" + brg_top_len + "' style='width:50px'>上部结构</th><td style='width:50px'><label>跨号" + parseInt(i + 1) + "</label></td>"
+                                        + "<td style='width: 160px'><input class='form-control' id='top_struct_hole_no" + parseInt(j + 1) + "' type='text' disabled='true'></td>"
+                                        + "<td style='width:80px'>桥型" + parseInt(j + 1) + "<font style='color: red'>*</font></td>"
+                                        + "<td style='width:215px'><select class='select2 form-control' disabled='true' style='width:100%' id='top_struct_type" + parseInt(j + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "<td style='width: 80px'><label>跨径" + parseInt(j + 1) + "(m)</label><font style='color: red'>*</font></td>"
+                                        + "<td style='width: 160px'><input class='form-control' id='top_struct_span" + parseInt(j + 1) + "' disabled='true'  type='text'></td>"
+                                        + "<td><label>材料" + parseInt(j + 1) + "</label></td>"
+                                        + "<td colspan='3' style='width: 170px'><select class='select2 form-control' disabled='true' style='width:100%' id='top_struct_stuff" + parseInt(j + 1) + "'><option value='' selected='selected'>请选择</option></select></td><td style='width:30px'></td>"
+                                        + "</tr>");
+                                } else {
+                                    tb2.append("<tr id='" + "topStruct" + parseInt(j + 1) + "' value='" + data[i].brgCardTopStruct[j].top_struct_id + "'><td ><label>跨号" + parseInt(j + 1) + "</label></td>"
+                                        + "<td style='width: 150px'><input class='form-control' disabled='true' id='top_struct_hole_no" + parseInt(j + 1) + "' type='text'></td>"
+                                        + "<td>桥型" + parseInt(j + 1) + "<font style='color: red'>*</font></td>"
+                                        + "<td  style='width:175px'><select class='select2 form-control' disabled='true' style='width:100%' id='top_struct_type" + parseInt(j + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "<td style='width: 80px'><label>跨径" + parseInt(j + 1) + "(m)</label><font style='color: red'>*</font></td>"
+                                        + "<td style='width: 160px'><input class='form-control' disabled='true' id='top_struct_span" + parseInt(j + 1) + "'  type='text'></td>"
+                                        + "<td><label>材料" + parseInt(j + 1) + "</label></td>"
+                                        + "<td colspan='3' style='width: 170px'><select class='select2 form-control' disabled='true' style='width:100%' id='top_struct_stuff" + parseInt(j + 1) + "'><option value='' selected='selected'>请选择</option></select></td><td style='width:30px'></td>"
+                                        + "</tr>");
+                                }
+                            }
+                        }
+                        if (brg_down_len == 0) {
+                            tb2.append("<tr id='" + "downStruct" + parseInt(k + 1) + "' ><th>31</th><th>下部结构</th><td><label>墩台号" + parseInt(i + 1) + "</label></td>"
+                                + "<td><input class='form-control' disabled id='down_struct_pier" + parseInt(i + 1) + "' type='text'></td>"
+                                + "<td>墩台形式" + parseInt(i + 1) + "<font style='color: red'>*</font></td>"
+                                + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_type" + parseInt(i + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                + "	<td style='width: 60px'><label>材料" + parseInt(i + 1) + "</label><font style='color: red'>*</font></td>"
+                                + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_stuff" + parseInt(i + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                + "<td><label>基础形式" + parseInt(i + 1) + "</label></td>"
+                                + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_base_type" + parseInt(i + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                + "<td><label>涉水" + parseInt(k + 1) + "</label></td>"
+                                + "<td><input type='checkbox' disabled id='is_wade"+ parseInt(k + 1) +"'></td>"
+                                + "</tr>");
+                        } else {
+                            for (var k = 0; k < brg_down_len; k++) {
+                                if (k == 0) {
+                                    tb2.append("<tr id='" + "downStruct" + parseInt(k + 1) + "' value='" + data[i].brgCardDownStruct[k].down_struct_id + "'><th rowspan='" + brg_down_len + "'>31</th><th rowspan='" + brg_down_len + "'>下部结构</th><td><label>墩台号" + parseInt(k + 1) + "</label></td>"
+                                        + "<td><input class='form-control' disabled id='down_struct_pier" + parseInt(k + 1) + "' type='text'></td>"
+                                        + "<td>墩台形式" + parseInt(k + 1) + "<font style='color: red'>*</font></td>"
+                                        + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_type" + parseInt(k + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "	<td style='width: 60px'><label>材料" + parseInt(k + 1) + "</label><font style='color: red'>*</font></td>"
+                                        + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_stuff" + parseInt(k + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "<td><label>基础形式" + parseInt(k + 1) + "</label></td>"
+                                        + "<td style='width: 150px'><select class='select2 form-control' disabled style='width:100%' id='down_struct_base_type" + parseInt(k + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "<td style='width: 50px'><label>涉水" + parseInt(k + 1) + "</label></td>"
+                                        + "<td style='width: 50px'><input disabled type='checkbox' id='is_wade"+ parseInt(k + 1) +"'></td>"
+                                        +"<td></td>"
+                                        + "</tr>");
+                                    if(data[i].brgCardDownStruct[k].is_wade=='true'){
+                                    	$('#is_wade'+ parseInt(k + 1)).prop('checked','checked');
+                                    }else{
+                                    	$('#is_wade'+ parseInt(k + 1)).removeAttr('checked');
+                                    }
+                                    
+                                } else {
+                                    tb2.append("<tr id='" + "downStruct" + parseInt(k + 1) + "' value='" + data[i].brgCardDownStruct[k].down_struct_id + "'><td><label>墩台号" + parseInt(k + 1) + "</label></td>"
+                                        + "<td><input class='form-control'disabled id='down_struct_pier" + parseInt(k + 1) + "' type='text'></td>"
+                                        + "<td>墩台形式" + parseInt(k + 1) + "<font style='color: red'>*</font></td>"
+                                        + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_type" + parseInt(k + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "<td style='width: 60px'><label>材料" + parseInt(k + 1) + "</label><font style='color: red'>*</font></td>"
+                                        + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_stuff" + parseInt(k + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "<td><label>基础形式" + parseInt(k + 1) + "</label></td>"
+                                        + "<td><select class='select2 form-control' disabled style='width:100%' id='down_struct_base_type" + parseInt(k + 1) + "'><option value='' selected='selected'>请选择</option></select></td>"
+                                        + "<td><label>涉水" + parseInt(k + 1) + "</label></td>"
+                                        + "<td><input type='text' disabled  id='is_wade"+ parseInt(k + 1) +"'></td>"
+                                        +"<td></td>"
+                                        + "</tr>");
+                                	   if(data[i].brgCardDownStruct[k].is_wade=='true'){
+                                       	$('#is_wade'+ parseInt(k + 1)).prop('checked','checked');
+                                       }else{
+                                       	$('#is_wade'+ parseInt(k + 1)).removeAttr('checked');
+                                       }
+                                }
+                            }
+                        }
+                        tb2.append("<tr><th>32</th>"
+                            + "<td colspan='2'><label>伸缩缝类型</label></td>"
+                            + "<td><input class='form-control' id='expansion_joint_type' value='' placeholder='' type='text'></td>"
+                            + "<th>33</th><td><label>支座类型</label></td>"
+                            + "<td style='width: 150px' colspan='2'><select class='combobox form-control' id='support_type'><option value='' selected='selected'>请选择</option></select></td>"
+                            + "<th>34</th><td style='width: 60px'><label>地震动峰值加速度系数</label></td>"
+                            + "<td colspan='3'><select class='combobox form-control' id='acceleration_factor'><option value='' selected='selected'>请选择</option></select></td>"
+                            + "</tr>");
+                        tb2.append("<tr><th>35</th>"
+                            + "<td colspan='2'><label>桥台护坡</label></td>"
+                            + "<td><input class='form-control' id='abutment_slope' value='' placeholder='' type='text'></td>"
+                            + "<th>36</th><td><label>护墩体</label></td>"
+                            + "<td colspan='2'><input class='form-control' id='guard_pier_body' value='' placeholder='' type='text'></td>"
+                            + "<th>37</th><td><label>调治构造物</label></td>"
+                            + "<td colspan='3'><input class='form-control' id='treatment_struct' value='' placeholder='' type='text'></td>"
+                            + "</tr>");
+                        tb2.append("<tr><th>38</th>"
+                            + "<td colspan='2'><label>常水位</label></td>"
+                            + "<td><input class='form-control' id='water_level' value='' placeholder='' type='text'></td>"
+                            + "<th>39</th><td><label>设计水位</label></td>"
+                            + "<td colspan='2'><input class='form-control' id='design_level' value='' placeholder='' type='text'></td>"
+                            + "<th>40</th><td><label>历史洪水位</label></td>"
+                            + "<td colspan='3'><input class='form-control' id='his_flood_level' value='' placeholder='' type='text'></td>"
+                            + "</tr>");
+                        initSelect_rang_B(brg_top_len, brg_down_len);
+                    }
+                }
+            },
+        });
+    }
+    
+    var pageArrJson = undefined;
+    function initSelect_rang_B(top_length, down_length) {
+        if (top_length < 1) {
+            top_length = 1;
+        }
+        if (down_length < 1) {
+            down_length = 1;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initB"
+            },
+            error: function (msg) {
+                toastr.error("请求失败");
+            },
+            success: function (json) {
+                var arr = json.obj;
+                pageArrJson = json.obj;
+                /*插入select选项*/
+                for (var i = 0; i < arr.length; i++) {
+
+                    /*引道线形*/
+                    if (arr[i].item_id == 24) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#approach_line_type').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#approach_line_type').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    /*上部结构材料*/
+                    if (arr[i].item_id == 28) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+
+                            for (var k = 1; k < top_length + 1; k++) {
+                                var query = "top_struct_stuff" + k;
+                                $("#" + query).append(
+                                    "<option value='" + arr[i].item_value + "' >"
+                                    + arr[i].item_value + "</option>");
+                            }
+                        }
+                    }
+
+                    /*下部结构形式*/
+                    if (arr[i].item_id == 30) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+
+                            for (var k = 1; k < down_length + 1; k++) {
+                                var query = "down_struct_type" + k;
+                                $("#" + query).append(
+                                    "<option value='" + arr[i].item_value + "' >"
+                                    + arr[i].item_value + "</option>");
+                            }
+                        }
+                    }
+
+                    /*下部结构材料*/
+                    if (arr[i].item_id == 31) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+
+                            for (var k = 1; k < down_length + 1; k++) {
+                                var query = "down_struct_stuff" + k;
+                                $("#" + query).append(
+                                    "<option value='" + arr[i].item_value + "' >"
+                                    + arr[i].item_value + "</option>");
+                            }
+                        }
+                    }
+
+	                    /*下部结构基础形式*/
+	                    if (arr[i].item_id == 32) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+
+                            for (var k = 1; k < down_length + 1; k++) {
+                                var query = "down_struct_base_type" + k;
+                                $("#" + query).append(
+                                    "<option value='" + arr[i].item_value + "' >"
+                                    + arr[i].item_value + "</option>");
+                            }
+                        }
+                    }
+
+                    /*伸缩缝类型*/
+                    if (arr[i].item_id == 33) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#expansion_joint_type').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#expansion_joint_type').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    /*支座类型*/
+                    if (arr[i].item_id == 34) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#support_type').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#support_type').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    /*地震系数*/
+                    if (arr[i].item_id == 35) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#acceleration_factor').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#acceleration_factor').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    /*桥台护坡*/
+                    if (arr[i].item_id == 36) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#abutment_slope').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#abutment_slope').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    /*护墩体*/
+                    if (arr[i].item_id == 37) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#guard_pier_body').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#guard_pier_body').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+                    /*调治构造物*/
+                    if (arr[i].item_id == 38) {
+                        if (typeof (arr[i].item_value) != "undefined") {
+                            $('#treatment_struct').append(
+                                "<option value='" + arr[i].item_value + "' >"
+                                + arr[i].item_value + "</option>");
+                        } else {
+                            $('#treatment_struct').append(
+                                "<option value=''>请输入</option>");
+                        }
+                    }
+
+                }
+                /*引道线形
+                $('#approach_line_type').combobox();*/
+
+                for (var k = 1; k < top_length + 1; k++) {
+                    var query = "top_struct_stuff" + k;
+                    /* $("#" + query).select2(); */
+                }
+
+                /*下部结构*/
+                for (var k = 1; k < down_length + 1; k++) {
+                    var query = "down_struct_type" + k;
+                    /* $("#" + query).select2(); */
+
+                }
+                for (var k = 1; k < down_length + 1; k++) {
+                    var query = "down_struct_stuff" + k;
+                   /*  $("#" + query).select2(); */
+
+                }
+                for (var k = 1; k < down_length + 1; k++) {
+                    var query = "down_struct_base_type" + k;
+                    /* $("#" + query).select2(); */
+                }
+               
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "initTopStructType"
+            },
+            error: function (msg) {
+                toastr.error("请求失败");
+            },
+            success: function (json) {
+                if (json.success = "success") {
+                    var arr = json.obj;
+                    /*上部结构形式*/
+                    for (var i = 0; i < arr.length; i++) {
+                        for (var k = 1; k < top_length + 1; k++) {
+                            var query = "top_struct_type" + k;
+                            $("#" + query).append(
+                                "<option value='" + arr[i].brg_type_name + "' >"
+                                + arr[i].brg_type_name + "</option>");
+                        }
+                    }
+                }
+                /*上部结构*/
+                for (var k = 1; k < top_length + 1; k++) {
+                    var query = "top_struct_type" + k;
+                   /*  $("#" + query).select2(); */
+                }
+            }
+        });
+    }
+    
+    function changebcst() {
+    	tb2Data();
+    	$("#Modal2").modal("show");
+    }
+    
+    function saveJgjssj(){
+    	 if ($("#bridge_len").val() == "") {
+             toastr.error("请输入桥长!");
+             return false;
+         }
+         $.ajax({
+             type: 'POST',
+             url: '../BrgCardServlet',
+             dataType: 'json',
+             data: {
+                 type: "changebcst",
+                 bridge_len: $('#bridge_len').val(),
+                 bridge_width: $('#bridge_width').val(),
+                 lane_width: $('#lane_width').val(),
+                 bridge_t_s_height: $('#bridge_t_s_height').val(),
+                 bridge_b_height: $('#bridge_b_height').val(),
+                 bridge_t_height: $('#bridge_t_height').val(),
+                 approach_total_width: $('#approach_total_width').val(),
+                 approach_width: $('#approach_width').val(),
+                 approach_line_type: $('#approach_line_type').val(),
+                 expansion_joint_type: $('#expansion_joint_type').val(),
+                 support_type: $('#support_type').val(),
+                 acceleration_factor: $('#acceleration_factor').val(),
+                 abutment_slope: $('#abutment_slope').val(),
+                 guard_pier_body: $('#guard_pier_body').val(),
+                 treatment_struct: $('#treatment_struct').val(),
+                 water_level: $('#water_level').val(),
+                 design_level: $('#design_level').val(),
+                 his_flood_level: $('#his_flood_level').val(),
+             },
+             error: function (msg) {
+                 toastr.error("请求BrgCardServlet失败");
+             },
+             success: function (json) {
+                 if (json.success == "fail") {
+                     switch (json.error) {
+                         case 1:
+                             toastr.error("修改失败");
+                             break;
+                         case 2:
+                             toastr.error("服务器错误");
+                             break;
+                         default:
+                             break;
+                     }
+                 } else {
+                	 $("#table2").html('');
+                	 $("#tb22").html('');
+                      reloadData();
+                      initStrcuctS();
+                     $("#Modal2").modal("hide");
+                     toastr.success("保存成功");
+                 }
+             }
+         });
+    }
+    
+    
+  //修改弹出框加载数据
+    function reloadData() {
+        $.ajax({
+            type: 'POST',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "TableBridge2",
+            },
+            error: function (msg) {
+                if (hyid == null) {
+
+                } else {
+                    toastr.error("请求BrgCardServlet失败");
+                }
+            },
+            success: function (json) {
+                if (json.success == "fail") {
+                    toastr.success("结构技术数据没有数据");
+                } else {
+                    var data = json.obj;
+                    for (var i = 0; i < data.length; i++) {
+                        var brg_top_len = data[i].brgCardTopStruct.length;
+                        top_len = data[i].brgCardTopStruct.length;
+                        if (top_len < 1) {
+                            top_len = 1;
+                        }
+                        var brg_down_len = data[i].brgCardDownStruct.length;
+                        down_len = data[i].brgCardDownStruct.length;
+                        if (down_len < 1) {
+                            down_len = 1;
+                        }
+                        /* var tb2 = $("#tb22");
+                        tb2.append("<tr><th style='width:35px'>21</th><td colspan='2'><label>桥长(m)</label><font style='color: red'>*</font>"
+                            + "</td><td><input class='form-control' id='bridge_len' value='' placeholder='' type='text'>"
+                            + "</td><th style='width:65px'>22</th><td><label>桥面总宽(m)</label></td><td><input class='form-control' id='bridge_width' value=''"
+                            + "placeholder='' type='text'></td><th>23</th><td><label>车行道宽(m)</label></td><td colspan='2'><input class='form-control' id='lane_width' value=''"
+                            + "placeholder='' type='text'></td></tr>");
+                        tb2.append("<tr><th>24</th><td colspan='2'><label>桥面标高(m)</label></td><td><input class='form-control' id='bridge_t_s_height'"
+                            + "value='' placeholder='' type='text'></td><th>25</th><td><label>桥下净高(m)</label></td><td><input class='form-control' id='bridge_b_height'"
+                            + "value='' placeholder='' type='text'></td><th>26</th><td><label>桥上净高(m)</label></td>"
+                            + "<td colspan='2'><input class='form-control' id='bridge_t_height' value=''  type='text'></td>"
+                            + "</tr>");
+                        tb2.append("<tr><th>27</th>"
+                            + "<td colspan='2'><label>引道总宽(m)</label></td>"
+                            + "<td><input class='form-control' id='approach_total_width' value=''  type='text'></td>"
+                            + "<th>28</th>"
+                            + "<td><label>引道路面宽(m)</label></td>"
+                            + "<td><input class='form-control' id='approach_width'  value='' ' type='text'></td>"
+                            + "<th>29</th>"
+                            + "<td><label>引道线形</label></td>"
+                            + "<td colspan='2'><input class='form-control' id='approach_line_type' value='' placeholder='' type='text'></td>"
+                            + "</tr>");
+                        tb2.append("<tr><th>32</th>"
+                            + "<td colspan='2'><label>伸缩缝类型</label></td>"
+                            + "<td><input class='form-control' id='expansion_joint_type' value='' placeholder='' type='text'></td>"
+                            + "<th>33</th><td><label>支座类型</label></td>"
+                            + "<td style='width: 150px'><select class='combobox form-control' id='support_type'><option value='' selected='selected'>请选择</option></select></td>"
+                            + "<th>34</th><td style='width: 60px'><label>地震动峰值加速度系数</label></td>"
+                            + "<td colspan='2'><select class='combobox form-control' id='acceleration_factor'><option value='' selected='selected'>请选择</option></select></td>"
+                            + "</tr>");
+                        tb2.append("<tr><th>35</th>"
+                            + "<td colspan='2'><label>桥台护坡</label></td>"
+                            + "<td><input class='form-control' id='abutment_slope' value='' placeholder='' type='text'></td>"
+                            + "<th>36</th><td><label>护墩体</label></td>"
+                            + "<td><input class='form-control' id='guard_pier_body' value='' placeholder='' type='text'></td>"
+                            + "<th>37</th><td><label>调治构造物</label></td>"
+                            + "<td colspan='2'><input class='form-control' id='treatment_struct' value='' placeholder='' type='text'></td>"
+                            + "</tr>");
+                        tb2.append("<tr><th>38</th>"
+                            + "<td colspan='2'><label>常水位</label></td>"
+                            + "<td><input class='form-control' id='water_level' value='' placeholder='' type='text'></td>"
+                            + "<th>39</th><td><label>设计水位</label></td>"
+                            + "<td><input class='form-control' id='design_level' value='' placeholder='' type='text'></td>"
+                            + "<th>40</th><td><label>历史洪水位</label></td>"
+                            + "<td colspan='2'><input class='form-control' id='his_flood_level' value='' placeholder='' type='text'></td>"
+                            + "</tr>"); */
+                        $('#table2').append("<tr><th>21</th><th colspan='2'>桥长(m)</th><td colspan='2'>"
+                            + data[i].bridge_len
+                            + "</td><th>22</th><th colspan='2'>桥面总宽(m)</th><td colspan='2'>"
+                            + data[i].bridge_width
+                            + "</td><th>23</th><th colspan='2'>车行道宽(m)</th><td>"
+                            + data[i].lane_width
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>24</th><th colspan='2'>桥面标高(m)</th><td colspan='2'>"
+                            + data[i].bridge_t_s_height
+                            + "</td><th>25</th><th colspan='2'>桥下净高(m)</th><td colspan='2'>"
+                            + data[i].bridge_b_height
+                            + "</td><th>26</th><th colspan='2'>桥上净高(m)</th><td>"
+                            + data[i].bridge_t_height
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>27</th><th colspan='2'>引道总宽(m)</th><td colspan='2'>"
+                            + data[i].approach_total_width
+                            + "</td><th>28</th><th colspan='2'>引道路面宽(m)</th><td colspan='2'>"
+                            + data[i].approach_width
+                            + "</td><th>29</th><th colspan='2'>引道线形</th><td>"
+                            + data[i].approach_line_type
+                            + "</td></tr>");
+                        if (brg_top_len == 0) {
+                            $('#table2').append("<tr id='topS' ><th>30</th><th>上部结构</th><th>跨号1</th><td colspan='2'></td><th>桥型1</th><td colspan='2'>"
+                                + "</td><th>跨径1(m)</th><td colspan='2'>"
+                                + "</td><th>材料1</th><td colspan='2'>"
+                                + "</tr>");
+                        } else {
+                            for (var k = 0; k < brg_top_len; k++) {
+                                if (k == 0) {
+                                    $('#table2').append("<tr id='topS'><th rowspan='" + brg_top_len + "'>30</th><th rowspan='" + brg_top_len + "'>上部结构</th><th>跨号1</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_hole_no
+                                        + "</td><th>桥型1</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_type
+                                        + "</td><th>跨径1(m)</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_span
+                                        + "</td><th>材料1</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_stuff
+                                        + "</tr>");
+                                } else {
+                                    $('#table2').append("<tr><th>跨号" + parseInt(k + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_hole_no
+                                        + "</td><th>桥型" + parseInt(k + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_type
+                                        + "</td><th>跨径" + parseInt(k + 1) + "(m)</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_span
+                                        + "</td><th>材料" + parseInt(k + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardTopStruct[k].top_struct_stuff
+                                        + "</tr>");
+                                }
+                            }
+                            ;
+                        }
+                        ;
+                        if (brg_down_len == 0) {
+                            $('#table2').append("<tr><th>31</th><th>下部结构</th><th>墩台号1</th><td colspan='2'></td><th>墩台形式1</th><td colspan='2'>"
+                                + "</td><th>材料1</th><td colspan='2'>"
+                                + "</td><th>基础形式1</th><td colspan='2'>"
+                                + "</tr>");
+
+                        } else {
+                            for (var j = 0; j < brg_down_len; j++) {
+                                if (j == 0) {
+                                    $('#table2').append("<tr><th rowspan='" + brg_down_len + "'>31</th><th rowspan='"
+                                        + brg_down_len + "'>下部结构</th><th>墩台号1</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_pier
+                                        + "</td><th>墩台形式1</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_type
+                                        + "</td><th>材料1</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_stuff
+                                        + "</td><th>基础形式1</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_base_type
+                                        + "</tr>");
+                                } else {
+                                    $('#table2').append("<tr><th>墩台号" + parseInt(j + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_pier
+                                        + "</td><th>墩台形式" + parseInt(j + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_type
+                                        + "</td><th>材料" + parseInt(j + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_stuff
+                                        + "</td><th>基础形式" + parseInt(j + 1) + "</th><td colspan='2'>"
+                                        + data[i].brgCardDownStruct[j].down_struct_base_type
+                                        + "</tr>");
+                                }
+                            }
+                            ;
+                        }
+                        ;
+                        $('#table2').append("<tr><th>32</th><th colspan='2'>伸缩缝类型</th><td colspan='2'>"
+                            + data[i].expansion_joint_type
+                            + "</td><th>33</th><th colspan='2'>支座类型</th><td colspan='2'>"
+                            + data[i].support_type
+                            + "</td><th>34</th><th colspan='2'>地震动峰值加速度系数</th><td>"
+                            + data[i].acceleration_factor
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>35</th><th colspan='2'>桥台护坡</th><td colspan='2'>"
+                            + data[i].abutment_slope
+                            + "</td><th>36</th><th colspan='2'>护墩体</th><td colspan='2'>"
+                            + data[i].guard_pier_body
+                            + "</td><th>37</th><th colspan='2'>调治构造物</th><td>"
+                            + data[i].treatment_struct
+                            + "</td></tr>");
+                        $('#table2').append("<tr><th>38</th><th colspan='2'>常水位</th><td colspan='2'>"
+                            + data[i].water_level
+                            + "</td><th>39</th><th colspan='2'>设计水位</th><td colspan='2'>"
+                            + data[i].design_level
+                            + "</td><th>40</th><th colspan='2'>历史洪水位</th><td>"
+                            + data[i].his_flood_level
+                            + "</td></tr>");
+                        $.ajax({
+                            type: 'POST',
+                            url: '../BrgCardServlet',
+                            dataType: 'json',
+                            data: {
+                                type: "initB"
+                            },
+                            error: function (msg) {
+                                toastr.error("请求失败");
+                            },
+                            success: function (json) {
+                                var arr = json.obj;
+                                /*插入select选项*/
+                                for (var i = 0; i < arr.length; i++) {
+
+                                    /*引道线形
+                                    if (arr[i].item_id == 24) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+                                            $('#approach_line_type').append(
+                                                "<option value='" + arr[i].item_value + "' >"
+                                                + arr[i].item_value + "</option>");
+                                        } else {
+                                            $('#approach_line_type').append(
+                                                "<option value=''>请输入</option>");
+                                        }
+                                    }*/
+                                    /*上部结构材料*/
+                                    if (arr[i].item_id == 28) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+
+                                            for (var k = 1; k < top_len + 1; k++) {
+                                                var query = "top_struct_stuff" + k;
+                                                $("#" + query).append(
+                                                    "<option value='" + arr[i].item_value + "' >"
+                                                    + arr[i].item_value + "</option>");
+                                            }
+                                        }
+                                    }
+
+                                    /*下部结构形式*/
+                                    if (arr[i].item_id == 30) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+
+                                            for (var k = 1; k < down_len + 1; k++) {
+                                                var query = "down_struct_type" + k;
+                                                $("#" + query).append(
+                                                    "<option value='" + arr[i].item_value + "' >"
+                                                    + arr[i].item_value + "</option>");
+                                            }
+                                        }
+                                    }
+
+                                    /*下部结构材料*/
+                                    if (arr[i].item_id == 31) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+
+                                            for (var k = 1; k < down_len + 1; k++) {
+                                                var query = "down_struct_stuff" + k;
+                                                $("#" + query).append(
+                                                    "<option value='" + arr[i].item_value + "' >"
+                                                    + arr[i].item_value + "</option>");
+                                            }
+                                        }
+                                    }
+
+                                    /*下部结构基础形式*/
+                                    if (arr[i].item_id == 32) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+
+                                            for (var k = 1; k < down_len + 1; k++) {
+                                                var query = "down_struct_base_type" + k;
+                                                $("#" + query).append(
+                                                    "<option value='" + arr[i].item_value + "' >"
+                                                    + arr[i].item_value + "</option>");
+                                            }
+                                        }
+                                    }
+
+                                    /*伸缩缝类型
+                                    if (arr[i].item_id == 33) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+                                            $('#expansion_joint_type').append(
+                                                "<option value='" + arr[i].item_value + "' >"
+                                                + arr[i].item_value + "</option>");
+                                        } else {
+                                            $('#expansion_joint_type').append(
+                                                "<option value=''>请输入</option>");
+                                        }
+                                    }*/
+                                    /*支座类型*/
+                                    if (arr[i].item_id == 34) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+                                           $('#support_type').append(
+                                                "<option value='" + arr[i].item_value + "' >"
+                                                + arr[i].item_value + "</option>");
+                                        } else {
+                                           $('#support_type').append(
+                                                "<option value=''>请输入</option>");
+                                        }
+                                    }
+                                    /*地震系数*/
+                                    if (arr[i].item_id == 35) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+                                            $('#acceleration_factor').append(
+                                                "<option value='" + arr[i].item_value + "' >"
+                                                + arr[i].item_value + "</option>");
+                                        } else {
+                                            $('#acceleration_factor').append(
+                                                "<option value=''>请输入</option>");
+                                        }
+                                    }
+                                    /*桥台护坡
+                                    if (arr[i].item_id == 36) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+                                            $('#abutment_slope').append(
+                                                "<option value='" + arr[i].item_value + "' >"
+                                                + arr[i].item_value + "</option>");
+                                        } else {
+                                            $('#abutment_slope').append(
+                                                "<option value=''>请输入</option>");
+                                        }
+                                    }*/
+                                    /*护墩体
+                                    if (arr[i].item_id == 37) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+                                            $('#guard_pier_body').append(
+                                                "<option value='" + arr[i].item_value + "' >"
+                                                + arr[i].item_value + "</option>");
+                                        } else {
+                                            $('#guard_pier_body').append(
+                                                "<option value=''>请输入</option>");
+                                        }
+                                    }*/
+                                    /*调治构造物
+                                    if (arr[i].item_id == 38) {
+                                        if (typeof (arr[i].item_value) != "undefined") {
+                                            $('#treatment_struct').append(
+                                                "<option value='" + arr[i].item_value + "' >"
+                                                + arr[i].item_value + "</option>");
+                                        } else {
+                                            $('#treatment_struct').append(
+                                                "<option value=''>请输入</option>");
+                                        }
+                                    }*/
+
+                                }
+                                /*引道线形
+                                $('#approach_line_type').combobox();*/
+
+                                for (var k = 1; k < top_len + 1; k++) {
+                                    var query = "top_struct_stuff" + k;
+                                    /* $("#" + query).select2(); */
+
+                                }
+
+                                /*下部结构*/
+                                for (var k = 1; k < down_len + 1; k++) {
+                                    var query = "down_struct_type" + k;
+                                    /* $("#" + query).select2(); */
+
+                                }
+                                for (var k = 1; k < down_len + 1; k++) {
+                                    var query = "down_struct_stuff" + k;
+                                    /* $("#" + query).select2(); */
+
+                                }
+                                for (var k = 1; k < down_len + 1; k++) {
+                                    var query = "down_struct_base_type" + k;
+                                    /* $("#" + query).select2(); */
+
+                                }
+                               
+                            }
+                        });
+                        $.ajax({
+                            type: 'POST',
+                            url: '../BrgCardServlet',
+                            dataType: 'json',
+                            data: {
+                                type: "initTopStructType"
+                            },
+                            error: function (msg) {
+                                toastr.error("请求失败");
+                            },
+                            success: function (json) {
+                                if (json.success = "success") {
+                                    var arr = json.obj;
+                                    /*上部结构形式*/
+                                    for (var i = 0; i < arr.length; i++) {
+                                        for (var k = 1; k < top_len + 1; k++) {
+                                            var query = "top_struct_type" + k;
+                                            $("#" + query).append(
+                                                "<option value='" + arr[i].brg_type_name + "' >"
+                                                + arr[i].brg_type_name + "</option>");
+                                        }
+                                    }
+                                }
+                                /*上部结构*/
+                                for (var k = 1; k < top_len + 1; k++) {
+                                    var query = "top_struct_type" + k;
+                                    /* $("#" + query).select2(); */
+                                }
+                                tb2Data();
+                            }
+                        });
+
+                    }
+                }
+            },
+        });
+
+    }
+  
+  	/**************************************** 回显档案资料信息 ****************************************/
+    function changebcd() {
+        var blueprint_state = $('#table3 tr:eq(0) td:eq(0)').text();
+        var design_file_state = $('#table3 tr:eq(0) td:eq(1)').text();
+        var construct_file_state = $('#table3 tr:eq(0) td:eq(2)').text();
+        var complete_file_state = $('#table3 tr:eq(1) td:eq(0)').text();
+        var acceptance_file_state = $('#table3 tr:eq(1) td:eq(1)').text();
+        var administrate_file_state = $('#table3 tr:eq(1) td:eq(2)').text();
+        var regular_report_state = $('#table3 tr:eq(2) td:eq(0)').text();
+        var special_report_state = $('#table3 tr:eq(2) td:eq(1)').text();
+        var history_maintain_state = $('#table3 tr:eq(2) td:eq(2)').text();
+        var document_no = $('#table3 tr:eq(3) td:eq(0)').text();
+        var document = $('#table3 tr:eq(3) td:eq(1)').text();
+        var document_time = $('#table3 tr:eq(3) td:eq(2)').text();
+        $("#blueprint_stateundefined").val(blueprint_state);
+        $("#design_file_stateundefined").val(design_file_state);
+        $("#construct_file_stateundefined").val(construct_file_state);
+        $("#complete_file_stateundefined").val(complete_file_state);
+        $("#acceptance_file_stateundefined").val(acceptance_file_state);
+        $("#administrate_file_stateundefined").val(administrate_file_state);
+        $("#regular_report_stateundefined").val(regular_report_state);
+        $("#special_report_stateundefined").val(special_report_state);
+        $("#history_maintain_stateundefined").val(history_maintain_state);
+        $("#document_no").val(document_no);
+        $("#document").val(document);
+        $("#document_time").val(document_time);
+        $("#Modal3").modal("show");
+    }
+  
+  /******************************************* 保存档案资料 **********************************************/
+  function saveDazl(){
+	  $.ajax({
+          type: 'POST',
+          url: '../BrgCardServlet',
+          dataType: 'json',
+          data: {
+              type: "changebcd",
+              blueprint_state: $('#blueprint_state').val(),
+              design_file_state: $('#design_file_state').val(),
+              construct_file_state: $('#construct_file_state').val(),
+              complete_file_state: $('#complete_file_state').val(),
+              acceptance_file_state: $('#acceptance_file_state').val(),
+              administrate_file_state: $('#administrate_file_state').val(),
+              regular_report_state: $('#regular_report_state').val(),
+              special_report_state: $('#special_report_state').val(),
+              history_maintain_state: $('#history_maintain_state').val(),
+              document_no: $('#document_no').val(),
+              document: $('#document').val(),
+              document_time: $('#document_time').val()
+          },
+          error: function (msg) {
+              toastr.error("请求BrgCardServlet失败");
+          },
+          success: function (json) {
+              if (json.success == "fail") {
+                  switch (json.error) {
+                      case 1:
+                          toastr.error("修改失败");
+                          break;
+                      case 2:
+                          toastr.error("服务器错误");
+                          break;
+                      default:
+                          break;
+                  }
+              } else {
+                  //toastr.success("修改成功");
+                  $('#table3 tr:eq(0) td:eq(0)').text($('#blueprint_state').val());
+                  $('#table3 tr:eq(0) td:eq(1)').text($('#design_file_state').val());
+                  $('#table3 tr:eq(0) td:eq(2)').text($('#construct_file_state').val());
+                  $('#table3 tr:eq(1) td:eq(0)').text($('#complete_file_state').val());
+                  $('#table3 tr:eq(1) td:eq(1)').text($('#acceptance_file_state').val());
+                  $('#table3 tr:eq(1) td:eq(2)').text($('#administrate_file_state').val());
+                  $('#table3 tr:eq(2) td:eq(0)').text($('#regular_report_state').val());
+                  $('#table3 tr:eq(2) td:eq(1)').text($('#special_report_state').val());
+                  $('#table3 tr:eq(2) td:eq(2)').text($('#history_maintain_state').val());
+                  $('#table3 tr:eq(3) td:eq(0)').text($('#document_no').val());
+                  $('#table3 tr:eq(3) td:eq(1)').text($('#document').val());
+                  $('#table3 tr:eq(3) td:eq(2)').text($('#document_time').val());
+                  $('#Modal3').modal("hide");
+                  toastr.success("保存成功");
+              }
+          }
+      });
+  }
+  
+  /*********************************** 保存技术状况评定 ****************************************/
+  
+  function savejszkpd(){
+	  if ($("#chk_date").val() == "") {
+          toastr.error("请输入检查年月!");
+          return false;
+      } else if ($("#next_date").val() == "") {
+          toastr.error("请输入下次检查年份!");
+          return false;
+      }
+      $.ajax({
+          type: 'POST',
+          url: '../BrgCardServlet',
+          dataType: 'json',
+          data: {
+              type: "new_nearly",
+              chk_date: $('#chk_date').val(),
+              chk_type: $('#chk_type').val(),
+              brg_level: $('#brg_level').val(),
+              abutment_base: $('#abutment_base').val(),
+              pier_base: $('#pier_base').val(),
+              foundation_erosion: $('#foundation_erosion').val(),
+              top_struts: $('#top_struts').val(),
+              support: $('#support').val(),
+              always_repairs: $('#always_repairs').val(),
+              disposal_strategy: $('#disposal_strategy').val(),
+              next_date: $('#next_date').val()
+          },
+          error: function (msg) {
+              toastr.error("请求BrgCardServlet失败");
+          },
+          success: function (json) {
+              if (json.success == "fail") {
+                  switch (json.error) {
+                      case 1:
+                          toastr.error("添加失败");
+                          break;
+                      case 2:
+                          toastr.error("服务器错误");
+                          break;
+                      default:
+                          break;
+                  }
+              } else {
+            	  removeTabel4();
+                  initBrgCardEvaluation();
+                  $('#Modal4').modal("hide");
+                  toastr.success("保存成功");
+              }
+          }
+      });
+  }
+  
+  function removeTabel4() {
+      var tr = $("#table4").find("tr");
+      for (var i = 2; i < tr.length; i++) {
+          tr[i].remove();
+      }
+  }
+  
+  var ii;
+  /*修改最近评定数据*/
+  function change_nearly_eva(r_id, i) {
+	  	rId=r_id;
+	  	ii=i;
+  /* 	setTimeout('clear_nearly()', 200); 
+      $("#tb4 tr:eq(2) td").each(function(){
+      	var domId = $(this).find("select").attr("id");
+      	var id = $(this).find("select").attr("data-id");
+      	$("#"+domId).empty();
+      	getOptionsByDataId(domId,id);
+      });  */
+      $("#change_chk_date").val($("#table4 tr:eq(" + i + ") td:eq(0)").text());
+      $("#change_chk_type").val($("#table4 tr:eq(" + i + ") td:eq(1)").text());
+      $("#change_brg_level").val($("#table4 tr:eq(" + i + ") td:eq(2)").text());
+      $("#change_abutment_base").val($("#table4 tr:eq(" + i + ") td:eq(3)").text());
+      $("#change_pier_base").val($("#table4 tr:eq(" + i + ") td:eq(4)").text());
+      $("#change_foundation_erosion").val($("#table4 tr:eq(" + i + ") td:eq(5)").text());
+      $("#change_top_struts").val($("#table4 tr:eq(" + i + ") td:eq(6)").text());
+      $("#change_support").val($("#table4 tr:eq(" + i + ") td:eq(7)").text());
+      $("#change_always_repairs").val($("#table4 tr:eq(" + i + ") td:eq(8)").text());
+      $("#change_disposal_strategy").val($("#table4 tr:eq(" + i + ") td:eq(9)").text());
+      $("#change_next_date").val($("#table4 tr:eq(" + i + ") td:eq(10)").text());
+      $("#changeModal4").modal("show");
+  	}
+  
+  	function changejszkpd(){
+  		if ($("#change_chk_date").val() == "") {
+            toastr.error("请输入检查年月!");
+            return false;
+        } else if ($("#change_next_date").val() == "") {
+            toastr.error("请输入下次检查年份!");
+            return false;
+        }
+        $.ajax({
+                type: 'POST',
+                url: '../BrgCardServlet',
+                dataType: 'json',
+                data: {
+                    type: "change_nearly",
+                    id: rId,
+                    chk_date: $('#change_chk_date').val(),
+                    chk_type: $('#change_chk_type').val(),
+                    brg_level: $('#change_brg_level').val(),
+                    abutment_base: $('#change_abutment_base').val(),
+                    pier_base: $('#change_pier_base').val(),
+                    foundation_erosion: $('#change_foundation_erosion').val(),
+                    top_struts: $('#change_top_struts') .val(),
+                    support: $('#change_support').val(),
+                    always_repairs: $('#change_always_repairs').val(),
+                    disposal_strategy: $('#change_disposal_strategy').val(),
+                    next_date: $('#change_next_date').val()
+                },
+                error: function (msg) {
+                    toastr.error("请求BrgCardServlet失败");
+                },
+                success: function (json) {
+                    if (json.success == "fail") {
+                        switch (json.error) {
+                            case 1:
+                                toastr.error("修改失败");
+                                break;
+                            case 2:
+                                toastr.error("服务器错误");
+                                break;
+                            default:
+                                break;
+                        }
+                    } else {
+                        var a = $("#table4").find("tr");
+                        var size = a.length;
+                        $("#table4 tr:eq("+ ii+ ") td:eq(0)").text($('#change_chk_date').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(1)").text($('#change_chk_type').val());
+                        $( "#table4 tr:eq("+ ii+ ") td:eq(2)").text($('#change_brg_level').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(3)").text($('#change_abutment_base').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(4)").text($('#change_pier_base').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(5)").text($('#change_foundation_erosion').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(6)").text($('#change_top_struts').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(7)").text($('#change_support').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(8)").text($('#change_always_repairs').val());
+                        $("#table4 tr:eq("+ ii+ ") td:eq(9)").text($( '#change_disposal_strategy').val());
+                        $( "#table4 tr:eq(" + ii+ ") td:eq(10)") .text($('#change_next_date').val());
+                        $("#changeModal4").modal("hide");
+                        toastr.success("修改成功");
+                    }
+                }
+            });
+  	}
+  
+  
+  function clear_nearly() {
+      var len = $("#table4").find("tr").length - 1;
+
+      $("#change_chk_date").val($("#table4 tr:eq(" + len + ") td:eq(0)").text());
+      $("#change_chk_type").val($("#table4 tr:eq(" + len + ") td:eq(1)").text());
+      $("#change_brg_level").val($("#table4 tr:eq(" + len + ") td:eq(2)").text());
+      $("#change_abutment_based").val($("#table4 tr:eq(" + len + ") td:eq(3)").text());
+      $("#change_pier_base").val($("#table4 tr:eq(" + len + ") td:eq(4)").text());
+      $("#change_foundation_erosion").val($("#table4 tr:eq(" + len + ") td:eq(5)").text());
+      $("#change_top_struts").val($("#table4 tr:eq(" + len + ") td:eq(6)").text());
+      $("#change_support").val($("#table4 tr:eq(" + len + ") td:eq(7)").text());
+      $("#change_always_repairs").val($("#table4 tr:eq(" + len + ") td:eq(8)").text());
+      $("#change_disposal_strategy").val($("#table4 tr:eq(" + len + ") td:eq(9)").text());
+      $("#change_next_date").val($("#table4 tr:eq(" + len + ") td:eq(10)").text());
+
+  }
+  
+  /*删除最近评定数据*/
+  function del_nearly_eva(r_id, i) {
+      $.SmartMessageBox({
+          title: "删除最近评定数据",
+          content: "您是否确认删除？",
+          buttons: '[取消]&nbsp;[确定]'
+      }, function (ButtonPressed) {
+          if (ButtonPressed === "确定") {
+              $.ajax({
+                  type: 'POST',
+                  url: '../BrgCardServlet',
+                  dataType: 'json',
+                  data: {
+                      type: "delete_nearly",
+                      r_id: r_id
+                  },
+                  error: function (msg) {
+                      toastr.error("删除最近评定数据失败！");
+                  },
+                  success: function (json) {
+                      if (json.success == "success") {
+                          removeTabel4();
+                          initBrgCardEvaluation();
+                          toastr.success("删除成功");
+                      } else {
+                          toastr.error("删除最近评定数据失败！");
+                      }
+                  }
+              });
+          }
+      });
+  }
+  
+  /* 新增修建工程记录 */
+  function savexjgcjl(){
+	  if ($("#start_date").val() == "") {
+          toastr.error("请输入开工时间!");
+          return false;
+      } else if ($("#finish_date").val() == "") {
+          toastr.error("请输入竣工时间!");
+          return false;
+      }
+
+      $.ajax({
+          type: 'POST',
+          url: '../BrgCardServlet',
+          dataType: 'json',
+          data: {
+              type: "newbccp",
+              start_date: $('#start_date').val(),
+              finish_date: $('#finish_date').val(),
+              type1: $('#type').val(),
+              reason: $('#reason').val(),
+              scope: $('#scope').val(),
+              cost: $('#cost').val(),
+              cost_source: $('#cost_source').val(),
+              evaluate_level: $('#evaluate_level').val(),
+              build_org: $('#build_org').val(),
+              design_org: $('#design_org').val(),
+              construct_org: $('#construct_org').val(),
+              supervise_org: $('#supervise_org').val(),
+              memo: $('#memo').val()
+          },
+          error: function (msg) {
+              toastr.error("请求BrgCardServlet失败");
+          },
+          success: function (json) {
+              if (json.success == "fail") {
+                  switch (json.error) {
+                      case 1:
+                          toastr.error("添加失败");
+                          break;
+                      case 2:
+                          toastr.error("服务器错误");
+                          break;
+                      default:
+                          break;
+                  }
+              } else {
+                  removeTabel5();
+                  initBrgCardConstructPrj();
+                  $('#Modal5').modal("hide");
+                  toastr.success("添加成功");
+              }
+          }
+      });
+  }
+  
+  function removeTabel5() {
+      var tr = $("#table5").find("tr");
+      for (var i = 2; i < tr.length; i++) {
+          tr[i].remove();
+      }
+  }
+  
+  function changebccp(id, i, size) {
+	  id5=id;
+	  i5=i;
+      $("#change_start_date").val($("#table5 tr:eq(" + i + ") td:eq(0)").text());
+      $("#change_finish_date").val($('#table5 tr:eq(' + i + ') td:eq(1)').text());
+      $("#change_type").val($('#table5 tr:eq(' + i + ') td:eq(2)').text());
+      $("#change_reason").val($('#table5 tr:eq(' + i + ') td:eq(3)').text());
+      $("#change_scope").val($('#table5 tr:eq(' + i + ') td:eq(4)').text());
+      $("#change_cost").val($('#table5 tr:eq(' + i + ') td:eq(5)').text());
+      $("#change_cost_source").val($('#table5 tr:eq(' + i + ') td:eq(6)').text());
+      $("#change_evaluate_level").val($('#table5 tr:eq(' + i + ') td:eq(7)').text());
+      $("#change_build_org").val($('#table5 tr:eq(' + i + ') td:eq(8)').text());
+      $("#change_design_org").val($('#table5 tr:eq(' + i + ') td:eq(9)').text());
+      $("#change_construct_org").val($('#table5 tr:eq(' + i + ') td:eq(10)').text());
+      $("#change_supervise_org").val($('#table5 tr:eq(' + i + ') td:eq(11)').text());
+      $("#change_memo").val($('#table5 tr:eq(' + (parseInt(size) + 2) + ') td:eq(1)').text());
+  	  $("#changeModal5").modal("show");
+  }
+  
+  function changexjgcjl(){
+	  if ($("#change_start_date").val() == "") {
+          toastr.error("请输入开工时间!");
+          return false;
+      } else if ($("#change_finish_date").val() == "") {
+          toastr.error("请输入竣工时间!");
+          return false;
+      }
+      $.ajax({
+              type: 'POST',
+              url: '../BrgCardServlet',
+              dataType: 'json',
+              data: {
+                  type: "changebccp",
+                  id: id5,
+                  start_date: $('#change_start_date').val(),
+                  finish_date: $('#change_finish_date').val(),
+                  type1: $('#change_type').val(),
+                  reason: $('#change_reason').val(),
+                  scope: $('#change_scope').val(),
+                  cost: $('#change_cost').val(),
+                  cost_source: $('#change_cost_source').val(),
+                  evaluate_level: $('#change_evaluate_level').val(),
+                  build_org: $('#change_build_org').val(),
+                  design_org: $('#change_design_org').val(),
+                  construct_org: $('#change_construct_org').val(),
+                  supervise_org: $('#change_supervise_org').val(),
+                  memo: $('#change_memo').val()
+              },
+              error: function (msg) {
+                  toastr.error("请求BrgCardServlet失败");
+              },
+              success: function (json) {
+                  if (json.success == "fail") {
+                      switch (json.error) {
+                          case 1:
+                              toastr.error("修改失败");
+                              break;
+                          case 2:
+                              toastr.error("服务器错误");
+                              break;
+                          default:
+                              break;
+                      }
+                  } else {
+                      //toastr.success("修改成功");
+                      var a = $("#table5").find("tr");
+                      var size = a.length;
+
+                      $("#table5 tr:eq("+ i5 + ") td:eq(0)").text($('#change_start_date').val());
+                      $("#table5 tr:eq("+ i5 + ") td:eq(1)").text($('#change_finish_date').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(2)').text($('#change_type').val());
+                      $('#table5 tr:eq(' + i5 + ') td:eq(3)').text($('#change_reason').val());
+                      $('#table5 tr:eq(' + i5+ ') td:eq(4)').text($('#change_scope').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(5)').text($('#change_cost').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(6)').text($('#change_cost_source').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(7)').text($('#change_evaluate_level').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(8)').text($('#change_build_org').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(9)').text($('#change_design_org').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(10)').text($('#change_construct_org').val());
+                      $('#table5 tr:eq('+ i5+ ') td:eq(11)').text($('#change_supervise_org').val());
+                      $('#table5 tr:eq('+ (parseInt(size) - 1)+ ') td:eq(1)').text($('#change_memo').val());
+                      $("#changeModal5").modal("hide");
+                  }
+              }
+          });
+  }
+  
+  /******************************** 删除修建工程记录数据 **********************/
+  function delbccp(r_id, i, size) {
+      $.SmartMessageBox({
+          title: "删除修建工程记录数据",
+          content: "您是否确认删除？",
+          buttons: '[取消]&nbsp;[确定]'
+      }, function (ButtonPressed) {
+          if (ButtonPressed === "确定") {
+              $.ajax({
+                  type: 'POST',
+                  url: '../BrgCardServlet',
+                  dataType: 'json',
+                  data: {
+                      type: "delbccp",
+                      r_id: r_id
+                  },
+                  error: function (msg) {
+                      toastr.error("删除修建工程记录数据失败！");
+                  },
+                  success: function (json) {
+                      if (json.success == "success") {
+                          removeTabel5();
+                          initBrgCardConstructPrj();
+                      } else {
+                          toastr.error("删除修建工程记录数据失败！");
+                      }
+                  }
+              });
+          }
+      });
+  }
+  
+  function getBridge_id() {
+      $.ajax({
+          type: 'POST',
+          url: '../BrgCardServlet',
+          dataType: 'json',
+          data: {
+              type: "getBridge_id",
+          },
+          error: function (msg) {
+              toastr.error("BrgCardServlet链接失败！");
+          },
+          success: function (json) {
+              if (json.success == "success") {
+                  var bridge_id = json.obj;
+                  initBrgPicture(bridge_id);
+              }
+          }
+      });
+  }
+  
+  function initBrgPicture(hhhbs) {
+      $.ajax({
+          type: 'POST',
+          url: '../BrgCardServlet',
+          dataType: 'json',
+          data: {
+              type: "initBrgPicture",
+          },
+          error: function (msg) {
+              toastr.error("请求BrgCardServlet失败");
+          },
+          success: function (json) {
+
+              if (json.success == "fail") {
+                  //toastr.success("桥梁照片没有数据");
+              } else {
+                  var data = json.obj;
+                  $('#table7').html('');
+                  for (var i = 0; i < data.length; i++) {
+                      $('#table7').append(
+                              "<tr><th>79</th><th>主管负责人</th><td>"
+                              + data[i].charge_man
+                              + "</td><th>80</th><th>填卡人</th><td>"
+                              + data[i].fill_man
+                              + "</td><th>81</th><th>填卡日期</th><td>"
+                              + data[i].fill_date
+                              + "</td></tr>");
+                  }
+              }
+               initPhoto();
+          }
+      });
+  }
+  
+  function initPhoto() {
+      $.ajax({
+          type: 'POST',
+          url: '../BrgCardServlet',
+          dataType: 'json',
+          data: {
+              type: "initPhoto",
+          },
+          error: function (msg) {
+               toastr.error("请求BrgCardServlet失败");
+          },
+          success: function (json) {
+        	  $('#table6').html('');
+              if (json.success == "success") {
+                  var data = json.obj;
+                  $('#table6').append("<tr><th>77</th><th>正面照</th><td colspan='3'><img id='img1' src='"
+                      + encodeURI("../ImageDownLoadServer?path="
+                          + data.face_path)
+                      + "' width='450px' height='300px'></td><th>78</th><th>立面照</th><td colspan='3'><img id='img2' src='"
+                      + encodeURI("../ImageDownLoadServer?path="
+                          + data.facade_path)
+                      + "' width='450px' height='300px'></td></tr>");
+              } else {
+                  $('#table6').append("<tr><th>77</th><th>正面照</th><td colspan='3'><img id='img1' src='"
+                      + encodeURI("../ImageDownLoadServer?path="
+                          + "nofile.jpg")
+                      + "' width='450px' height='300px'></td><th>78</th><th>立面照</th><td colspan='3'><img id='img2' src='"
+                      + encodeURI("../ImageDownLoadServer?path="
+                          + "nofile.jpg")
+                      + "' width='450px' height='300px'></td></tr>");
+              }
+
+
+          }
+      });
+  }
+  
+	  function changeMan() {
+	      $("#charge_man").val($('#table7 tr:eq(0) td:eq(0)').text());
+	      $("#fill_man").val($('#table7 tr:eq(0) td:eq(1)').text());
+	      $("#fill_date").val($('#table7 tr:eq(0) td:eq(2)').text());
+	  }
+	  
+	  function savePerson(){
+		  $.ajax({
+              type: 'POST',
+              url: '../BrgCardServlet',
+              dataType: 'json',
+              data: {
+                  type: "changeMan",
+                  charge_man: $('#charge_man').val(),
+                  fill_man: $('#fill_man').val(),
+                  fill_date: $('#fill_date').val()
+              },
+              error: function (msg) {
+                  if (hyid == null) {
+                  } else {
+                      toastr.error("请求BrgCardServlet失败");
+                  }
+              },
+              success: function (json) {
+                  if (json.success == "fail") {
+                      switch (json.error) {
+                          case 1:
+                              toastr.error("修改失败");
+                              break;
+                          case 2:
+                              toastr.error("服务器错误");
+                              break;
+                          default:
+                              break;
+                      }
+                  } else {
+                      toastr.success("修改成功");
+                      $('#table7 tr:eq(0) td:eq(0)').text($('#charge_man').val());
+                      $('#table7 tr:eq(0) td:eq(1)').text($('#fill_man').val());
+                      $('#table7 tr:eq(0) td:eq(2)').text($('#fill_date').val());
+                      $('#Modal6').modal("hide");
+                  }
+              }
+          });
+	  }
+	  
+	  function initMenu(){
+			$.ajax({
+	            type: 'GET',
+	            url: '../BrgCardServlet',
+	            dataType: 'json',
+	            data: {
+	                type: "selectAllBrg"
+	            },
+	            error: function (msg) {
+	                toastr.error("系统错误！");
+	            },
+	            success: function (json) {
+	                if (json.success == "success") {
+	                	var arr = json.obj;
+	                	$("#qiaoSlect").html('');
+	                	$("#qiaoSlect2").html('');
+	                	$("#qiaoSlect3").html('');
+	                	$("#qiaoSlect4").html('');
+	                    for (var i = 0; i < arr.length; i++) {
+	                    	$("#qiaoSlect").append('<li><a href="./qiaoliangguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+	                    	$("#qiaoSlect2").append('<li><a href="./cedianguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+	                    	$("#qiaoSlect3").append('<li><a href="./shujuguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+	                    	$("#qiaoSlect4").append('<li><a href="./yujin.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+	                    }
+	                }else {
+	                    toastr.error("初始桥梁出错");
+	                }
+	            }
+	        });
+		}
+	</script>
+</body>
+</html>

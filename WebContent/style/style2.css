@@ -1,0 +1,254 @@
+/* i{
+    cursor: pointer;
+} */
+.yihang{
+    display:flex;
+    align-items: center;
+}
+.yihang2{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.yihang3{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.zhuashou{
+	cursor: pointer;
+}
+.renyuan{
+	width:80px;
+	height:90px;
+	text-align:center;
+	color:#fff;
+	font-size:18px;
+}
+.renyuan a{
+	color:#fff;
+	display:block;
+	border-radius:3px;
+}
+.renyuan :hover{
+	background:#63B8FF;
+}
+.baitiao{
+	width:100%;
+	height:7px;
+	background:#fff;
+}
+.lantiao{
+	width:100%;
+	height:40px;
+	background: url(../img/lantiao.png) no-repeat;
+}
+.caidanlan{
+	display:flex;
+	position: absolute;
+	top:80px;
+	left:40%;
+}
+.huitiao{
+	width:100%;
+	height:45px;
+	background: url(../img/huitiao.png) no-repeat;
+}
+.topBiaoqian{
+    background:#fff;
+    color:#000;
+    border:none;
+    width:99%;
+    height:50px;
+    line-height:50px;
+    margin:0 auto;
+    padding-left:16px;
+}
+.closeButton{
+    background:#fff;
+    border:none;
+    width:99%;
+    height:60px;
+    margin:10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.leftTop{
+    background:#fff;
+    width:100%;
+    height:40px;
+    line-height:40px;
+    padding-left:16px;
+    border-bottom:1px solid #ccc;
+    font-weight: 700;
+}
+.leftBotton{
+    background:#fff;
+    width:100%;
+    height:40px;
+    line-height:40px;
+    padding-left:16px;
+    border-bottom:1px solid #ccc;
+    border-top:1px solid #ccc;
+    font-weight: 700;
+}
+
+.xiaoqiao{
+    display:flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    padding:8px;
+    font-size:18px;
+    font-weigh:500;
+}
+.qiao1{
+    /* border-radius:3px; */
+    height:25px;
+    text-align: center;
+    padding:0 5px;
+    border-right: 1px solid #aaa;
+}
+
+.header i{
+    color: #fff;
+}
+.header{
+    height:120px;
+    color:#fff;
+    background: url(../img/top.png) no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content:space-between;
+    padding-top:12px;
+}
+.topB{
+    height:50px;
+    color: #dffee4;
+    background: url(../img/topB.png) no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+}
+.box1{
+    width:120px;
+    height:40px;
+    line-height:40px;
+    background: url(../img/caidan.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    cursor: pointer;
+    font-size:18px;
+    text-shadow:0px 3px 5px #ccc;
+    color: #000;
+}
+.box1active{
+    width:120px;
+    height:40px;
+    line-height:40px;
+    background: url(../img/caidana.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    cursor: pointer;
+    font-size:18px;
+    color: #fff;
+}
+.box1hover{
+    width:120px;
+    height:40px;
+    line-height:40px;
+    background: url(../img/caidana.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    font-size:18px;
+    color: #fff;
+}
+.box1 a{
+   color: #000;
+}
+.box1active a{
+    color: #fff;
+ }
+ .box1hover a{
+    color: #fff;
+ }
+
+.brgCd{
+    border:1px solid #ccc;
+    width:100%;
+    position:absolute;
+    z-index:99;
+    background:#fff;
+    display: none;
+}
+.brgCd div{
+    margin-left:12px;
+}
+
+.brgCdb{
+    border:1px solid #ccc;
+    width:100%;
+    position:absolute;
+    z-index:99;
+    background:#eee;
+    display: none;
+}
+.brgCdb div{
+    margin-left:12px;
+}
+.brgCdc{
+    border:1px solid #ccc;
+    width:100%;
+    position:absolute;
+    z-index:99;
+    background:#eee;
+    display: none;
+}
+.brgCdc div{
+    margin-left:12px;
+}
+
+.brgCdd{
+    border:1px solid #ccc;
+    width:100%;
+    position:absolute;
+    z-index:99;
+    background:#eee;
+    display: none;
+}
+.brgCdd div{
+    margin-left:12px;
+}
+
+.brgCde{
+    border:1px solid #ccc;
+    width:100%;
+    position:absolute;
+    z-index:99;
+    background:#eee;
+    display: none;
+}
+.brgCde div{
+    margin-left:12px;
+}
+.topshu1{
+	width:49%;
+	margin-left:12px;
+	background: url(../img/qiaoshu.png) no-repeat;
+	background-size:100% 100%;
+	display:flex;
+	align-items:center;
+	color:#fff;
+}
+.topshu2{
+	width:49%;
+	background: url(../img/cedianshu.png) no-repeat;
+	background-size:100% 100%;
+	margin-left:2%;
+	display:flex;
+	align-items:center;
+	color:#fff;
+	margin-right:12px;
+}
+
+
+

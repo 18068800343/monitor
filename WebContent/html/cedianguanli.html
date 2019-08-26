@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>高速桥梁监测系统集成管理平台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href="../font/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" href="../font/iconfont.css">
+	<link rel="stylesheet" href="../font2/iconfont.css">
+	<link rel="stylesheet" href="../style/bootstrap.min.css">
+	<link href="../style/style.css" rel="stylesheet">
+	<link href="../style/style2.css" rel="stylesheet">
+	<link href="../js/toastr/toastr.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style/jquery.dataTables.min.css">
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/font-awesome.min.css">
+
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-skins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/font.css">
+    <!-- SmartAdmin RTL Support  -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-rtl.min.css">
+	<style>
+		@media screen  and (max-height:1200px) {
+		    body{
+		   		height:1058px;
+				background:#fff;
+			}
+			#right{
+		   		height:845px;
+			}
+		}
+		
+		@media screen and (max-height:1050px) {
+		    body{
+		   		height:910px;
+				background:#fff;
+			}
+			#right{
+		   		height:710px;
+			}
+		}
+		@media screen and (max-height:900px) {
+		    body{
+		   		height:760px;
+				background:#fff;
+			}
+			#right{
+		   		height:550px;
+			}
+		}
+		.table{
+			width: 100%;
+		}
+		.yihang{
+			display:flex;
+			align-items: center;
+		}
+		.switch{
+   	 		width: 100px;
+    		margin: 100px 0px 0 100px;
+		}
+		.selected{
+			color: red;
+		}
+.btn_fath{
+  width: 90px;
+  position: relative;
+  border-radius: 20px;
+}
+.btn1{
+	color: white;
+	text-align: center;
+} 
+.btn2{
+	color: white;
+	text-align: center;
+} 
+
+
+
+
+.btnSwitch1 span{
+	width:100%;
+	font-size: 12px;
+}
+
+.btnSwitch2 span{
+	width:100%;
+	font-size: 12px;
+}
+ 
+.on.btn_fath{
+  background-color: #5281cd;
+}
+.off.btn_fath{
+  background-color: #828282;
+}
+tr.focus{
+    background-color:#eee;
+}
+	</style>
+</head>
+
+<body>
+	<div>
+	<div>
+		<section>
+			<!-- header -->
+			<header class="header">
+            <div>
+                <p style="font-size:28px;margin: 0px;"><img src="../img/qiaoLogo.png" alt="" style="width:48px;height:50%;">&nbsp;高速桥梁监测系统集成管理平台</p>
+            </div>
+            <div style="display:flex;">
+	                <div class="renyuan zhuashou"><a href="#"><img src="../img/登陆人.png" alt="">&nbsp;<span id="uname"></span></a></div>
+	                <div style="padding-top:5px;">丨</div>
+	                <div class="renyuan zhuashou"><a href="#" id="logOut"><img src="../img/退出.png" alt="">&nbsp;退出</a></div>
+	        </div>
+        </header>
+        <div>
+        	<div class="caidanlan">
+        			<div class="box1 yihang3" id="boxa">
+		                <p style="padding-top:10px;"><a href="./index.html" ><!-- <span class="glyphicon glyphicon-home" aria-hidden="true" style="color:#fff;font-size:16px;"></span> -->首页</a></p>
+		            </div>
+		            
+		            <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxb">
+					     <p><!-- <i class="iconfont icon-qiaoliang" style="color:#fff;font-size:20px;"></i> -->桥梁信息</p>
+					      
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxc">
+		                <p><!-- <i class="iconfont icon-jiancedianguanli"></i> -->测点管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect2">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxd">
+		                <p><!-- <i class="iconfont icon-shujuguanli"></i> -->数据管理</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect3">
+					      
+					    </ul>
+				  </div>
+				  
+				  <div class="btn-group" role="group">
+					    <div class="dropdown-toggle box1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="boxe">
+		                <p><!-- <i class="iconfont icon-yujing" style="font-size:20px;"></i> -->分析预警</p>
+					    </div>
+					    <ul class="dropdown-menu" id="qiaoSlect4">
+					      
+					    </ul>
+				  </div>
+				  <div class="box1" id="boxf" >
+		                <p><a href="./report.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告</a></p>
+		            </div>
+		            <div class="box1" id="boxg" >
+		                <p><a href="./cidian.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据</a></p>
+		            </div>
+        	</div>
+        </div>
+			
+			
+		</section>
+	<div style="font-size:18px;font-weigh:700;margin-left:12px;margin-top:5px;">当前桥梁名称:<span><B id="qiaomingcheng"></B></span></div>
+	<div id="content">
+		<div class="closeButton"  style="display:none;">
+			<div class="yihang">
+					&nbsp;
+				<div class="yihang">
+					<label>监测类型:</label>
+					<select class="form-control" style="width:180px;" id="jcfl">
+						<option value="-1" selected="selected" hidden="-1">全部</option>
+					</select>
+				</div>
+			</div>
+		</div> 
+		
+ 		<div class="row" style="margin-top:12px;"> 
+			<div>
+				<div id="left" class="col-md-8">
+						<div>
+						<div style="background:#fff;">
+							<div class="row"  id="mySearch">
+								<div class="col-sm-12 col-md-12" >
+									<div class="col-sm-6 col-md-6 yihang" >
+										<div class="pull-left col-xs-6"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>
+										<a class=" btn btn-primary btn-sm"  data-toggle="modal" data-target="#myModal" id="savejc">添加监测点</a>
+									</div>
+									<div class="col-sm-6 col-md-6"  style="text-align:right;">
+											<a class="btn btn-primary" role="button" id="goqiaoliang">查看当前桥桥梁信息</a>
+											<a class="btn btn-primary" role="button" id="goshuju">查看当前桥数据管理</a>
+											<a class="btn btn-primary " role="button" id="gofenxi">查看当前桥分析预警</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div>
+								<table class="table table-bordered table-condensed" id="mainContent">
+									<thead>
+										<tr>
+											<th>id</th>
+											<th>测点编号</th>
+											<th>通道编号</th>
+											<th>测点位置</th>
+											<th>监测点类型</th>
+											<th>阈值</th>
+											<th>测点描述</th>
+											<th>采样频率</th>
+											<th>设备型号</th>
+											<th>是否故障</th>
+											<th>故障状态</th>
+											<th>是否激活</th>
+											<th>修改</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+							</div>
+							</div>
+						</div>
+				
+
+				<div id="right" class="col-md-4" >
+					<div class="leftTop yihang2">
+						<div></div>
+						<div><span class="glyphicon glyphicon-list  zhuashou"  aria-hidden="true" title="BIM全屏" id="quanping" style="margin-right:15px;"></span></div>
+					</div>
+					<iframe id="mainIframe" name="mainIframe" src="./ModelView-HT/ModelViewer.html?model=BIMModel" frameborder="0" scrolling="auto"  style="width:100%;height:100%;"></iframe>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 信息删除确认 -->  
+<div class="modal fade" id="delcfmModel">  
+  <div class="modal-dialog">  
+    <div class="modal-content message_align">  
+      <div class="modal-header">  
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>  
+        <h4 class="modal-title">提示信息</h4>  
+      </div>  
+      <div class="modal-body">  
+        <p>您确认要删除吗？</p>  
+      </div>  
+      <div class="modal-footer">  
+         <input type="hidden" id="url"/>  
+         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>  
+         <a class="btn btn-success" data-dismiss="modal" id = "del_jcfl">确定</a>  
+      </div>  
+    </div><!-- /.modal-content -->  
+  </div><!-- /.modal-dialog -->  
+</div><!-- /.modal -->  
+										<!-- 	<div class="dataTables_sizing" ></div> -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button id="myModal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">添加监测点</h4>
+		</div>
+		<div class="modal-body">
+			<table class="table table-bordered table-condensed">
+				<tr>
+					<td>测点编号</td>
+					<td>
+						<input type="text" class="form-control" id="add_cd_code">
+					</td>
+				</tr>
+				<tr>
+					<td>通道编号<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red;"></span></td>
+					<td>
+						<input type="text" class="form-control" id="add_td_code">
+					</td>
+				</tr>
+				<tr>
+					<td>监测点类型</td>
+					<td>
+						<select class="form-control" id="jclx">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>阈值</td>
+					<td>
+						<input type="text" class="form-control" id="add_fz">
+					</td>
+				</tr>
+				<tr>
+					<td>测点位置</td>
+					<td style="display:flex;">
+						<input type="text" class="form-control" disabled style="width:300px;" id="add_kjg">
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2" id="myModalKjg">选择构件</button>
+					</td>
+				</tr>
+				<tr>
+					<td>测点描述</td>
+					<td>
+						<input type="text" class="form-control" id="add_cd_describe">
+					</td>
+				</tr>
+				<tr>
+					<td>采样频率</td>
+					<td>
+						<input type="text" class="form-control" id="add_cypl">
+					</td>
+				</tr>
+				<tr>
+					<td>设备型号</td>
+					<td>
+						<input type="text" class="form-control" id="add_sbxh">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal" id = "close_btn">关闭</button>
+			<button type="button" class="btn btn-primary" id="save_btn">保存</button>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button id="myModal1" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">修改监测点</h4>
+		</div>
+		<div class="modal-body">
+			<table class="table table-bordered table-condensed">
+				<tr>
+					<td>测点编号</td>
+					<td>
+						<input type="text" class="form-control" id="add_cd_code">
+					</td>
+				</tr>
+				<tr>
+					<td>通道编号</td>
+					<td>
+						<input type="text" class="form-control" id="add_td_code">
+					</td>
+				</tr>
+				<tr>
+					<td>监测点类型</td>
+					<td>
+						<select class="form-control" id="xgjclx">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>阈值</td>
+					<td>
+						<input type="text" class="form-control" id="add_fz">
+					</td>
+				</tr>
+				<tr>
+					<td>测点位置</td>
+					<td style="display:flex;">
+						<input type="text" class="form-control" disabled style="width:300px;" id="add_kjg">
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2" id="myModalKjg">选择构件</button>
+					</td>
+				</tr>
+				<tr>
+					<td>测点描述</td>
+					<td>
+						<input type="text" class="form-control" id="add_cd_describe">
+					</td>
+				</tr>
+				<tr>
+					<td>采样频率</td>
+					<td>
+						<input type="text" class="form-control" id="add_cypl">
+					</td>
+				</tr>
+				<tr>
+					<td>设备型号</td>
+					<td>
+						<input type="text" class="form-control" id="add_sbxh">
+					</td>
+				</tr>
+				<tr>
+					<td>是否故障</td>
+					<td>
+						<select class="form-control" id="add_sfgz">
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal" id = "close_btn">关闭</button>
+			<button type="button" class="btn btn-primary" id="save_btn">保存</button>
+		</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <h4 class="modal-title" id="myModalLabel">选择项目</h4>
+			</div>
+			<div class="form-inline" style="margin-top: 12px;">
+			<label>方向：</label>
+				<select class="form-control" style="width:130px;" id="direction">
+					<option value="请选择">请选择</option>
+					<option value="上行">上行</option>
+					<option value="下行">下行</option>
+					<option value="无方向">无方向</option>
+				</select>
+				<label>跨号：</label>
+				<select class="form-control select2" style="width:80px;" id="span_no"></select>
+				<button class="btn btn-primary" onclick="lookSpan()">查看</button>
+				<div class="pull-right" style="margin-right: 8px;"><input class="form-control" id="searchData" value="" placeholder="搜索" type="text"></div>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-condensed" id = "brgMbr_kjg">
+					<thead>
+						<tr role="row">
+							<th>方向</th>
+							<th>跨号</th>
+							<th>分部结构</th>
+							<th>部件类型</th>
+							<th>构件类型</th>
+							<th>构件名称</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr role="row" class="odd">
+							<td><input type="checkbox" name="" id=""></td>
+							<td>上行</td>
+							<td>28</td>
+							<td>上部结构</td>
+							<td>支座</td>
+							<td>台支座</td>
+							<td>底板</td>
+						</tr>
+						<tr role="row" class="even">
+							<td><input type="checkbox" name="" id=""></td>
+							<td>上行</td>
+							<td>28</td>
+							<td>上部结构</td>
+							<td>支座</td>
+							<td>台支座</td>
+							<td>底板</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal" id="close_kjg">关闭</button>
+			  <button type="button" class="btn btn-primary" data-dismiss="modal" id="save_kjg">确定</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap-treeview.js" ></script>
+	<script src="../js/common-scripts.js"></script>
+	<script src="../js/myTool.js"></script>
+	<script src="../js/caidan.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/toastr/toastr.min.js"></script>
+	<script src="../js/libs/jquery-ui-1.10.3.min.js"></script>
+	<script src="../js/plugin/select2/select2.min.js"></script>
+	<script src="../js/check/select2Fix.js"></script>
+    <script src="../js/notification/SmartNotification.min.js"></script>
+	<script src="../js/login.js"></script>
+	<script type="text/javascript" src="../html/ModelView-HT/js/Interface.js"></script>
+	<!-- <script src="js/echarts.min.js"></script>
+	<script src="js/main.js"></script> -->
+	<script>
+	$(document).ready( function () {
+		showUserName();
+		var thisHref=location.href;
+		id=thisHref.split("?")[1];
+		var brgString = getBrgStringById(id)
+		if(brgString ==null ||brgString =="" || brgString ==undefined){
+			$("#right").hide();
+			$("#left").attr("style","width:100%");
+		}else{
+		$("#mainIframe").attr("src","./ModelView-HT/ModelViewer.html?model="+brgString);
+		}
+		
+		initMenu();
+		initJcfl();
+		initTable(0);
+		initJclx();
+		$("#mainContent").DataTable().columns.adjust();
+		getCurSensorIDS();
+		qiaomingcheng();
+		 $("#mainContent>tbody").delegate("tr","click", function () {
+			    removeTrClass();
+		        $(this).addClass("selected");
+		  		var tr=$(this);
+		  		var data=$("#mainContent").DataTable().row(tr).data();
+		        var modelID =data.modelID;
+		        var childWindow = $("#mainIframe")[0].contentWindow; //表示获取了嵌入在iframe中的子页面的window对象。  []将JQuery对象转成DOM对象，用DOM对象的contentWindow获取子页面window对象。
+		  	    	mainIframe.window.setModelFocus(modelID);
+		  });
+	});
+	function removeTrClass(){
+		$("#mainContent>tbody tr").each(function(){
+			 $(this).removeClass("selected");
+		})
+	}
+	function qiaomingcheng(){
+        $.ajax({
+            type: 'POST',
+            url: "../BrgCardServlet",
+            dataType: 'json',
+            data: {
+            	type:'getBrgName',
+            	id:id
+            },
+            success: function (json) {
+            	console.log(json)
+		        $("#qiaomingcheng").text(json.obj)
+            }
+        });
+    }
+	$("#mySearch #searchData").on("input", function(e){
+		var d = $("#mySearch #searchData").val();
+		$("#mainContent").DataTable().search(d).draw(true);
+	});
+	
+	$("#myModal2 #searchData").on("input", function(e){
+		var d = $("#myModal2 #searchData").val();
+		$("#brgMbr_kjg").DataTable().search(d).draw(true);
+	});
+	
+	$("#myModalKjg").unbind('click').on("click", function(){
+		initTable2();
+		var d = $("#myModal2 #searchData").val();
+		$("#brgMbr_kjg").DataTable().search(d).draw(true);
+	});
+	var s_id;
+	var r_id;
+	var cd_span_no;
+	$("#save_kjg").unbind('click').on("click", function(){
+		if ($('#brgMbr_kjg tbody tr').hasClass('selected')) {
+			var dirction= $('#brgMbr_kjg').DataTable().rows('.selected').data()[0].dirction;
+			var member_no= $('#brgMbr_kjg').DataTable().rows('.selected').data()[0].member_no;
+			var span_no= $('#brgMbr_kjg').DataTable().rows('.selected').data()[0].span_no;
+			s_id = $('#brgMbr_kjg').DataTable().rows('.selected').data()[0].s_id;
+			r_id = $('#brgMbr_kjg').DataTable().rows('.selected').data()[0].r_id;
+			if (dirction == '无方向') {
+				cd_span_no = '第'+span_no+'跨'+member_no;
+				$("#add_kjg").val('第'+span_no+'跨'+member_no);
+			}else {
+				cd_span_no = dirction+'第'+span_no+'跨'+member_no;
+				$("#add_kjg").val(dirction+'第'+span_no+'跨'+member_no);
+			}
+		}
+		$("#direction").val('请选择');
+		$("#myModal2 #searchData").val('');
+		selectKh();
+	});
+	$("#close_kjg").unbind('click').on("click", function(){
+		$("#direction").val('请选择');
+		$("#myModal2 #searchData").val('');
+		selectKh();
+	});
+	
+	
+	var Dtable = $('#brgMbr_kjg').DataTable();
+	$('#brgMbr_kjg tbody').on('click', 'tr', function () {
+		var tr = $(this).closest('tr');
+		var dataTable = $('#brgMbr_kjg').DataTable();
+		var info = dataTable.page.info();
+		var dataRows = info.recordsDisplay;
+//		alert(dataTable);
+//		console.log(info);
+	    if ($(this).hasClass('selected') ) {
+//	       $(this).removeClass('selected');
+	    } else {
+	    	if (dataRows<=0) {
+	    		table_kjg.$('tr.selected').removeClass('selected');
+			} else {
+				table_kjg.$('tr.selected').removeClass('selected');
+			    $(this).addClass('selected');
+			}
+	       
+	    }
+	});
+	
+	var Dtable = $('#brgMbr_kjg').DataTable();
+//	$('#save_kjg').click(function () {
+//	    alert( $('#brgMbr_kjg').DataTable().rows('.selected').data()[0].distr_name +' row(s) selected' );
+//	});
+	
+function toogle(th){
+  var ele = $(th).children(".move");
+  var d1=$(th).children(".btn1");
+  var d2=$(th).children(".btn2");
+  var d1s=d1.children(".jhspan");
+  var d2s=d2.children(".wjhspan");
+	  if(ele.attr("data-state") == "on"){
+		d1s.hide();
+		d2s.show();
+		d2.show();
+		d2.animate({height:'20px'},"slow");
+		d2.animate({width:'70px'},"300");
+		d1.animate({height:'0px'},"300",function(){
+		    var tr = $(this).closest('tr');
+			var data = $('#mainContent').DataTable().row(tr).data();
+		    ele.attr("data-state", "off");
+		  	update_TestJihuo(data.id,0);
+		  	toastr.success("取消激活成功");
+		});
+		$(th).removeClass("on").addClass("off");
+		
+	  }else if(ele.attr("data-state") == "off"){
+		  d1.animate({height:'20px'},"slow");
+		  d1.animate({width:'70px'},"300");
+		  d2.animate({height:'0px'},"300",function(){
+		      var tr = $(this).closest('tr');
+			  var data = $('#mainContent').DataTable().row(tr).data();
+		      ele.attr("data-state", "on");
+		      update_TestJihuo(data.id,1);
+		      toastr.success("激活成功");
+		  });
+		  $(th).removeClass("off").addClass("on");
+		  d2s.hide();
+		  d1s.show();
+		  d1.show();
+	  };
+}
+	function update_TestJihuo(id,if_jihuo){
+        $.ajax({
+            type: 'POST',
+            url:'../TestPointServlet',
+            dataType: 'json',
+            data: {
+            	type: "update_Test_jihuo",
+                id:id,
+                if_jihuo:if_jihuo
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+            	if (json.success == "success") {
+//            		initTable();
+            	}else{
+//            		initTable(0);
+            		toastr.error("激活失败！");
+            	}
+            }
+        });
+	}
+	var edit1 = "<button class='construct btn btn-warning btn-xs upda' data-toggle='modal' data-target='#myModal1'>修改</button><button class='del btn btn-warning btn-xs' onclick='basic_sjlg(this)' data-toggle='modal' data-target='#delcfmModel'>删除</button>";
+	var jh = "<div class='on' style='position:relative;' onclick='toogle(this)' ><div class='move' data-state='on' ></div><div class='btn1' style='background:#98bf21;height:20px;width:70px;position:relative;cursor:pointer;'><span class='jhspan'>激活</span></div><div class='btn2' style='background:red;height:0px;width:70px;position:relative;display:none;cursor:pointer;'><span class='wjhspan' >未激活</span></div></div>";
+	var wjh = "<div class='off' style='position:relative;' onclick='toogle(this)' ><div class='move' data-state='off' ></div><div class='btn1' style='background:#98bf21;height:0px;width:70px;position:relative;display:none;cursor:pointer;'><span class='jhspan'>激活</span></div><div class='btn2' style='background:red;height:20px;width:70px;position:relative;cursor:pointer;'><span class='wjhspan'>未激活</span></div></div>";
+//	var jh = "<div class='btn_fath clearfix on' onclick='toogle(this)'><div class='move' data-state='on' ></div><div class='btnSwitch1 btn1'><span>激活</span></div><div class='btnSwitch2 btn2'><span>未激活</span></div></div>"
+//	var wjh = "<div class='btn_fath clearfix off' onclick='toogle(this)'><div class='move' data-state='off' ></div><div class='btnSwitch1 btn1'><span>激活</span></div><div class='btnSwitch2 btn2'><span>未激活</span></div></div>"
+	var table=$("#mainContent").dataTable({
+        "deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "searching": true,
+        "lengthChange": false,
+        "bAutoWidth": false,
+        "bProcessing": true,
+        "bStateSave": true,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+			 		 { "data": "id","visible": false},
+		             { "data": "cd_code"}, 
+		             { "data": "td_code"},
+		             { "data": "cd_span_no"}, 
+		             { "data": "base_dataName"},
+		             { "data": "fz"}, 
+		             { "data": "cd_describe"}, 
+		             { "data": "cypl"}, 
+		             { "data": "sbxh"},
+		             { "data": "yjStatus",
+		            	'render':function(data,type,row){
+		 				if(data==0){
+							return "否";
+						} else if(data==1) {
+							return "是";
+						} else if(data==2) {
+							return "是";
+						} else if(data==3) {
+							return "是";
+						}
+					}},
+					{ "data": "yjStatus",
+		            	'render':function(data,type,row){
+		 				if(data==0){
+							return "正常";
+						} else if(data==1) {
+							return "异常";
+						} else if(data==2) {
+							return "黄色告警";
+						} else if(data==3) {
+							return "红色告警";
+						}
+					}},
+					{ "data": "if_jihuo",
+						'render':function(data,type,row){
+		 				if(data==1){
+							return jh;
+						}else {
+							return wjh;
+						}
+		 				}
+					},
+					{ "data": null}
+		         ],
+		         "columnDefs": [
+		 						{
+		 								 "class": "tcenter",
+		 								    "targets": 12,
+		 								    "searchable": true,
+		 								    "render": function(data, type, full) {
+		 								  	  		return edit1;
+		 								  }
+		 						}
+		 						],
+        "order": [[0, 'asc']],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+	
+	var table_kjg=$("#brgMbr_kjg").dataTable({
+		"deferRender": true,
+        "processing": true,
+        "bDestroy": true,
+        "iDisplayLength": 5,
+        "searching": true,
+        "lengthChange": false,
+        "sDom": 
+			"t"+
+			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+        "oLanguage": {
+		    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+		},
+		 "columns": [
+		 			 { "data": "dirction"}, 
+		             { "data": "span_no"}, 
+		             { "data": "distr_name"},
+		             { "data": "component_name"}, 
+		             { "data": "member_type"}, 
+		             { "data": "member_no"}
+		         ],
+		         "columnDefs": [
+						{	
+								 "class": "tcenter",
+//								    "targets": 0,
+								    "searchable": true,
+								    "render": function(data, type, full) {
+								  	  		return "";
+								  }
+						}
+						],
+        "order": [[0, 'asc']],
+        "oLanguage": { //国际化配置
+        "sProcessing": "正在获取数据，请稍后...",
+        "sLengthMenu": "显示 _MENU_ 条",
+        "sZeroRecords": "查询不到相关数据",
+        "sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+        "sInfoEmpty": "记录数为0",
+        "sInfoFiltered": "(全部记录数 _MAX_ 条)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索",
+        "sUrl": "",
+        "oPaginate": {
+            "sFirst": "第一页",
+            "sPrevious": "上一页",
+            "sNext": "下一页",
+            "sLast": "最后一页"
+        }},
+        
+	});
+	
+	function initTable2(){
+		myTool.mask.show('查询中...');
+        $.ajax({
+            type: 'POST',
+            url: "../CheckSpanServlet",
+            dataType: 'json',
+            data: {
+            	type:'getAllMemberById',
+            	id:id
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+            	var obj=json.obj;
+                $('#brgMbr_kjg').dataTable().fnClearTable();
+                $('#brgMbr_kjg').DataTable().rows.add(obj).draw(false);
+		        myTool.mask.hide();
+            }
+        });
+    }
+	
+	
+	function deleteTestPoint(id){
+		var api=$("#mainContent").dataTable().api();
+		var len=api.rows( {page:'current'} ).data().length;
+		var page=api.page.info().page;
+        $.ajax({
+            type: 'POST',
+            url:'../TestPointServlet',
+            dataType: 'json',
+            data: {
+            	type: "deleteTestPoint",
+                id:id
+            },
+            error: function (msg) {
+                toastr.error("请求TestPointServlet失败");
+            },
+            success: function (json) {
+	                if (json.success == "success") {
+	                    toastr.success("删除测点成功");
+	                    initTable(1);
+	                    initJcfl();
+	                    return false;
+	                    /* location.reload([true]) */
+	                } else {
+	                    toastr.error("删除测点失败");
+	                }
+				}
+        });
+    }
+	
+	function initTable(lx){
+		var api=$("#mainContent").dataTable().api();
+		var len=api.rows( {page:'current'} ).data().length;
+		var page=api.page.info().page;
+		var bridge_id;
+		bridge_id = id;
+		var cd_f_type_id = $("#jcfl option:selected").val();
+		myTool.mask.show('查询中...');
+        $.ajax({
+            type: 'GET',
+            url:'../TestPointServlet',
+            dataType: 'json',
+            data: {
+            	type: "select_Test",
+                bridge_id:bridge_id,
+                cd_f_type_id:cd_f_type_id
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+            	if (json.success == "success") {
+            		$('#mainContent').dataTable().fnClearTable();
+					$('#mainContent').DataTable().rows.add(json.obj).draw(false);
+					
+                    if(len==1 && lx == 1){
+                    	$('#mainContent').DataTable().page(page-1).draw( false );
+                    	//alert("重绘上一页！");
+                    }else{
+                    	$('#mainContent').DataTable().page(page).draw( false );
+                    	//alert("重绘本页！");
+                    }
+                    bindTrClick();
+                    
+            	}else{
+            		$('#mainContent').dataTable().fnClearTable();
+            		toastr.error("查询不到相关数据！");
+            	}
+            	myTool.mask.hide();
+            }
+        });
+    }
+
+	function initMenu(){
+		$.ajax({
+            type: 'GET',
+            url: '../BrgCardServlet',
+            dataType: 'json',
+            data: {
+                type: "selectAllBrg"
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                	var arr = json.obj;
+                	$("#qiaoSlect").html('')
+                	$("#qiaoSlect2").html('')
+                	$("#qiaoSlect3").html('')
+                	$("#qiaoSlect4").html('')
+//                	$("#changeBrg").html('');
+                    for (var i = 0; i < arr.length; i++) {
+                    	$("#qiaoSlect").append('<li><a href="./qiaoliangguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect2").append('<li><a href="./cedianguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect3").append('<li><a href="./shujuguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+                    	$("#qiaoSlect4").append('<li><a href="./yujin.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
+//                    	$("#changeBrg").append('<option value='+arr[i].bridge_id+'>'+arr[i].bridge_name+'</option>')
+                    }
+//                    $("#changeBrg").val(id).trigger("change");
+                }else {
+                    toastr.error("初始桥梁出错");
+                }
+            }
+        });
+	}
+	
+
+    $("#goqiaoliang").click(function(){
+    	//console.log(id)
+    	$(this).attr("href","./qiaoliangguanli.html?"+id+"")
+    })
+    $("#goshuju").click(function(){
+    	//console.log(id)
+    	$(this).attr("href","./shujuguanli.html?"+id+"")
+    })
+    $("#gofenxi").click(function(){
+    	//console.log(id)
+    	$(this).attr("href","./yujin.html?"+id+"")
+    })
+	
+	function initJcfl(){
+		var bridge_id = id;
+		$.ajax({
+            type: 'POST',
+            url: '../BasicDataServlet',
+            dataType: 'json',
+            data: {
+                type: "selectBridJclx",
+                bridge_id:bridge_id
+            },
+            success: function (json) {
+            	$("#jcfl").html('');
+            	$("#jcfl").append("<option value='-1'>全部</option>");
+                if (json.success == "success") {
+                	var arr = json.obj;
+                    for (var i = 0; i < arr.length; i++) {
+                    	$("#jcfl").append('<option value='+arr[i].id+'>'+arr[i].name+'</option>');
+                    }
+                }else {
+                    toastr.error("初始检测分类出错");
+                }
+            }
+        });
+	}
+	
+	function initJclx(){
+		$.ajax({
+            type: 'POST',
+            url: '../BasicDataServlet',
+            dataType: 'json',
+            data: {
+                type: "selectAllBasicjclx"
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                	var arr = json.obj;
+                	$("#jclx").html('');
+                	$("#xgjclx").html('');
+                    for (var i = 0; i < arr.length; i++) {
+                    	$("#jclx").append('<option value='+arr[i].id+'>'+arr[i].name+'</option>');
+                    	$("#xgjclx").append('<option value='+arr[i].id+'>'+arr[i].name+'</option>');
+                    }
+                }else {
+                    toastr.error("初始检测类型出错");
+                }
+            }
+        });
+	}
+	
+	function updateTestPoint(id){
+		var api=$("#mainContent").dataTable().api();
+		var len=api.rows( {page:'current'} ).data().length;
+		var page=api.page.info().page;
+    	if ($("#change1 #add_td_code").val() == "") {
+            toastr.error("请输入通道编号!");
+            return false;
+        }
+    	
+    		$.ajax({
+                type: 'GET',
+                url: '../TestPointServlet',
+                dataType: 'json',
+                data: {
+                	type: "update_TestPoint",
+                	id:id,
+                    cd_code: $("#myModal1 #add_cd_code").val(),
+                    td_code: $("#myModal1 #add_td_code").val(),
+                    jclxid: $("#myModal1 #xgjclx").val(),
+                    fz: $("#myModal1 #add_fz").val(),
+                    cd_describe: $("#myModal1 #add_cd_describe").val(),
+                    cypl: $("#myModal1 #add_cypl").val(),
+                    sbxh: $("#myModal1 #add_sbxh").val(),
+                    cd_span_no: $("#myModal1 #add_kjg").val(),
+                    yjStatus:$("#myModal1 #add_sfgz option:selected").val()
+                },
+                error: function (msg) {
+                    toastr.error("请求TestPointServlet失败");
+                },
+                success: function (json) {
+    	                if (json.success == "success") {
+    	                    toastr.success("修改测点成功");
+    	                    $('#myModal1').modal('hide');
+    	                    var start = $("#mainContent").dataTable().fnSettings()._iDisplayStart;  
+    	                    var total = $("#mainContent").dataTable().fnSettings().fnRecordsDisplay();  
+    	                    initTable(0);
+    	                    $('#mainContent').DataTable().page(page).draw( false );
+    	                    if((total-start)==1){  
+    	                        if (start > 0) {  
+    	                            $("#mainContent").dataTable().fnPageChange( 'previous', true );  
+    	                        }  
+    	                    }
+    	                    initJcfl();
+    	                    /* location.reload([true]) */
+    	                } else {
+    	                    toastr.error("修改测点失败");
+    	                }
+    				}
+            });
+    }
+	
+	function saveTestPoit(){
+		var bridge_id;
+		bridge_id = id;
+
+        if ($("#myModal #add_td_code").val() == "") {
+            toastr.error("请输入通道编号!");
+            return false;
+        }
+     
+        $.ajax({
+            type: 'POST',
+            url: '../TestPointServlet',
+            dataType: 'json',
+            data: {
+                type: "save_Test",
+                cd_code: $("#myModal #add_cd_code").val(),
+                td_code: $("#myModal #add_td_code").val(),
+                id: $("#myModal #jclx").val(),
+                name:$("#myModal #jclx").text(),
+                fz: $("#myModal #add_fz").val(),
+                cd_describe: $("#myModal #add_cd_describe").val(),
+                cypl: $("#myModal #add_cypl").val(),
+                sbxh: $("#myModal #add_sbxh").val(),
+                bridge_id:bridge_id,
+                sbxh: $("#myModal #add_sbxh").val(),
+                s_id: s_id,
+                r_id: r_id,
+                cd_span_no: $("#myModal #add_kjg").val(),
+                if_jihuo: 1
+            },
+            error: function (msg) {
+                toastr.error("请求TestPointServlet失败");
+            },
+            success: function (json) {
+                if (json.success == "success") {
+                    toastr.success("添加监测点成功");
+                    $('#myModal').modal('hide');
+                    initTable(0);
+                    initJcfl();
+                    return false;
+                    /* location.reload([true]) */
+                } else {
+                    toastr.error("添加监测点失败");
+                }
+            }
+        });
+    }
+	
+	$("#direction").on("change",function(){
+    	$.ajax({
+            type: 'GET',
+            url: '../CheckSpanServlet',
+            dataType: 'json',
+            data: {
+                type: "getSpanByDirection",
+                id:id,
+                direction:$("#direction").val()
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+            	var obj=json.obj;
+            	$("#span_no").empty();
+            	for(var i=0;i<obj.length;i++){
+            		$("#span_no").append("<option value="+obj[i]+">"+obj[i]+"</option>")
+            	}
+            }
+    	})
+    });
+	
+	function selectKh(){
+    	$.ajax({
+            type: 'GET',
+            url: '../CheckSpanServlet',
+            dataType: 'json',
+            data: {
+                type: "getSpanByDirection",
+                id:id,
+                direction:$("#direction").val()
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+            	var obj=json.obj;
+            	$("#span_no").empty();
+            	for(var i=0;i<obj.length;i++){
+            		$("#span_no").append("<option value="+obj[i]+">"+obj[i]+"</option>")
+            	}
+            }
+    	})
+	};
+    
+    function lookSpan(){
+		$.ajax({
+            type: 'POST',
+            url: "../CheckSpanServlet",
+            dataType: 'json',
+            data: {
+            	type:'getMemberByDirectionAndSpan',
+            	id:id,
+            	direction:$("#direction").val(),
+            	span_no:$("#span_no").val()
+            },
+            success: function (json) {
+            	var obj=json.obj;
+                $('#brgMbr_kjg').dataTable().fnClearTable();
+                $('#brgMbr_kjg').DataTable().rows.add(obj).draw(false);
+            }
+        });
+	}
+	
+	function clear(){
+		$("#add_cd_code").val('');
+		$("#add_td_code").val('');
+		$("#add_fz").val('');
+		$("#add_cd_describe").val('');
+		$("#add_cypl").val('');
+		$("#add_sbxh").val('');
+		$("#add_kjg").val('');
+		$("#jclx").val(1);
+	}
+	
+//	$("#changeBrg").on("change",function(){
+//		initJcfl();
+//		initTable();
+//    })
+    
+    $("#jcfl").on("change",function(){
+    	initTable(0);
+    })
+    
+    $("#savejc").on("click",function(){
+    	
+    	initJclx();
+    })
+    
+    $("#close_btn").on("click",function(){
+    	clear();
+    })
+    $("#myModal #save_btn").on("click",function(){
+    	saveTestPoit();
+    	clear();
+    })
+    
+    $('#mainContent').unbind('click',".upda").on("click",".upda",function(){
+    	var tr = $(this).closest('tr');
+		var data = $('#mainContent').DataTable().row(tr).data();
+		$("#myModal1 #add_cd_code").val(data.cd_code);
+		$("#myModal1 #add_td_code").val(data.td_code);
+		$("#myModal1 #xgjclx").val(data.cd_type_id);
+		$("#myModal1 #add_fz").val(data.fz);
+		$("#myModal1 #add_cd_describe").val(data.cd_describe);
+		$("#myModal1 #add_cypl").val(data.cypl);
+		$("#myModal1 #add_sbxh").val(data.sbxh);
+		$("#myModal1 #add_kjg").val(data.cd_span_no);
+		if (data.yjStatus == "0") {
+			$("#myModal1 #add_sfgz").val(0);
+		}else {
+			$("#myModal1 #add_sfgz").val(1);
+		}
+		var id = data.id;
+    	$('#myModal1 #save_btn').unbind('click').on("click",function(){
+    		updateTestPoint(id);
+    	});
+	});
+	
+    $('#mainContent').unbind('click',".del").on("click",".del",function(){
+    	var tr = $(this).closest('tr');
+		var data = $('#mainContent').DataTable().row(tr).data();
+		var id = data.id;
+    	$('#del_jcfl').unbind('click').on("click",function(){
+    		deleteTestPoint(id);
+    	});
+	});
+    
+    $("#myModal").on('hidden.bs.modal', '.modal', function () {
+    	clear();
+	});
+    
+	$("#myModal").on("shown.bs.modal", function (){
+		clear();
+	});
+	
+	$("div.food_cell").click(function(){
+		$("#myModal").modal("toggle");
+	});
+	
+	var flag=true;
+    $("#quanping").click(function(){
+    	if(flag==true){
+    		$("#left").hide();
+        	$("#right").removeClass("col-md-4");
+        	flag = false;
+    	}else{
+    		$("#left").show();
+        	$("#right").addClass("col-md-4");
+    		 flag = true;
+    	}
+    	
+    })
+    function getBrgStringById(id){
+    	if(id=="G15320902L0020"){
+    		return "YCD";
+    	}else if(id=="G15320682L0130"){
+    		return "LSH";
+    	}else if(id=="G15320921L0010"){
+    		return "GHT";
+    	}else if(id=="G15320705L0010"){
+    		return "XSH";
+    	}else if(id=="9dfbf3236c7844d189dc34ed95d1618c"){
+    		return "SBGG";
+    	}else if(id=="6f78200f27d54b5394ba8200162cb917"){
+    		return "XYH";
+    	}
+    }
+    
+	function getCurSensorIDS(){
+		var bridge_id;
+		bridge_id = id;
+        $.ajax({
+            type: 'POST',
+            url:'../TestPointServlet',
+            dataType: 'json',
+            data: {
+            	type: "getCurSensorIDS",
+                bridge_id:bridge_id
+            },
+            error: function (msg) {
+                toastr.error("系统错误！");
+            },
+            success: function (json) {
+            	var obj = json.obj;
+            	setModelSensor(json.obj.curSensorIDS,json.obj.curSensorStates);
+            }
+        });
+    }
+    function setModelSensor(curSensorIDS,curSensorStates){
+    	var childWindow = $("#mainIframe")[0].contentWindow; //表示获取了嵌入在iframe中的子页面的window对象。  []将JQuery对象转成DOM对象，用DOM对象的contentWindow获取子页面window对象。
+  	    setTimeout(function(){
+  	    	mainIframe.window.setModel(curSensorIDS, curSensorStates)
+  	    	},3000);
+    }
+    function setModelFocus(modelID){
+    	var childWindow = $("#mainIframe")[0].contentWindow; //表示获取了嵌入在iframe中的子页面的window对象。  []将JQuery对象转成DOM对象，用DOM对象的contentWindow获取子页面window对象。
+  	    setTimeout(function(){
+  	    	mainIframe.window.setModel(curSensorIDS, curSensorStates)
+  	    	},3000);
+    }
+   function bindTrClick(){
+	  
+
+   }
+</script>
+</body>
+</html>

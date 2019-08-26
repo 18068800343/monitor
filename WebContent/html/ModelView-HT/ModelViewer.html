@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		
+		<meta name="viewport" content="user-scalable=no">
+	    <meta charset="UTF-8">
+	    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+		<title>ModelViewer</title>
+
+		<script src="sdk/third/jquery-1.10.2.min.js"></script>
+		<link rel="stylesheet" href="css/CommonBZ.css" type="text/css" />
+
+		<link rel="stylesheet" href="css/TreeControl.css" type="text/css" />
+		<link rel="stylesheet" href="css/Toolbar.css" type="text/css" />
+		<link rel="stylesheet" href="css/Common.css" type="text/css" />
+		<link rel="stylesheet" href="css/Desktop.css" type="text/css" />
+		<link rel="stylesheet" href="css/NoteText.css" type="text/css" />
+		<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+		<link rel="stylesheet" href="css/ViewerSettings.css" type="text/css" />
+		<link rel="stylesheet" href="css/jquery.minicolors.css" type="text/css">
+		
+		<!-- <script type="text/javascript" src="js/js/sample.js"></script>
+		<script type="text/javascript" src="js/js/web_viewer.js"></script>
+		<script type="text/javascript" src="js/js/web_viewer_ui.js"></script>
+		<script type="text/javascript" src="js/js/webviz_server_integration.js"></script> -->
+
+		<script type="text/javascript" src="js/v3d.min.js"></script>
+		<script type="text/javascript" src="js/Interface.js"></script>
+
+		<!-- THEME CSS -->
+		<link href="sdk/third/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="sdk/third/css/essentials.css" rel="stylesheet" />
+		<link href="sdk/third/css/layout-dark.css" rel="stylesheet" />
+		<link href="sdk/third/jstree/themes/proton/style.min.css" rel="stylesheet" />
+		<link href="sdk/viz/ui/default.css" rel="stylesheet" type="text/css" />
+		<link href="sdk/third/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+		<link href="sdk/third/toolbar/jquery.toolbar.css" rel="stylesheet" />
+		<link href="sdk/third/colpick/css/colpick.css" rel="stylesheet" />
+
+		<script src="sdk/third/jquery-ui.min.js"></script>
+		<script src="sdk/third/jquery-dialog.js"></script>
+		<script src="sdk/third/bootstrap.min.js"></script>
+		<script src="sdk/third/jstree/jstree.js"></script>
+		<script src="sdk/third/jquery-slider/jquery-ui-slider-pips.min.js"></script>
+		<script src="sdk/third/toolbar/jquery.toolbar.js"></script>
+		<script src="sdk/third/jCanvas.js"></script>
+		<script src="sdk/third/html2canvas-1.0.0/html2canvas.min.js"></script>
+		<script src="sdk/third/colpick/js/colpick.js"></script>
+		<script src="sdk/third/d3/d3.v4.min.js"></script>
+		<script src="sdk/third/d3/d3-selection-multi.v0.4.min.js"></script>
+
+		<script src="sdk/viz/bimviewer.js"></script>
+
+		<script src="sdk/viz/ui/DefaultMessageControl.js"></script>
+		<script src="sdk/viz/ui/DefaultToolBar.js"></script>
+		<script src="sdk/viz/ui/DefaultTreesHighlightControl.js"></script>
+
+	</head>
+
+	<div id="content">
+		<div id="viewerContainer"></div>
+
+		<div id="showModelName" style="position: fixed; left: 804px; top: 433px; line-height: 1em; font-size: 15px; border-radius: 5%; background-color:rgba(255, 255, 255, 0.5); z-index: 999; padding: 0.3em 0.5em;display: none;; overflow: hidden;"></div>
+
+		<script>
+			// 消息输出控件，包括调试信息，进度信息
+			var bimEngine = hwv;
+			var msgControl = new BIMVIZ.UI.DefaultMessageControl(bimEngine, 'messages');
+
+			// 工具栏
+			var toolbar = new BIMVIZ.UI.DefaultToolBar(bimEngine);
+
+			// 添加场景树控件
+			var spaceControl = new BIMVIZ.UI.DefaultTreesHighlightControl("场景树", "fa-tree");
+			toolbar.addControl(spaceControl);
+			function setModel(curSensorIDS, curSensorStates){
+				setModelSensorStates(curSensorIDS, curSensorStates);
+			}
+			function setModelFocus(modelID){
+				HighLightSensor(modelID);
+			}
+		</script>
+
+</html>

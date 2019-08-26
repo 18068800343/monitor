@@ -1,0 +1,201 @@
+#viewer-settings-dialog {
+    display: none;
+    z-index: 21000;
+    background: white;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    min-width: 300px;
+}
+
+#viewer-settings-dialog .BimViewer-ui-window-body{
+    height: 335px;
+    overflow-y: scroll;
+    padding-right: 5px;
+}
+
+.settings-group {
+    border: 1px solid gray;
+    margin-bottom: 5px;
+}
+
+    .settings-group > div:nth-child(odd) {
+    }
+
+    .settings-group > div:nth-child(even) {
+        background-color: lightgray;
+    }
+
+    .settings-group label {
+        display: inline-block;
+    }
+
+.settings-group-header {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.settings-group-general .right-align {
+    float:right;
+}
+
+.settings-group-general .clear-both {
+    clear:both;
+    display:block;
+    padding: 0px;
+}
+
+.settings-group.settings-group-colors {
+    padding-bottom:5px;
+}
+
+.settings-group.settings-group-colors .settings-block{
+    padding-top: 1px;
+}
+
+.settings-block {
+    padding: 2px;
+}
+    
+    .settings-block * {
+        padding: 2px 0px;
+        -webkit-box-sizing: content-box !important;
+	    -moz-box-sizing: content-box !important;
+	    box-sizing: content-box !important;
+    }
+
+    .settings-block > * {
+        vertical-align: middle;
+        vertical-align: -webkit-baseline-middle;
+    }
+    
+    .settings-block > div {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .settings-block > input[type=number] {
+        width: 80px;
+        height: 20px;
+        text-align: center;
+    }
+
+    .settings-block .grayed-out {
+        opacity: .5;
+    }
+
+
+#viewer-settings-ok-button, #viewer-settings-cancel-button {
+    font-size: 12px;
+}
+
+.BimViewer-ui-window {
+    z-index: 9999;
+    position: absolute;
+    background: rgba(0,100,100,0.8);
+    border: 1px solid black;
+    border-radius: 3px;
+    overflow: hidden;
+    border-style: solid;
+    background: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.BimViewer-ui-window-header {
+    font-family: "微软雅黑";
+    font-size: 13px;
+    /*font-weight: bold;*/
+    color: #ffffff;
+    padding: 2px 5px 5px 5px;
+    background: #233646;
+    /*background: rgba(34, 34, 34, 0.8);*/
+    /*background: black;*/
+    height: 13px;
+    cursor: default;
+    border-bottom: 1px solid gray;
+}
+
+/*.BimViewer-ui-window-header {*/
+    /*font-family: "微软雅黑", "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";*/
+    /*font-size: 12px;*/
+    /*color: #e6d0bb;*/
+    /*text-align: left;*/
+    /*background-color: #233646;*/
+    /*padding-top: 3px;*/
+    /*height: 25px;*/
+    /*!*width: 238px !important;*!*/
+    /*cursor: move;*/
+    /*border-top-left-radius: 3px;*/
+    /*border-top-right-radius: 3px;*/
+/*}*/
+
+.BimViewer-ui-window-body {
+    padding-top: 3px;
+    font-family: "微软雅黑", "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";
+    /*font-family: arial;*/
+    font-size: 12px;
+    border-bottom: 1px solid gray;
+    background-color: azure;
+    padding: 7px 11px 0px 8px;
+    overflow: hidden;
+}
+
+.BimViewer-ui-window-footer {
+    padding: 5px 0px 5px 5px;
+    background-color: azure;
+    height: 24px;
+}
+    .BimViewer-ui-window-footer .BimViewer-ui-footer-buttons {
+        position: relative;
+        right: 5px;
+        bottom: 3px;
+        float: right;
+    }
+
+    .BimViewer-ui-window-footer .BimViewer-ui-footer-button {
+        color: #e6d0bb;
+        background: #233646;
+        border-radius: 1px;
+    }
+
+    .BimViewer-ui-window-footer .version {
+        float: left;
+        font-size: 10px;
+        color: #808080;
+        position:relative;
+        left:5px;
+        bottom:-13px;
+    }
+
+/* minicolor styling */
+.minicolors-theme-default.minicolors {
+    width: 20px;
+    height: 20px;
+}
+
+.minicolors-swatch {
+    width: 20px !important;
+    height: 20px;
+    top: 6px;
+}
+
+.minicolors-theme-default .minicolors-swatch {
+    top:6px !important;
+}
+
+.minicolors-theme-default .minicolors-input {
+    width: 120px !important;
+    padding-left: 30px !important;
+}
+
+.minicolors-grid .minicolors-picker, .minicolors-grid .minicolors-picker > div {
+    padding: 0;
+}
