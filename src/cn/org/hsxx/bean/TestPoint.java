@@ -39,9 +39,39 @@ public class TestPoint {
 	private String modelID;
 	
 	private String yjStatus;
+	
+	private String fz2;/***阈值2*/
+	private String xmd;/***线密度*/
+	private String zysc;/***自由索长*/
 
+	
+	
 	public String getYjStatus() {
 		return yjStatus;
+	}
+
+	public String getFz2() {
+		return fz2;
+	}
+
+	public void setFz2(String fz2) {
+		this.fz2 = fz2;
+	}
+
+	public String getXmd() {
+		return xmd;
+	}
+
+	public void setXmd(String xmd) {
+		this.xmd = xmd;
+	}
+
+	public String getZysc() {
+		return zysc;
+	}
+
+	public void setZysc(String zysc) {
+		this.zysc = zysc;
 	}
 
 	public void setYjStatus(String yjStatus) {

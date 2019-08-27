@@ -67,6 +67,9 @@ public class TestPointServlet extends HttpServlet {
 			String r_id = request.getParameter("r_id");
 			String cd_span_no = request.getParameter("cd_span_no");
 			String if_jihuo = request.getParameter("if_jihuo");
+			String fz2 = request.getParameter("fz2");
+			String xmd = request.getParameter("xmd");
+			String zysc = request.getParameter("zysc");
 			tp.setCd_code(cd_code);
 			tp.setTd_code(td_code);
 			tp.setFz(fz);
@@ -79,6 +82,9 @@ public class TestPointServlet extends HttpServlet {
 			tp.setR_id(r_id);
 			tp.setCd_span_no(cd_span_no);
 			tp.setIf_jihuo(if_jihuo);
+			tp.setFz2(fz2);
+			tp.setXmd(xmd);
+			tp.setZysc(zysc);
 			int i = TestPointDao.getInstance().saveTestPoint(tp);
 			if (i>0) {
 				ro.setError(0);
@@ -115,6 +121,9 @@ public class TestPointServlet extends HttpServlet {
 			String sbxh = request.getParameter("sbxh");
 			String cd_span_no = request.getParameter("cd_span_no");
 			String yjStatus = request.getParameter("yjStatus");
+			String fz2 = request.getParameter("fz2");
+			String xmd = request.getParameter("xmd");
+			String zysc = request.getParameter("zysc");
 			tp.setId(id);
 			tp.setCd_type_id(jclxid);
 			tp.setCd_code(cd_code);
@@ -125,6 +134,9 @@ public class TestPointServlet extends HttpServlet {
 			tp.setYjStatus(yjStatus);
 			tp.setSbxh(sbxh);
 			tp.setCd_span_no(cd_span_no);
+			tp.setFz2(fz2);
+			tp.setXmd(xmd);
+			tp.setZysc(zysc);
 			int i = TestPointDao.getInstance().updateTestPoint(tp);
 			if (i>0) {
 				ro.setError(0);

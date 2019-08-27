@@ -296,9 +296,15 @@ tr.focus{
 					</td>
 				</tr>
 				<tr>
-					<td>阈值</td>
+					<td>阈值1</td>
 					<td>
 						<input type="text" class="form-control" id="add_fz">
+					</td>
+				</tr>
+				<tr>
+					<td>阈值2</td>
+					<td>
+						<input type="text" class="form-control" id="add_fz2">
 					</td>
 				</tr>
 				<tr>
@@ -324,6 +330,18 @@ tr.focus{
 					<td>设备型号</td>
 					<td>
 						<input type="text" class="form-control" id="add_sbxh">
+					</td>
+				</tr>
+				<tr id="xmd" style="display:none">
+					<td>线密度</td>
+					<td>
+						<input type="text" class="form-control" id="add_xmd">
+					</td>
+				</tr>
+				<tr id="zysc" style="display:none">
+					<td>自由索长</td>
+					<td>
+						<input type="text" class="form-control" id="add_zysc">
 					</td>
 				</tr>
 			</table>
@@ -402,6 +420,18 @@ tr.focus{
 							<option value="0">否</option>
 							<option value="1">是</option>
 						</select>
+					</td>
+				</tr>
+				<tr id="xg_xmd" style="display:none">
+					<td>线密度</td>
+					<td>
+						<input type="text" class="form-control" id="add_xmd">
+					</td>
+				</tr>
+				<tr id="xg_zysc" style="display:none">
+					<td>自由索长</td>
+					<td>
+						<input type="text" class="form-control" id="add_zysc">
 					</td>
 				</tr>
 			</table>
@@ -1014,6 +1044,29 @@ function toogle(th){
         });
 	}
 	
+	$("#jclx").click(function(){
+		if($("#jclx").find("option:selected").val()=="6"){//当监测点类型为索力时，显示线密度和自由索长
+			$("#xmd").show();
+			$("#zysc").show();
+		}else{
+			$("#xmd").hide();
+			$("#zysc").hide();
+			$("#myModal #add_xmd").val('');
+			$("#myModal #add_zysc").val('')
+		}
+	})
+	$("#xgjclx").click(function(){
+		if($("#xgjclx").find("option:selected").val()=="6"){//当监测点类型为索力时，显示线密度和自由索长
+			$("#xg_xmd").show();
+			$("#xg_zysc").show();
+		}else{
+			$("#xg_xmd").hide();
+			$("#xg_zysc").hide();
+			$("#myModal1  #add_xmd").val('')
+			$("#myModal1  #add_zysc").val('')
+		}
+	})
+	
 	function updateTestPoint(id){
 		var api=$("#mainContent").dataTable().api();
 		var len=api.rows( {page:'current'} ).data().length;
@@ -1038,7 +1091,10 @@ function toogle(th){
                     cypl: $("#myModal1 #add_cypl").val(),
                     sbxh: $("#myModal1 #add_sbxh").val(),
                     cd_span_no: $("#myModal1 #add_kjg").val(),
-                    yjStatus:$("#myModal1 #add_sfgz option:selected").val()
+                    yjStatus:$("#myModal1 #add_sfgz option:selected").val(),
+                    fz2: $("#myModal1 #add_fz2").val(),
+                    xmd:$("#myModal1 #add_xmd").val(),
+                    zysc:$("#myModal1 #add_zysc").val(),
                 },
                 error: function (msg) {
                     toastr.error("请求TestPointServlet失败");
@@ -1093,7 +1149,10 @@ function toogle(th){
                 s_id: s_id,
                 r_id: r_id,
                 cd_span_no: $("#myModal #add_kjg").val(),
-                if_jihuo: 1
+                if_jihuo: 1,
+                fz2: $("#myModal #add_fz2").val(),
+                xmd:$("#myModal #add_xmd").val(),
+                zysc:$("#myModal #add_zysc").val(),
             },
             error: function (msg) {
                 toastr.error("请求TestPointServlet失败");
@@ -1187,6 +1246,9 @@ function toogle(th){
 		$("#add_sbxh").val('');
 		$("#add_kjg").val('');
 		$("#jclx").val(1);
+		$("#add_fz2").val('');
+		$("#add_xmd").val('');
+		$("#add_zysc").val('');
 	}
 	
 //	$("#changeBrg").on("change",function(){
@@ -1214,6 +1276,7 @@ function toogle(th){
     $('#mainContent').unbind('click',".upda").on("click",".upda",function(){
     	var tr = $(this).closest('tr');
 		var data = $('#mainContent').DataTable().row(tr).data();
+		console.log(data)
 		$("#myModal1 #add_cd_code").val(data.cd_code);
 		$("#myModal1 #add_td_code").val(data.td_code);
 		$("#myModal1 #xgjclx").val(data.cd_type_id);
@@ -1222,10 +1285,21 @@ function toogle(th){
 		$("#myModal1 #add_cypl").val(data.cypl);
 		$("#myModal1 #add_sbxh").val(data.sbxh);
 		$("#myModal1 #add_kjg").val(data.cd_span_no);
+		$("#myModal1 #add_xmd").val(data.xmd);
+		$("#myModal1 #add_zysc").val(data.zysc);
 		if (data.yjStatus == "0") {
 			$("#myModal1 #add_sfgz").val(0);
 		}else {
 			$("#myModal1 #add_sfgz").val(1);
+		}
+		if($("#xgjclx").find("option:selected").val()=="6"){//当监测点类型为索力时，显示线密度和自由索长
+			$("#xg_xmd").show();
+			$("#xg_zysc").show();
+		}else{
+			$("#xg_xmd").hide();
+			$("#xg_zysc").hide();
+			$("#myModal1  #add_xmd").val('')
+			$("#myModal1  #add_zysc").val('')
 		}
 		var id = data.id;
     	$('#myModal1 #save_btn').unbind('click').on("click",function(){
