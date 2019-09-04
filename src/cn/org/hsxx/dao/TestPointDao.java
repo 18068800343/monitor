@@ -29,7 +29,7 @@ public class TestPointDao {
 	
 	public List<TestPoint> getTestPointData(String bridge_id,String cd_f_type_id){
 		ArrayList<TestPoint> testPoints = new ArrayList<TestPoint>();
-		String sql = "select tp.id,tp.modelID,tp.cd_code,tp.td_code,tp.cd_span_no,bdj.`id` as bdjid,tp.yj_status,bdj.`name`,tp.fz,tp.cd_describe,tp.cypl,tp.sbxh,tp.if_bad,tp.if_jihuo,tp.fz2,tp.xmd,tp.zysc from test_point tp LEFT JOIN basic_data_jclx bdj ON bdj.id = tp.cd_type_id WHERE tp.bridge_id = ?";
+		String sql = "select tp.id,tp.modelID,tp.cd_code,tp.td_code,tp.cd_span_no,bdj.`id` as bdjid,tp.yj_status,bdj.`name`,tp.fz,tp.cd_describe,tp.cypl,tp.sbxh,tp.if_bad,tp.if_jihuo,tp.fz2,tp.xmd,tp.zysc,tp.csz from test_point tp LEFT JOIN basic_data_jclx bdj ON bdj.id = tp.cd_type_id WHERE tp.bridge_id = ?";
 		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance().getConnection());
 		ResultSet rs = dataOperation.executeQuery(sql, new String[]{ bridge_id});
 		if (!cd_f_type_id.equals("-1")) {
@@ -58,6 +58,7 @@ public class TestPointDao {
 				tp.setFz2(Nullchange.NulltoString(rs.getString("fz2")));
 				tp.setXmd(Nullchange.NulltoString(rs.getString("xmd")));
 				tp.setZysc(Nullchange.NulltoString(rs.getString("zysc")));
+				tp.setCsz(Nullchange.NulltoString(rs.getString("csz")));
 				testPoints.add(tp);
 			}
 		} catch (SQLException e)
@@ -105,7 +106,7 @@ public class TestPointDao {
 		String jcflSql = "select basic_data_id from basic_data_jclx where id = ?";
 		List<Integer> list = new ArrayList<>();
 		List<Integer> listJclx = new ArrayList<>();
-		String sql="INSERT INTO test_point(id,cd_code,td_code,cd_span_no,s_id,fz,cd_describe,cypl,sbxh,cd_type_id,cd_f_type_id,bridge_id,r_id,if_jihuo,fz2,xmd,zysc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String sql="INSERT INTO test_point(id,cd_code,td_code,cd_span_no,s_id,fz,cd_describe,cypl,sbxh,cd_type_id,cd_f_type_id,bridge_id,r_id,if_jihuo,fz2,xmd,zysc,csz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance().getConnection());
 		ResultSet countRs = dataOperation.executeQuery(countSql, null);
 		ResultSet jcflRs = dataOperation.executeQuery(jcflSql, new String[]{ bdj.getId() });
@@ -143,7 +144,8 @@ public class TestPointDao {
 			tp.getIf_jihuo(),
 			tp.getFz2(),
 			tp.getXmd(),
-			tp.getZysc()
+			tp.getZysc(),
+			tp.getCsz()
 		});
 		dataOperation.close();
 		return i;
@@ -198,9 +200,9 @@ public class TestPointDao {
 	
 	
 	public int updateTestPoint(TestPoint tp){
-		String sql = "UPDATE test_point SET cd_code=?,td_code=?,cd_span_no=?,cd_type_id=?,fz=?,cd_describe=?,cypl=?,sbxh=?,yj_status=?,fz2=?,xmd=?,zysc=? WHERE id=?";
+		String sql = "UPDATE test_point SET cd_code=?,td_code=?,cd_span_no=?,cd_type_id=?,fz=?,cd_describe=?,cypl=?,sbxh=?,yj_status=?,fz2=?,xmd=?,zysc=?,csz=? WHERE id=?";
 		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance().getConnection());
-		int i = dataOperation.executeUpdate(sql, new Object[]{tp.getCd_code(),tp.getTd_code(),tp.getCd_span_no(),tp.getCd_type_id(),tp.getFz(),tp.getCd_describe(),tp.getCypl(),tp.getSbxh(),tp.getYjStatus(),tp.getFz2(),tp.getXmd(),tp.getZysc(),tp.getId()});
+		int i = dataOperation.executeUpdate(sql, new Object[]{tp.getCd_code(),tp.getTd_code(),tp.getCd_span_no(),tp.getCd_type_id(),tp.getFz(),tp.getCd_describe(),tp.getCypl(),tp.getSbxh(),tp.getYjStatus(),tp.getFz2(),tp.getXmd(),tp.getZysc(),tp.getCsz(),tp.getId()});
 		dataOperation.close();
 		return i;
 	}

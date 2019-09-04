@@ -43,9 +43,18 @@ public class TestPoint {
 	private String fz2;/***阈值2*/
 	private String xmd;/***线密度*/
 	private String zysc;/***自由索长*/
+	private String csz;//初始值
 
 	
 	
+	public String getCsz() {
+		return csz;
+	}
+
+	public void setCsz(String csz) {
+		this.csz = csz;
+	}
+
 	public String getYjStatus() {
 		return yjStatus;
 	}

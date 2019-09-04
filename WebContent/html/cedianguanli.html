@@ -344,6 +344,12 @@ tr.focus{
 						<input type="text" class="form-control" id="add_zysc">
 					</td>
 				</tr>
+				<tr id="csz" style="display:none">
+					<td>初始值</td>
+					<td>
+						<input type="text" class="form-control" id="add_csz">
+					</td>
+				</tr>
 			</table>
 		</div>
 		<div class="modal-footer">
@@ -383,9 +389,15 @@ tr.focus{
 					</td>
 				</tr>
 				<tr>
-					<td>阈值</td>
+					<td>阈值1</td>
 					<td>
 						<input type="text" class="form-control" id="add_fz">
+					</td>
+				</tr>
+				<tr>
+					<td>阈值2</td>
+					<td>
+						<input type="text" class="form-control" id="add_fz2">
 					</td>
 				</tr>
 				<tr>
@@ -432,6 +444,12 @@ tr.focus{
 					<td>自由索长</td>
 					<td>
 						<input type="text" class="form-control" id="add_zysc">
+					</td>
+				</tr>
+				<tr id="xg_csz" style="display:none">
+					<td>初始值</td>
+					<td>
+						<input type="text" class="form-control" id="add_csz">
 					</td>
 				</tr>
 			</table>
@@ -1048,9 +1066,19 @@ function toogle(th){
 		if($("#jclx").find("option:selected").val()=="6"){//当监测点类型为索力时，显示线密度和自由索长
 			$("#xmd").show();
 			$("#zysc").show();
+			$("#csz").hide();
+			$("#myModal #add_csz").val('');
+		}else if($("#jclx").find("option:selected").val()=="12"){//当监测点类型为静位移时，显示初始值
+			$("#csz").show();
+			$("#xg_xmd").hide();
+			$("#xg_zysc").hide();
+			$("#myModal #add_xmd").val('');
+			$("#myModal #add_zysc").val('')
 		}else{
 			$("#xmd").hide();
 			$("#zysc").hide();
+			$("#csz").hide();
+			$("#myModal #add_csz").val('');
 			$("#myModal #add_xmd").val('');
 			$("#myModal #add_zysc").val('')
 		}
@@ -1059,9 +1087,19 @@ function toogle(th){
 		if($("#xgjclx").find("option:selected").val()=="6"){//当监测点类型为索力时，显示线密度和自由索长
 			$("#xg_xmd").show();
 			$("#xg_zysc").show();
+			$("#xg_csz").hide();
+			$("#myModal1  #add_csz").val('')
+		}else if($("#xgjclx").find("option:selected").val()=="12"){//当监测点类型为静位移时，显示初始值
+			$("#xg_csz").show();
+			$("#xg_xmd").hide();
+			$("#xg_zysc").hide();
+			$("#myModal1  #add_xmd").val('')
+			$("#myModal1  #add_zysc").val('')
 		}else{
 			$("#xg_xmd").hide();
 			$("#xg_zysc").hide();
+			$("#xg_csz").hide();
+			$("#myModal1  #add_csz").val('')
 			$("#myModal1  #add_xmd").val('')
 			$("#myModal1  #add_zysc").val('')
 		}
@@ -1095,6 +1133,7 @@ function toogle(th){
                     fz2: $("#myModal1 #add_fz2").val(),
                     xmd:$("#myModal1 #add_xmd").val(),
                     zysc:$("#myModal1 #add_zysc").val(),
+                    csz:$("#myModal1 #add_csz").val(),
                 },
                 error: function (msg) {
                     toastr.error("请求TestPointServlet失败");
@@ -1153,6 +1192,7 @@ function toogle(th){
                 fz2: $("#myModal #add_fz2").val(),
                 xmd:$("#myModal #add_xmd").val(),
                 zysc:$("#myModal #add_zysc").val(),
+                csz:$("#myModal #add_csz").val(),
             },
             error: function (msg) {
                 toastr.error("请求TestPointServlet失败");
@@ -1276,7 +1316,6 @@ function toogle(th){
     $('#mainContent').unbind('click',".upda").on("click",".upda",function(){
     	var tr = $(this).closest('tr');
 		var data = $('#mainContent').DataTable().row(tr).data();
-		console.log(data)
 		$("#myModal1 #add_cd_code").val(data.cd_code);
 		$("#myModal1 #add_td_code").val(data.td_code);
 		$("#myModal1 #xgjclx").val(data.cd_type_id);
@@ -1287,6 +1326,8 @@ function toogle(th){
 		$("#myModal1 #add_kjg").val(data.cd_span_no);
 		$("#myModal1 #add_xmd").val(data.xmd);
 		$("#myModal1 #add_zysc").val(data.zysc);
+		$("#myModal1 #add_fz2").val(data.fz2);
+		$("#myModal1 #add_csz").val(data.csz);
 		if (data.yjStatus == "0") {
 			$("#myModal1 #add_sfgz").val(0);
 		}else {
@@ -1295,9 +1336,13 @@ function toogle(th){
 		if($("#xgjclx").find("option:selected").val()=="6"){//当监测点类型为索力时，显示线密度和自由索长
 			$("#xg_xmd").show();
 			$("#xg_zysc").show();
+		}else if($("#xgjclx").find("option:selected").val()=="12"){//当监测点类型为静位移时，显示初始值
+			$("#xg_csz").show();
 		}else{
 			$("#xg_xmd").hide();
 			$("#xg_zysc").hide();
+			$("#xg_csz").hide();
+			$("#myModal1 #add_csz").val('');
 			$("#myModal1  #add_xmd").val('')
 			$("#myModal1  #add_zysc").val('')
 		}

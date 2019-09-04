@@ -70,6 +70,7 @@ public class TestPointServlet extends HttpServlet {
 			String fz2 = request.getParameter("fz2");
 			String xmd = request.getParameter("xmd");
 			String zysc = request.getParameter("zysc");
+			String csz = request.getParameter("csz");
 			tp.setCd_code(cd_code);
 			tp.setTd_code(td_code);
 			tp.setFz(fz);
@@ -85,6 +86,7 @@ public class TestPointServlet extends HttpServlet {
 			tp.setFz2(fz2);
 			tp.setXmd(xmd);
 			tp.setZysc(zysc);
+			tp.setCsz(csz);
 			int i = TestPointDao.getInstance().saveTestPoint(tp);
 			if (i>0) {
 				ro.setError(0);
@@ -124,6 +126,7 @@ public class TestPointServlet extends HttpServlet {
 			String fz2 = request.getParameter("fz2");
 			String xmd = request.getParameter("xmd");
 			String zysc = request.getParameter("zysc");
+			String csz = request.getParameter("csz");
 			tp.setId(id);
 			tp.setCd_type_id(jclxid);
 			tp.setCd_code(cd_code);
@@ -137,6 +140,7 @@ public class TestPointServlet extends HttpServlet {
 			tp.setFz2(fz2);
 			tp.setXmd(xmd);
 			tp.setZysc(zysc);
+			tp.setCsz(csz);
 			int i = TestPointDao.getInstance().updateTestPoint(tp);
 			if (i>0) {
 				ro.setError(0);
