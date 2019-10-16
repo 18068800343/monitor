@@ -877,7 +877,7 @@ public class GetFileSizeDao {
     			"		a.bridge_id\n" +
     			") AS bh ON bs.bridge_id = bh.bridge_id";
     	long time=new Date().getTime();
-    	time=time-3600000*8;
+    	time=time-3600000*1;
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     	ResultSet rs=mdo.executeQuery(sql,new Object[]{zone_id});
     	try {
