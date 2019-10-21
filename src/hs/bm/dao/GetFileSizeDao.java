@@ -2290,7 +2290,8 @@ public class GetFileSizeDao {
     	List<String> list = new ArrayList<>();
     	if(!"".equals(tableName)){
     		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance().getConnection(),false);
-    		String sql=" select rate from "+tableName+" where brg_id = ? ORDER BY rq desc LIMIT 7 ;";
+    		//String sql=" select rate from "+tableName+" where brg_id = ? ORDER BY rq desc LIMIT 7 ;";
+    		String sql=" select rate from "+tableName+" where brg_id = ? ORDER BY rq desc;";
     		ResultSet rs=dataOperation.executeQuery(sql,new Object[]{brg_id});
     		try {
     			while (rs.next()) {
@@ -2314,7 +2315,8 @@ public class GetFileSizeDao {
     	List<String> list = new ArrayList<>();
     	if(!"".equals(tableName)){
     		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance().getConnection(),false);
-    		String sql=" select distinct rq from "+tableName+" where brg_id = ? ORDER BY rq desc LIMIT 7 ;";
+    		//String sql=" select distinct rq from "+tableName+" where brg_id = ? ORDER BY rq desc LIMIT 7 ;";
+    		String sql=" select distinct rq from "+tableName+" where brg_id = ? ORDER BY rq desc;";
     		ResultSet rs=dataOperation.executeQuery(sql,new Object[]{brg_id});
     		try {
     			while (rs.next()) {
