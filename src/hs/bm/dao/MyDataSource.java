@@ -15,9 +15,21 @@ public class MyDataSource {
 	
 	private static MyDataSource mds;
 	
+	private static MyDataSource mdsMy;
+	
 	private MyDataSource() {
 		try {
 			InputStream is = getClass().getResourceAsStream("/dbconfig.properties");
+			Properties p = new Properties();
+			p.load(is);
+			dds = DruidDataSourceFactory.createDataSource(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	private MyDataSource(String myDbConfigSource) {
+		try {
+			InputStream is = getClass().getResourceAsStream(myDbConfigSource);
 			Properties p = new Properties();
 			p.load(is);
 			dds = DruidDataSourceFactory.createDataSource(p);
@@ -31,6 +43,13 @@ public class MyDataSource {
 			mds = new MyDataSource();
 		}
 		return mds;
+	}
+	
+	public static MyDataSource getInstance(String myDbConfigSource) {
+		if(mdsMy == null) {
+			mdsMy = new MyDataSource(myDbConfigSource);
+		}
+		return mdsMy;
 	}
 	
 	public synchronized Connection getConnection() {

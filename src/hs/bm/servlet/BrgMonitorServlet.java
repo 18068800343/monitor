@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -550,6 +551,46 @@ public class BrgMonitorServlet extends HttpServlet {
 			ro.ToJsp(response);
 			return;
 		}
+
+		if("jiguangraodu1".equals(type)){
+			String startTime=request.getParameter("startTime");
+			String endTime=request.getParameter("endTime");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
+			Calendar c = Calendar.getInstance();
+			c.setTime(new Date());
+			c.add(Calendar.MONTH, -1);
+			Date m = c.getTime();
+			String lastDayStr = sdf.format(m);
+			String todayStr = sdf.format(new Date());
+			if(startTime==""||startTime==null) {
+				startTime = lastDayStr;
+				endTime = todayStr;
+			}
+			Map<String,List> map1=BrgMonitorDao.getIntance().getRowListJiGuangRaoDu("bridgeinfo_001",startTime,endTime);
+			ro.setObj(map1);
+			ro.ToJsp(response);
+			return;
+		}
+		if("jiguangraodu2".equals(type)){
+			String startTime=request.getParameter("startTime");
+			String endTime=request.getParameter("endTime");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
+			Calendar c = Calendar.getInstance();
+			c.setTime(new Date());
+			c.add(Calendar.MONTH, -1);
+			Date m = c.getTime();
+			String lastDayStr = sdf.format(m);
+			String todayStr = sdf.format(new Date());
+			if(startTime==""||startTime==null) {
+				startTime = lastDayStr;
+				endTime = todayStr;
+			}
+			Map<String,List> map2=BrgMonitorDao.getIntance().getRowListJiGuangRaoDu("bridgeinfo_002",startTime,endTime);
+			ro.setObj(map2);
+			ro.ToJsp(response);
+			return;
+		}
+		
 		if("lineMonitorData".equals(type)){
 			String dataName=request.getParameter("dataName");
 			String brg_id=request.getParameter("brg_id");

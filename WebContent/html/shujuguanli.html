@@ -129,6 +129,7 @@
 						<div class="yihang2"  style="margin:40px 15px 10px 0px;">
 							<div></div>
 							<div>
+								<!-- <a class="btn btn-primary" href="http://47.92.89.74:3000/#/access/signin?id=251"  target="_blank" role="button" >激光扰度</a> -->
 								<a class="btn btn-primary" role="button" id="goqiaoliang">查看当前桥桥梁信息</a>
 								<a class="btn btn-primary" role="button" id="gocedian">查看当前桥测点管理</a>
 								<a class="btn btn-primary " role="button" id="gofenxi">查看当前桥分析预警</a>
@@ -280,6 +281,10 @@
 	            success: function (json) {
 	            	console.log(json)
 			        $("#qiaomingcheng").text(json.obj)
+			        if(json.obj=="淮徐高速京杭运河特大桥"){
+			        	let dom = '<a class="btn btn-primary" href="http://47.92.89.74:3000/#/access/signin?id=251"  target="_blank" role="button" >激光扰度</a>&nbsp;'
+			        	$("#goqiaoliang").before(dom);
+			        }
 	            }
 	        });
 	    }

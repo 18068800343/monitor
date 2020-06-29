@@ -266,6 +266,28 @@ public class BrgMonitorDao {
 		dataOperation.close();
 		return map;
 	}
+
+	
+	public Map<String,List>getRowListJiGuangRaoDu(String tableName,String startTime,String endTime){
+		Map<String,List> map=new HashMap<>();
+		List<String>row=new ArrayList<>();
+		List<String>line=new ArrayList<>();
+		String sql="SELECT * FROM "+tableName+" where  SUBSTR(datatime,1,10) >= ? and SUBSTR(datatime,1,10) <= ?";
+		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance("/myDbConfig.properties").getConnection());
+		ResultSet rs =dataOperation.executeQuery(sql,new String[]{startTime,endTime});
+		try {
+			while(rs.next()){
+				row.add(rs.getString("data"));
+				line.add(rs.getString("datatime"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		map.put("y", row);
+		map.put("x", line);
+		dataOperation.close();
+		return map;
+	}
 	
 	
 	/*public List<String>getlineList(String tableName,String brg_id,String mode){
