@@ -272,7 +272,7 @@ public class BrgMonitorDao {
 		Map<String,List> map=new HashMap<>();
 		List<String>row=new ArrayList<>();
 		List<String>line=new ArrayList<>();
-		String sql="SELECT * FROM "+tableName+" where  SUBSTR(datatime,1,10) >= ? and SUBSTR(datatime,1,10) <= ?";
+		String sql="SELECT datatime,substring_index(data, 'm', 1) as data,substring_index(datatime, '-', 3) time FROM "+tableName+" where  substring_index(datatime, '-', 3) >= ? and substring_index(datatime, '-', 3) <= ?";
 		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance("/myDbConfig.properties").getConnection());
 		ResultSet rs =dataOperation.executeQuery(sql,new String[]{startTime,endTime});
 		try {

@@ -705,7 +705,7 @@ a {
 				</div>
 				<!-- model结束 -->
 			</div>
-			<div role="tabpanel" class="tab-pane active" id="guangdianraodu">
+			<div role="tabpanel" class="tab-pane" id="guangdianraodu">
 				<div id="content">
 
 					<div class="row">
@@ -715,7 +715,7 @@ a {
 				</div>
 				<!-- <a href="http://47.92.137.78:3000" target="view_frame"></a> -->
 			</div>
-			<div role="tabpanel" class="tab-pane active" id="jiguangraodu">
+			<div role="tabpanel" class="tab-pane" id="jiguangraodu">
 				<div id="content">
 					<div class="row">
 						<div class="form-inline" style="margin: 5PX; float: left;">
@@ -915,7 +915,7 @@ a {
 							if (item_second == '车辆荷载') {
 								if (brg_id == 'd5d060752ada4495896243aa3d9cfae2'
 										|| brg_id == 'G15320682L0130'
-										|| "G15320921L0010" == brg_id) {
+										|| "G15320921L0010" == brg_id||"9dbc0a344a7449359a849c5c4f5a9a26"==brg_id) {
 									if (json.obj[0].NumVehi8[0] == null
 											|| json.obj[0].NumVehi8[0] == undefined) {
 										toastr.error("没有数据");
@@ -6641,7 +6641,7 @@ a {
 		function dmWeight() {
 			$("#big_div")
 					.append(
-							"<div id='dataTable' style='width:100%;height:450px;border:1px solid #ccc;'><div id='title'><ul   class='nav nav-tabs pull-left'>"
+							"<div id='dataTable' style='width:100%;height:600px;border:1px solid #ccc;'><div id='title'><ul   class='nav nav-tabs pull-left'>"
 									+ " <li class='active'><a href='#s1' data-toggle='tab' id='tab1'>交通量</a></li>"
 									+ " <li><a href='#s2' data-toggle='tab' id='tab2'>最大车重(KG)</a></li>"
 									+ " <li><a href='#s3' data-toggle='tab' id='tab3'>超载车辆数</a></li>"
@@ -6701,7 +6701,7 @@ a {
 			var it_second = "动态称重";
 			var dataName = "";
 			if (id == 'd5d060752ada4495896243aa3d9cfae2'
-					|| id == 'G15320682L0130' || "G15320921L0010" == id) {
+					|| id == 'G15320682L0130' || "G15320921L0010" == id||"9dbc0a344a7449359a849c5c4f5a9a26"==id) {
 				dataName = "brg_weight_num_vehi_8,num_vehi1_1";
 			} else {
 				dataName = "brg_weight_num_vehi,num_vehi1_1";
@@ -9155,6 +9155,7 @@ a {
 			$("#xianshi10").trigger("click");
 			$("#xianshi11").trigger("click");
 			$("#xianshi12").trigger("click");
+			$("#xianshi13").trigger("click");
 		}
 		function initDieJiaSameCharts(data) {
 			page_data = data;
@@ -9261,6 +9262,8 @@ a {
 				return "YCD";
 			} else if (id == "G15320682L0130") {
 				return "LSH";
+			}else if(id="9dbc0a344a7449359a849c5c4f5a9a26"){
+				return "XSH";
 			} else if (id == "G15320921L0010") {
 				return "GHT";
 			} else if (id == "G15320705L0010") {
@@ -9319,6 +9322,7 @@ a {
 	            elem: '#reservation',
 	            type: 'date',
 	            trigger: 'click',
+	            format: 'YYYY-M-D h-mm-ss', //自动生成的时间格式
 	            done: function (date) {
 	                let beginDate = date;
 	                let endDate = $("#reservationEnd").val();
@@ -9335,6 +9339,7 @@ a {
 	        let endTime = {
 	            elem: '#reservationEnd',
 	            type: 'date',
+	            format: 'YYYY-M-D h-mm-ss', //自动生成的时间格式
 	            trigger: 'click',
 	            done: function (date) {
 	                let beginDate = $("#reservation").val();

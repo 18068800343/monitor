@@ -77,7 +77,7 @@ public class NumVehiServlet extends HttpServlet {
 			JSONObject obj=  new JSONObject();
 			JSONArray array = new JSONArray();
 			if(item_second.equals("车辆荷载")){
-				if("G25LR0040320800".equals(brg_no)||"G15320682L0100".equals(brg_no)||"G15320921L0010".equals(brg_no)){
+				if("G25LR0040320800".equals(brg_no)||"G15320682L0100".equals(brg_no)||"G15320921L0010".equals(brg_no)||"G15320921L0010".equals(brg_no)||"G2513320803L0242".equals(brg_no)){
 					List<NumVehi8>list1=NumVehiDao.getInstance().selectNumVehi8_2(brg_no,"hour");
 					List<MaxGw8>list2=MaxGwDao.getInstance().selectMaxGw8_2(brg_no,"hour");
 					List<MaxGwInfo8>list3=MaxGwInfoDao.getInstance().selectMaxGwInfo8_2(brg_no,"hour");
