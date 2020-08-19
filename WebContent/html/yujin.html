@@ -710,7 +710,7 @@ a {
 
 					<div class="row">
 						<iframe id="mainIframe3" name="mainIframe3" class="col-md-12"
-							style="height: 85vh" src="http://47.92.137.78:3000"></iframe>
+							style="height: 85vh" src="http://47.92.89.74:3000/#/access/signin?id=251"></iframe>
 					</div>
 				</div>
 				<!-- <a href="http://47.92.137.78:3000" target="view_frame"></a> -->
@@ -739,11 +739,11 @@ a {
 					</div>
 					<div class="row">
 						<div id="myChartJiGuangRaoDu1" class="col-md-12"
-							style="height: 450px; border: 1px solid #ccc;"></div>
+							style="height: 450px;width:100%; border: 1px solid #ccc;"></div>
 					</div>
 					<div class="row">
 						<div id="myChartJiGuangRaoDu2" class="col-md-12"
-							style="height: 450px; border: 1px solid #ccc;"></div>
+							style="height: 450px;width:100%; border: 1px solid #ccc;"></div>
 					</div>
 				</div>
 			</div>
@@ -805,8 +805,7 @@ a {
 					laydate.render(time_pick);
 
 					initMenu();
-					initJiGuangRaoDu1();
-					initJiGuangRaoDu2();
+					
 				});
 
 		var page_health_flag = undefined;
@@ -832,12 +831,16 @@ a {
 												'<ul class="nav nav-tabs" role="tablist">'
 														+ '<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">动态称重</a></li>'
 														+ '<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
-														+ '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电扰度</a></li>'
-														+ '<li role="presentation"><a href="#jiguangraodu" aria-controls="profile" role="tab" data-toggle="tab">激光扰度</a></li>'
+														+ '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>'
+														+ '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>'
 														+ '</ul>');
 								queryData();
 								initWshow();
 								page_health_flag = "1";
+								$("#jiguang").bind('click',function(){
+									initJiGuangRaoDu1();
+									initJiGuangRaoDu2();
+								})
 							} else if (w != 0 && s != 0) {
 								$("#tab_ul")
 										.append(
@@ -2053,9 +2056,1510 @@ a {
 														+ "</td>" + "<td>"
 														+ "停车道" + "</td>"
 														+ "</tr>" + "</tfoot>");
-									} else {
+									} else {//if (json.obj[0].NumVehi8[0] == null
 
-										NumVehi
+											if("9dbc0a344a7449359a849c5c4f5a9a26"==brg_id){
+												
+												let nv11 = json.obj[0].NumVehi8[0].numVehi1_1;
+												let nv12 = json.obj[0].NumVehi8[0].numVehi1_2;
+												let nv13 = json.obj[0].NumVehi8[0].numVehi1_3;
+												let nv14 = json.obj[0].NumVehi8[0].numVehi1_4;
+												let nv15 = json.obj[0].NumVehi8[0].numVehi1_5;
+												let nv16 = json.obj[0].NumVehi8[0].numVehi1_6;
+												let nv1L1 = json.obj[0].NumVehi8[0].numVehiLane1;
+												let nv21 = json.obj[0].NumVehi8[0].numVehi2_1;
+												let nv22 = json.obj[0].NumVehi8[0].numVehi2_2;
+												let nv23 = json.obj[0].NumVehi8[0].numVehi2_3;
+												let nv24 = json.obj[0].NumVehi8[0].numVehi2_4;
+												let nv25 = json.obj[0].NumVehi8[0].numVehi2_5;
+												let nv26 = json.obj[0].NumVehi8[0].numVehi2_6;
+												let nv2L2 = json.obj[0].NumVehi8[0].numVehiLane2;
+												let nv31 = json.obj[0].NumVehi8[0].numVehi3_1;
+												let nv32 = json.obj[0].NumVehi8[0].numVehi3_2;
+												let nv33 = json.obj[0].NumVehi8[0].numVehi3_3;
+												let nv34 = json.obj[0].NumVehi8[0].numVehi3_4;
+												let nv35 = json.obj[0].NumVehi8[0].numVehi3_5;
+												let nv36 = json.obj[0].NumVehi8[0].numVehi3_6;
+												let nv3L3 = json.obj[0].NumVehi8[0].numVehiLane3;
+												let nv41 = json.obj[0].NumVehi8[0].numVehi4_1;
+												let nv42 = json.obj[0].NumVehi8[0].numVehi4_2;
+												let nv43 = json.obj[0].NumVehi8[0].numVehi4_3;
+												let nv44 = json.obj[0].NumVehi8[0].numVehi4_4;
+												let nv45 = json.obj[0].NumVehi8[0].numVehi4_5;
+												let nv46 = json.obj[0].NumVehi8[0].numVehi4_6;
+												let nv4L4 = json.obj[0].NumVehi8[0].numVehiLane4;
+												
+												let nv1121=Number(nv11)+Number(nv21);
+												let nv1222=Number(nv12)+Number(nv22);
+												let nv1323=Number(nv13)+Number(nv23);
+												let nv1424=Number(nv14)+Number(nv24);
+												let nv1525=Number(nv15)+Number(nv25);
+												let nv1626=Number(nv16)+Number(nv26);
+												let nv1L1nv2L2=Number(nv1L1)+Number(nv2L2);
+												
+												let nv3141=Number(nv31)+Number(nv41);
+												let nv3242=Number(nv32)+Number(nv42);
+												let nv3343=Number(nv33)+Number(nv43);
+												let nv3444=Number(nv34)+Number(nv44);
+												let nv3545=Number(nv35)+Number(nv45);
+												let nv3646=Number(nv36)+Number(nv46);
+												let nv3L3nv4L4=Number(nv3L3)+Number(nv4L4);
+												
+												let nv1121nv3141=Number(nv1121)+Number(nv3141);
+												let nv1222nv3242=Number(nv1222)+Number(nv3242);
+												let nv1323nv3343=Number(nv1323)+Number(nv3343);
+												let nv1424nv3444=Number(nv1424)+Number(nv3444);
+												let nv1525nv3545=Number(nv1525)+Number(nv3545);
+												let nv1626nv3646=Number(nv1626)+Number(nv3646);
+												let nv1L1nv2L2nv3L3nv4L4 = Number(nv1L1nv2L2)+Number(nv3L3nv4L4)
+												
+												NumVehi
+												.append("<thead>"
+														+ "</thead>"
+														+ "<tfoot>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "方向"
+														+ "</td>"
+														+ "<td>"
+														+ "车道编号"
+														+ "</td>"
+														+ "<td>"
+														+ "车道名"
+														+ "</td>"
+														+ "<td>"
+														+ "2轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "3轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "4轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "5轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "6轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "7轴车及以上"
+														+ "</td>"
+														+ "<td>"
+														+ "合计"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "上行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi1_1'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi1_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi1_2'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi1_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi1_3'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi1_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi1_4'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi1_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi1_5'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi1_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi1_6'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi1_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_lane1'><a>"
+														+ json.obj[0].NumVehi8[0].numVehiLane1
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi2_1'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi2_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi2_2'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi2_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi2_3'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi2_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi2_4'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi2_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi2_5'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi2_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi2_6'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi2_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_lane2'><a>"
+														+ json.obj[0].NumVehi8[0].numVehiLane2
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax1_1'><a>"
+														+ nv1121
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax1_2'><a>"
+														+ nv1222
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax1_3'><a>"
+														+ nv1323
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax1_4'><a>"
+														+ nv1424
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax1_5'><a>"
+														+ nv1525
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax1_6'><a>"
+														+ nv1626
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_half1'><a>"
+														+ nv1L1nv2L2
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "下行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi4_1'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi4_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi4_2'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi4_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi4_3'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi4_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi4_4'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi4_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi4_5'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi4_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi4_6'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi4_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_lane4'><a>"
+														+ json.obj[0].NumVehi8[0].numVehiLane4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi3_1'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi3_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi3_2'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi3_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi3_3'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi3_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi3_4'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi3_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi3_5'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi3_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi3_6'><a>"
+														+ json.obj[0].NumVehi8[0].numVehi3_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_lane3'><a>"
+														+ json.obj[0].NumVehi8[0].numVehiLane3
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax2_1'><a>"
+														+ nv3141
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax2_2'><a>"
+														+ nv3242
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax2_3'><a>"
+														+ nv3343
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax2_4'><a>"
+														+ nv3444
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax2_5'><a>"
+														+ nv3545
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_hax2_6'><a>"
+														+ nv3646
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_half2'><a>"
+														+ nv3L3nv4L4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ ""
+														+ "</td>"
+														+ "<td colspan='2'>"
+														+ "合计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_axle1'><a>"
+														+ nv1121nv3141
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_axle2'><a>"
+														+ nv1222nv3242
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_axle3'><a>"
+														+ nv1323nv3343
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_axle4'><a>"
+														+ nv1424nv3444
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_axle5'><a>"
+														+ nv1525nv3545
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_axle6'><a>"
+														+ nv1626nv3646
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_vehi_8,num_vehi_all'><a>"
+														+ nv1L1nv2L2nv3L3nv4L4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "</tfoot>");
+
+												 nv11 = json.obj[0].MaxGw8[0].maxGw1_1;
+												 nv12 = json.obj[0].MaxGw8[0].maxGw1_2;
+												 nv13 = json.obj[0].MaxGw8[0].maxGw1_3;
+												 nv14 = json.obj[0].MaxGw8[0].maxGw1_4;
+												 nv15 = json.obj[0].MaxGw8[0].maxGw1_5;
+												 nv16 = json.obj[0].MaxGw8[0].maxGw1_6;
+												 nv1L1 = json.obj[0].MaxGwInfo8[0].maxGwLane1;
+												 nv21 = json.obj[0].MaxGw8[0].maxGw2_1;
+												 nv22 = json.obj[0].MaxGw8[0].maxGw2_2;
+												 nv23 = json.obj[0].MaxGw8[0].maxGw2_3;
+												 nv24 = json.obj[0].MaxGw8[0].maxGw2_4;
+												 nv25 = json.obj[0].MaxGw8[0].maxGw2_5;
+												 nv26 = json.obj[0].MaxGw8[0].maxGw2_6;
+												 nv2L2 = json.obj[0].MaxGwInfo8[0].maxGwLane2;
+												 nv31 = json.obj[0].MaxGw8[0].maxGw3_1;
+												 nv32 = json.obj[0].MaxGw8[0].maxGw3_2;
+												 nv33 = json.obj[0].MaxGw8[0].maxGw3_3;
+												 nv34 = json.obj[0].MaxGw8[0].maxGw3_4;
+												 nv35 = json.obj[0].MaxGw8[0].maxGw3_5;
+												 nv36 = json.obj[0].MaxGw8[0].maxGw3_6;
+												 nv3L3 = json.obj[0].MaxGwInfo8[0].maxGwLane3;
+												 nv41 = json.obj[0].MaxGw8[0].maxGw4_1;
+												 nv42 = json.obj[0].MaxGw8[0].maxGw4_2;
+												 nv43 = json.obj[0].MaxGw8[0].maxGw4_3;
+												 nv44 = json.obj[0].MaxGw8[0].maxGw4_4;
+												 nv45 = json.obj[0].MaxGw8[0].maxGw4_5;
+												 nv46 = json.obj[0].MaxGw8[0].maxGw4_6;
+												 nv4L4 = json.obj[0].MaxGwInfo8[0].maxGwLane4;
+												
+												 nv1121=Number(nv11)+Number(nv21);
+												 nv1222=Number(nv12)+Number(nv22);
+												 nv1323=Number(nv13)+Number(nv23);
+												 nv1424=Number(nv14)+Number(nv24);
+												 nv1525=Number(nv15)+Number(nv25);
+												 nv1626=Number(nv16)+Number(nv26);
+												 nv1L1nv2L2=Number(nv1L1)+Number(nv2L2);
+												
+												 nv3141=Number(nv31)+Number(nv41);
+												 nv3242=Number(nv32)+Number(nv42);
+												 nv3343=Number(nv33)+Number(nv43);
+												 nv3444=Number(nv34)+Number(nv44);
+												 nv3545=Number(nv35)+Number(nv45);
+												 nv3646=Number(nv36)+Number(nv46);
+												 nv3L3nv4L4=Number(nv3L3)+Number(nv4L4);
+												
+												 nv1121nv3141=Number(nv1121)+Number(nv3141);
+												 nv1222nv3242=Number(nv1222)+Number(nv3242);
+												 nv1323nv3343=Number(nv1323)+Number(nv3343);
+												 nv1424nv3444=Number(nv1424)+Number(nv3444);
+												 nv1525nv3545=Number(nv1525)+Number(nv3545);
+												 nv1626nv3646=Number(nv1626)+Number(nv3646);
+												 nv1L1nv2L2nv3L3nv4L4 = Number(nv1L1nv2L2)+Number(nv3L3nv4L4)
+										MaxGw
+												.append("<thead>"
+														+ "</thead>"
+														+ "<tfoot>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "方向"
+														+ "</td>"
+														+ "<td>"
+														+ "车道编号"
+														+ "</td>"
+														+ "<td>"
+														+ "车道名"
+														+ "</td>"
+														+ "<td>"
+														+ "2轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "3轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "4轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "5轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "6轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "7轴车及以上"
+														+ "</td>"
+														+ "<td>"
+														+ "合计"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "上行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw1_1' title='"+json.obj[0].MaxGwInfo8[0].maxGw1_1+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw1_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw1_2' title='"+json.obj[0].MaxGwInfo8[0].maxGw1_2+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw1_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw1_3' title='"+json.obj[0].MaxGwInfo8[0].maxGw1_3+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw1_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw1_4' title='"+json.obj[0].MaxGwInfo8[0].maxGw1_4+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw1_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw1_5' title='"+json.obj[0].MaxGwInfo8[0].maxGw1_5+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw1_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw1_6' title='"+json.obj[0].MaxGwInfo8[0].maxGw1_6+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw1_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_lane1' title='"+json.obj[0].MaxGwInfo8[0].maxGwLane1+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGwLane1
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw2_1' title='"+json.obj[0].MaxGwInfo8[0].maxGw2_1+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw2_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw2_2' title='"+json.obj[0].MaxGwInfo8[0].maxGw2_2+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw2_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw2_3' title='"+json.obj[0].MaxGwInfo8[0].maxGw2_3+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw2_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw2_4' title='"+json.obj[0].MaxGwInfo8[0].maxGw2_4+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw2_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw2_5' title='"+json.obj[0].MaxGwInfo8[0].maxGw2_5+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw2_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw2_6' title='"+json.obj[0].MaxGwInfo8[0].maxGw2_6+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw2_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_lane2' title='"+json.obj[0].MaxGwInfo8[0].maxGwLane2+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGwLane2
+														+ "</a></td>"
+														+ "</tr>"
+														
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax1_1' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax1_1+"'><a>"
+														+ nv1121
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax1_2' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax1_2+"'><a>"
+														+ nv1222
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax1_3' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax1_3+"'><a>"
+														+ nv1323
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax1_4' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax1_4+"'><a>"
+														+ nv1424
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax1_5' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax1_5+"'><a>"
+														+ nv1525
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax1_6' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax1_6+"'><a>"
+														+ nv1626
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_half1' title='"+json.obj[0].MaxGwInfo8[0].maxGwHalf1+"'><a>"
+														+ nv1L1nv2L2
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "下行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw3_1' title='"+json.obj[0].MaxGwInfo8[0].maxGw3_1+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw3_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw3_2' title='"+json.obj[0].MaxGwInfo8[0].maxGw3_2+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw3_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw3_3' title='"+json.obj[0].MaxGwInfo8[0].maxGw3_3+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw3_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw3_4' title='"+json.obj[0].MaxGwInfo8[0].maxGw3_4+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw3_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw3_5' title='"+json.obj[0].MaxGwInfo8[0].maxGw3_5+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw3_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw3_6' title='"+json.obj[0].MaxGwInfo8[0].maxGw3_6+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw3_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_lane3' title='"+json.obj[0].MaxGwInfo8[0].maxGwLane3+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGwLane3
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw4_1' title='"+json.obj[0].MaxGwInfo8[0].maxGw4_1+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw4_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw4_2' title='"+json.obj[0].MaxGwInfo8[0].maxGw4_2+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw4_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw4_3' title='"+json.obj[0].MaxGwInfo8[0].maxGw4_3+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw4_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw4_4' title='"+json.obj[0].MaxGwInfo8[0].maxGw4_4+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw4_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw4_5' title='"+json.obj[0].MaxGwInfo8[0].maxGw4_5+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw4_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw4_6' title='"+json.obj[0].MaxGwInfo8[0].maxGw4_6+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGw4_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_lane4' title='"+json.obj[0].MaxGwInfo8[0].maxGwLane4+"'><a>"
+														+ json.obj[0].MaxGw8[0].maxGwLane4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax2_1' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax2_1+"'><a>"
+														+ nv3141
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax2_2' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax2_2+"'><a>"
+														+ nv3242
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax2_3' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax2_3+"'><a>"
+														+ nv3343
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax2_4' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax2_4+"'><a>"
+														+ nv3444
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax2_5' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax2_5+"'><a>"
+														+ nv3545
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_hax2_6' title='"+json.obj[0].MaxGwInfo8[0].maxGwHax2_6+"'><a>"
+														+ nv3646
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_half2' title='"+json.obj[0].MaxGwInfo8[0].maxGwHalf2+"'><a>"
+														+ nv3L3nv4L4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ ""
+														+ "</td>"
+														+ "<td colspan='2'>"
+														+ "合计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_axle1' title='"+json.obj[0].MaxGwInfo8[0].maxGwAxle1+"'><a>"
+														+ nv1121nv3141
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_axle2' title='"+json.obj[0].MaxGwInfo8[0].maxGwAxle2+"'><a>"
+														+ nv1222nv3242
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_axle3' title='"+json.obj[0].MaxGwInfo8[0].maxGwAxle3+"'><a>"
+														+ nv1323nv3343
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_axle4' title='"+json.obj[0].MaxGwInfo8[0].maxGwAxle4+"'><a>"
+														+ nv1424nv3444
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_axle5' title='"+json.obj[0].MaxGwInfo8[0].maxGwAxle5+"'><a>"
+														+ nv1525nv3545
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_axle6' title='"+json.obj[0].MaxGwInfo8[0].maxGwAxle6+"'><a>"
+														+ nv1626nv3646
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_max_gw_8,max_gw_all' title='"+json.obj[0].MaxGwInfo8[0].maxGwAll+"'><a>"
+														+ nv1L1nv2L2nv3L3nv4L4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "</tfoot>")
+
+																										 
+												 nv11 = json.obj[0].NumOvlo8[0].numOvlo1_1;
+												 nv12 = json.obj[0].NumOvlo8[0].numOvlo1_2;
+												 nv13 = json.obj[0].NumOvlo8[0].numOvlo1_3;
+												 nv14 = json.obj[0].NumOvlo8[0].numOvlo1_4;
+												 nv15 = json.obj[0].NumOvlo8[0].numOvlo1_5;
+												 nv16 = json.obj[0].NumOvlo8[0].numOvlo1_6;
+												 nv1L1 = json.obj[0].NumOvlo8[0].numOvloLane1;
+												 nv21 = json.obj[0].NumOvlo8[0].numOvlo2_1;
+												 nv22 = json.obj[0].NumOvlo8[0].numOvlo2_2;
+												 nv23 = json.obj[0].NumOvlo8[0].numOvlo2_3;
+												 nv24 = json.obj[0].NumOvlo8[0].numOvlo2_4;
+												 nv25 = json.obj[0].NumOvlo8[0].numOvlo2_5;
+												 nv26 = json.obj[0].NumOvlo8[0].numOvlo2_6;
+												 nv2L2 = json.obj[0].NumOvlo8[0].numOvloLane2;
+												 nv31 = json.obj[0].NumOvlo8[0].numOvlo3_1;
+												 nv32 = json.obj[0].NumOvlo8[0].numOvlo3_2;
+												 nv33 = json.obj[0].NumOvlo8[0].numOvlo3_3;
+												 nv34 = json.obj[0].NumOvlo8[0].numOvlo3_4;
+												 nv35 = json.obj[0].NumOvlo8[0].numOvlo3_5;
+												 nv36 = json.obj[0].NumOvlo8[0].numOvlo3_6;
+												 nv3L3 = json.obj[0].NumOvlo8[0].numOvloLane3;
+												 nv41 = json.obj[0].NumOvlo8[0].numOvlo4_1;
+												 nv42 = json.obj[0].NumOvlo8[0].numOvlo4_2;
+												 nv43 = json.obj[0].NumOvlo8[0].numOvlo4_3;
+												 nv44 = json.obj[0].NumOvlo8[0].numOvlo4_4;
+												 nv45 = json.obj[0].NumOvlo8[0].numOvlo4_5;
+												 nv46 = json.obj[0].NumOvlo8[0].numOvlo4_6;
+												 nv4L4 = json.obj[0].NumOvlo8[0].numOvloLane4;
+												
+												 nv1121=Number(nv11)+Number(nv21);
+												 nv1222=Number(nv12)+Number(nv22);
+												 nv1323=Number(nv13)+Number(nv23);
+												 nv1424=Number(nv14)+Number(nv24);
+												 nv1525=Number(nv15)+Number(nv25);
+												 nv1626=Number(nv16)+Number(nv26);
+												 nv1L1nv2L2=Number(nv1L1)+Number(nv2L2);
+												
+												 nv3141=Number(nv31)+Number(nv41);
+												 nv3242=Number(nv32)+Number(nv42);
+												 nv3343=Number(nv33)+Number(nv43);
+												 nv3444=Number(nv34)+Number(nv44);
+												 nv3545=Number(nv35)+Number(nv45);
+												 nv3646=Number(nv36)+Number(nv46);
+												 nv3L3nv4L4=Number(nv3L3)+Number(nv4L4);
+												
+												 nv1121nv3141=Number(nv1121)+Number(nv3141);
+												 nv1222nv3242=Number(nv1222)+Number(nv3242);
+												 nv1323nv3343=Number(nv1323)+Number(nv3343);
+												 nv1424nv3444=Number(nv1424)+Number(nv3444);
+												 nv1525nv3545=Number(nv1525)+Number(nv3545);
+												 nv1626nv3646=Number(nv1626)+Number(nv3646);
+												 nv1L1nv2L2nv3L3nv4L4 = Number(nv1L1nv2L2)+Number(nv3L3nv4L4)
+										NumOvlo
+												.append("<thead>"
+														+ "</thead>"
+														+ "<tfoot>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "方向"
+														+ "</td>"
+														+ "<td>"
+														+ "车道编号"
+														+ "</td>"
+														+ "<td>"
+														+ "车道名"
+														+ "</td>"
+														+ "<td>"
+														+ "2轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "3轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "4轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "5轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "6轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "7轴车及以上"
+														+ "</td>"
+														+ "<td>"
+														+ "合计"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "上行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo1_1'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo1_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo1_2'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo1_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo1_3'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo1_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo1_4'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo1_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo1_5'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo1_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo1_6'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo1_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_lane1'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvloLane1
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo2_1'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo2_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo2_2'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo2_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo2_3'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo2_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo2_4'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo2_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo2_5'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo2_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo2_6'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo2_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_lane2'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvloLane2
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax1_1'><a>"
+														+ nv1121
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax1_2'><a>"
+														+ nv1222
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax1_3'><a>"
+														+ nv1323
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax1_4'><a>"
+														+ nv1424
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax1_5'><a>"
+														+ nv1525
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax1_6'><a>"
+														+ nv1626
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_half1'><a>"
+														+ nv1L1nv2L2
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "下行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo3_1'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo3_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo3_2'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo3_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo3_3'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo3_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo3_4'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo3_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_Ovlo3_5'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo3_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo3_6'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo3_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_lane3'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvloLane3
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo4_1'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo4_1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo4_2'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo4_2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo4_3'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo4_3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo4_4'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo4_4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo4_5'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo4_5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo4_6'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvlo4_6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_lane4'><a>"
+														+ json.obj[0].NumOvlo8[0].numOvloLane4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax2_1'><a>"
+														+ nv3141
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax2_2'><a>"
+														+ nv3242
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax2_3'><a>"
+														+ nv3343
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax2_4'><a>"
+														+ nv3444
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax2_5'><a>"
+														+ nv3545
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_hax2_6'><a>"
+														+ nv3646
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_half2'><a>"
+														+ nv3L3nv4L4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ ""
+														+ "</td>"
+														+ "<td colspan='2'>"
+														+ "合计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_axle1'><a>"
+														+ nv1121nv3141
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_axle2'><a>"
+														+ nv1222nv3242
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_axle3'><a>"
+														+ nv1323nv3343
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_axle4'><a>"
+														+ nv1424nv3444
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_axle5'><a>"
+														+ nv1525nv3545
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_axle6'><a>"
+														+ nv1626nv3646
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_num_ovlo_8,num_ovlo_all'><a>"
+														+ nv1L1nv2L2nv3L3nv4L4
+														+ "</a></td>"
+														+ "</tr>"
+														+ "</tfoot>")
+
+										RatioOvlo
+												.append("<thead>"
+														+ "</thead>"
+														+ "<tfoot>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "方向"
+														+ "</td>"
+														+ "<td>"
+														+ "车道编号"
+														+ "</td>"
+														+ "<td>"
+														+ "车道名"
+														+ "</td>"
+														+ "<td>"
+														+ "2轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "3轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "4轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "5轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "6轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "7轴车及以上"
+														+ "</td>"
+														+ "<td>"
+														+ "合计"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "上行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo1_1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo1_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo1_2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo1_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo1_3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo1_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo1_4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo1_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo1_5'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo1_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo1_6'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo1_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_lane1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloLane1)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo2_1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo2_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo2_2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo2_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo2_3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo2_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo2_4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo2_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo2_5'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo2_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo2_6'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo2_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_lane2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloLane2)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax1_1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax1_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax1_2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax1_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax1_3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax1_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax1_4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax1_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax1_5'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax1_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax1_6'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax1_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_half1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHalf1)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "下行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo3_1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo3_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo3_2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo3_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo3_3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo3_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo3_4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo3_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo3_5'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo3_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo3_6'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo3_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_lane3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloLane3)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo4_1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo4_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo4_2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo4_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo4_3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo4_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo4_4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo4_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo4_5'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo4_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo4_6'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvlo4_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_lane4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloLane4)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax2_1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax2_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax2_2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax2_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax2_3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax2_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax2_4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax2_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax2_5'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax2_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_hax2_6'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHax2_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_half2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloHalf2)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ ""
+														+ "</td>"
+														+ "<td colspan='2'>"
+														+ "合计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_axle1'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloAxle1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_axle2'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloAxle2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_axle3'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloAxle3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_axle4'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloAxle4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_axle5'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloAxle5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_axle6'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloAxle6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_ratio_ovlo_8,ratio_ovlo_all'><a>"
+														+ convertPercent(json.obj[0].RatioOvlo8[0].ratioOvloAll)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "</tfoot>");
+
+										ProbOvlo
+												.append("<thead>"
+														+ "</thead>"
+														+ "<tfoot>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "方向"
+														+ "</td>"
+														+ "<td>"
+														+ "车道编号"
+														+ "</td>"
+														+ "<td>"
+														+ "车道名"
+														+ "</td>"
+														+ "<td>"
+														+ "2轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "3轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "4轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "5轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "6轴车"
+														+ "</td>"
+														+ "<td>"
+														+ "7轴车及以上"
+														+ "</td>"
+														+ "<td>"
+														+ "合计"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "上行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo1_1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo1_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo1_2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo1_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo1_3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo1_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo1_4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo1_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo1_5'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo1_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo1_6'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo1_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_lane1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloLane1)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo2_1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo2_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo2_2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo2_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo2_3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo2_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo2_4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo2_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo2_5'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo2_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo2_6'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo2_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_lane2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloLane2)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax1_1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax1_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax1_2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax1_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax1_3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax1_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax1_4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax1_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax1_5'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax1_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax1_6'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax1_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_half1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHalf1)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='3'>"
+														+ "下行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo3_1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo3_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo3_2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo3_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo3_3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo3_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo3_4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo3_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo3_5'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo3_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo3_6'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo3_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_lane3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloLane3)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo4_1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo4_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo4_2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo4_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo4_3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo4_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo4_4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo4_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo4_5'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo4_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo4_6'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvlo4_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_lane4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloLane4)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td colspan='2'>"
+														+ "小计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax2_1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax2_1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax2_2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax2_2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax2_3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax2_3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax2_4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax2_4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax2_5'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax2_5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_hax2_6'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHax2_6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_half2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloHalf2)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ ""
+														+ "</td>"
+														+ "<td colspan='2'>"
+														+ "合计"
+														+ "</td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_axle1'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloAxle1)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_axle2'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloAxle2)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_axle3'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloAxle3)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_axle4'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloAxle4)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_axle5'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloAxle5)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_axle6'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloAxle6)
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_prob_ovlo_8,prob_ovlo_all'><a>"
+														+ convertPercent(json.obj[0].ProbOvlo8[0].probOvloAll)
+														+ "</a></td>"
+														+ "</tr>"
+														+ "</tfoot>");
+
+										LoadRadio
+												.append("<thead>"
+														+ "</thead>"
+														+ "<tfoot>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='2'>"
+														+ "方向"
+														+ "</td>"
+														+ "<td rowspan='2'>"
+														+ "车道编号"
+														+ "</td>"
+														+ "<td rowspan='2'>"
+														+ "车道名"
+														+ "</td>"
+														+ "<td colspan='3'>"
+														+ "实际荷载效应/设计荷载效应"
+														+ "</td>"
+														+ "<td colspan='3'>"
+														+ "实际荷载效应/规范荷载效应"
+														+ "</td>"
+														+ "<td rowspan='2'>"
+														+ "荷载状态"
+														+ "</td>"
+														+ "<td rowspan='2'>"
+														+ "车道状态"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "标准值"
+														+ "</td>"
+														+ "<td>"
+														+ "最大值"
+														+ "</td>"
+														+ "<td>"
+														+ "0.95分位值"
+														+ "</td>"
+														+ "<td>"
+														+ "标准值"
+														+ "</td>"
+														+ "<td>"
+														+ "最大值"
+														+ "</td>"
+														+ "<td>"
+														+ "0.95分位值"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='2'>"
+														+ "上行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio1' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio1
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio2' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio2
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio3' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio3
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio4' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio4
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio5' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio5
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio6' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio6
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio7' rowspan='2'>"
+														+ json.obj[0].LoadRadio[0].load_radio7
+														+ "</td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio8' rowspan='2'>"
+														+ json.obj[0].LoadRadio[0].load_radio8
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td rowspan='4'>"
+														+ "下行"
+														+ "</td>"
+														+ "<td>"
+														+ "1"
+														+ "</td>"
+														+ "<td>"
+														+ "车道1"
+														+ "</td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio9' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio9
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio10' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio10
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio11' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio11
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio12' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio12
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio13' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio13
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio14' rowspan='2'><a>"
+														+ json.obj[0].LoadRadio[0].load_radio14
+														+ "</a></td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio15' rowspan='2'>"
+														+ json.obj[0].LoadRadio[0].load_radio15
+														+ "</td>"
+														+ "<td data-type='brg_weight_load_radio,load_radio16' rowspan='2'>"
+														+ json.obj[0].LoadRadio[0].load_radio16
+														+ "</td>"
+														+ "</tr>"
+														+ "<tr align='center'>"
+														+ "<td>"
+														+ "2"
+														+ "</td>"
+														+ "<td>"
+														+ "车道2"
+														+ "</td>"
+														+ "</tr>"
+														+ "</tfoot>");
+											}else{
+												NumVehi
 												.append("<thead>"
 														+ "</thead>"
 														+ "<tfoot>"
@@ -4005,8 +5509,9 @@ a {
 														+ "停车道"
 														+ "</td>"
 														+ "</tr>" + "</tfoot>");
+											}
 									}
-								} else {
+								} else {   
 									if (json.obj[0].NumVehi[0] == null
 											|| json.obj[0].NumVehi[0] == undefined) {
 										toastr.error("没有数据");
@@ -6628,12 +8133,12 @@ a {
 														+ "停车道"
 														+ "</td>"
 														+ "</tr>" + "</tfoot>");
-									}
+									}//if (json.obj[0].NumVehi8[0] == null
 
-								}
+								}//if (brg_id == 'd5d060752ada4495896243aa3d9cfae2'){
 								addClickEven();//注册a标签点击事件
-							}
-						}
+							}//if (item_second == '车辆荷载') {
+						}//success
 					});
 
 		};
@@ -6730,7 +8235,7 @@ a {
 
 		function initJiGuangRaoDu1(startTime,endTime) {
 			showMask();
-			var it_second = "激光扰度";
+			var it_second = "激光挠度";
 			$.ajax({
 				type : 'POST',
 				url : '../BrgMonitorServlet',
@@ -6751,7 +8256,7 @@ a {
 		}
 		function initJiGuangRaoDu2(startTime,endTime) {
 			showMask();
-			var it_second = "激光扰度";
+			var it_second = "激光挠度";
 			$.ajax({
 				type : 'POST',
 				url : '../BrgMonitorServlet',
@@ -9384,6 +10889,8 @@ a {
 	                }
 	            });
 	        }
+			
+
 	</script>
 
 
