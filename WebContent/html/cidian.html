@@ -229,9 +229,9 @@
 					      
 					    </ul>
 				  </div>
-				   <div class="box1" id="boxf" >
-		                <p><a href="./report.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告</a></p>
-		            </div>
+				   <!-- <div class="box1" id="boxf" >
+		                <p><a href="./report.html"><i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i>监测报告</a></p>
+		            </div> -->
 		            <div class="box1active" id="boxg" >
 		                <p><a href="./cidian.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据</a></p>
 		            </div>
@@ -249,8 +249,8 @@
        <!-- <li role="presentation" id="cd_basic_jcfl"><a href="#dier" aria-controls="dier" role="tab" data-toggle="tab">监测分类</a></li>-->
           <li role="presentation" id="cd_basic_jclx"><a href="#disan" aria-controls="disan" role="tab" data-toggle="tab">监测类型</a></li>
           <li role="presentation" id="cd_basic_sjlwzbz"><a href="#disi" aria-controls="disi" role="tab" data-toggle="tab">数据量完整标准</a></li>
-          <li role="presentation" id="cd_basic_dxtz"><a href="#message" aria-controls="message" role="tab" data-toggle="tab">短信通知</a></li>
-          <li role="presentation" id="cd_basic_jcql"><a href="#diba" aria-controls="diba" role="tab" data-toggle="tab">监测桥梁</a></li>
+          <!-- <li role="presentation" id="cd_basic_dxtz"><a href="#message" aria-controls="message" role="tab" data-toggle="tab">短信通知</a></li>
+          <li role="presentation" id="cd_basic_jcql"><a href="#diba" aria-controls="diba" role="tab" data-toggle="tab">监测桥梁</a></li> -->
        <!--  <li role="presentation"><a href="#diliu" aria-controls="diliu" role="tab" data-toggle="tab">路线字典</a></li> -->
        <!--  <li role="presentation"><a href="#diqi" aria-controls="diqi" role="tab" data-toggle="tab">结构类型</a></li> -->
         </ul>
@@ -2435,6 +2435,7 @@
                     	$("#qiaoSlect4").append('<li><a href="./yujin.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
                         $("#changeBrg").append('<option value='+arr[i].bridge_id+'>'+arr[i].bridge_name+'</option>');
                     }
+                	/* $("#qiaoSlect4").append('<li><a target="_blank" href="http://testelectron.eicp.net:10800/SERPJ000646/login.jsp">前往裂缝监测</a></li>') */
                 }else {
                     toastr.error("初始桥梁出错");
                 }

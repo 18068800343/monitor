@@ -907,11 +907,11 @@ public class GetFileSizeDao {
 					if(et<time){
 						//数据异常,已经有 end_time (单位：ms 毫秒)无数据接入
 						co.setBgco(end_time);
-						co.setSort(0);
+						co.setSort(2);
 					}else{
 						//数据正常,有最新数据
 						co.setBgco("1");
-						co.setSort(2);
+						co.setSort(1);
 					}
 				}
 				lc.add(co);

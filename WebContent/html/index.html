@@ -172,9 +172,9 @@
 					      
 					    </ul>
 				  </div>
-				   <div class="box1" id="boxf" >
-		                <p><a href="./report.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告</a></p>
-		            </div>
+				   <!-- <div class="box1" id="boxf" >
+		                <p><a href="./report.html"><i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i>监测报告</a></p>
+		            </div> -->
 		            <div class="box1" id="boxg" >
 		                <p><a href="./cidian.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据</a></p>
 		            </div>
@@ -837,6 +837,7 @@
 		                	} */
 		                	$("#brgNum").text(arr.length)
 	                    }
+	                	/* $("#qiaoSlect4").append('<li><a target="_blank" href="http://testelectron.eicp.net:10800/SERPJ000646/login.jsp">前往裂缝监测</a></li>') */
 	                }else {
 	                    toastr.error("初始桥梁出错");
 	                }
@@ -974,18 +975,18 @@
 	            	   }
 	            	   for(var i=0;i<len;i++){
 	            		   var brgName = obj[i].brgName;
-	            		   if(brgName!="新沂河大桥"&&brgName!='苏北灌溉总渠特大桥'&&brgName!='京杭运河特大桥'&&brgName!='永安河大桥'){
+	            		  /*  if(brgName!="新沂河大桥"&&brgName!='苏北灌溉总渠特大桥'&&brgName!='京杭运河特大桥'&&brgName!='永安河大桥'){
 		            		   if(obj[i].ycStates=="红色告警"){
 				            	   $("#yj_table tbody").append("<tr><td style='width:30%;'>"+obj[i].brgName+"</td><td style='width:52%;color:#6495ED;'>"+obj[i].ycAddr+"</td><td style='width:18%;'><span class='label label-sm label-danger'>"+obj[i].ycStates+"</span></td></tr>")
 		            		   }else{
 		            			   $("#yj_table tbody").append("<tr><td style='width:30%;'>"+obj[i].brgName+"</td><td style='width:52%;color:#6495ED;'>"+obj[i].ycAddr+"</td><td style='width:18%;'><span class='label label-sm' style='background:#FFB90F'>"+obj[i].ycStates+"</span></td></tr>")		            			   
 		            		   }
-	            		   }else{
+	            		   }else{ */
 	            			   var size = $("#yj_table tbody").find("tr").size();
 	            			   if(i==len-1&&size<=0){
 	            				   $("#yj_table tbody").append("<tr><td colspan='3' style='text-align:center;'>无测点异常</td></tr>")
 	            			   }
-	            		   }
+	            		   /* } */
 		               }   
 	               }else{
 	            	   $("#yj_table tbody").append("<tr><td colspan='3' style='text-align:center;'>无测点异常</td></tr>")
@@ -1050,13 +1051,13 @@
 	               if(obj!=null){
 	            	   for(var i=0;i<obj.length;i++){
 	            		   var name = obj[i].brgName;
-	            		   if(name!="新沂河大桥"&&name!='苏北灌溉总渠特大桥'&&name!='京杭运河特大桥'&&name!='永安河大桥'){
+	            		   /* if(name!="新沂河大桥"&&name!='苏北灌溉总渠特大桥'&&name!='京杭运河特大桥'&&name!='永安河大桥'){
 		            	   $("#cdStateTable tbody").append("<tr><td style='width:30%;'>"+obj[i].brgName+"</td><td style='width:52%;color:#6495ED;'>"+obj[i].ycAddr+"</td><td style='width:18%;'><span class='label label-sm'  style='background:#FFB90F'>"+obj[i].ycStates+"</span></td></tr>")
-	            		   }else{
+	            		   }else{ */
 	            			   if(i==0){
 	            				   $("#cdStateTable tbody").append("<tr><td colspan='3' style='text-align:center;'>无测点异常</td></tr>")
 	            			   }
-	            		   }
+	            		   /* } */
 		               }   
 	               }else{
 	            	   $("#cdStateTable tbody").append("<tr><td colspan='3' style='text-align:center;'>无测点异常</td></tr>")

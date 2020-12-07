@@ -184,12 +184,12 @@ a {
 
 					</ul>
 				</div>
-				<div class="box1" id="boxf">
+				<!-- <div class="box1" id="boxf">
 					<p>
-						<a href="./report.html"> <!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告
+						<a href="./report.html"> <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i>监测报告
 						</a>
 					</p>
-				</div>
+				</div> -->
 				<div class="box1" id="boxg">
 					<p>
 						<a href="./cidian.html"> <!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据
@@ -214,7 +214,7 @@ a {
 
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
+			<div role="tabpanel" class="tab-pane " id="home">
 
 				<div id="content">
 
@@ -226,6 +226,7 @@ a {
 								<div class="yihang2" style="margin: 40px 0px 10px 0px;">
 									<div>
 										<a role="button" class="btn btn-primary" id="yujintable2">前往分析页面</a>
+										
 									</div>
 									<div style="font-size: 18px; font-weigh: 700;">
 										当前桥梁名称:<span><B id="qiaomingcheng" name='qiaomingcheng'></B></span>
@@ -289,10 +290,11 @@ a {
 			</div>
 
 			<!-- 第二个标签页 -->
-			<div role="tabpanel" class="tab-pane" id="profile">
+			<div role="tabpanel" class="tab-pane active" id="profile">
 				<div class="yihang2 col-md-8" style="margin: 10px 0px 0px 0px;">
 					<div>
 						<a role="button" class="btn btn-primary" id="yujintable">前往分析页面</a>
+						
 					</div>
 					<div style="font-size: 18px; font-weigh: 700;">
 						当前桥梁名称:<span><B id="qiaomingcheng" name='qiaomingcheng'></B></span>
@@ -710,7 +712,7 @@ a {
 
 					<div class="row">
 						<iframe id="mainIframe3" name="mainIframe3" class="col-md-12"
-							style="height: 85vh" src="http://47.92.89.74:3000/#/access/signin?id=251"></iframe>
+							style="height: 85vh" src="http://47.92.137.78:3000/#/noLogin?id=251"></iframe>
 					</div>
 				</div>
 				<!-- <a href="http://47.92.137.78:3000" target="view_frame"></a> -->
@@ -825,17 +827,27 @@ a {
 							var w = obj.w;
 							var s = obj.s;
 							$("#tab_ul").html('');
-							if (w != 0 && s != 0 && brgName == '淮徐高速京杭运河特大桥') {
+							if (brgName == '淮徐高速京杭运河特大桥'||brgName == '淮安大桥' ) {
+								let dom="";
+								if(brgName == '淮徐高速京杭运河特大桥'){
+									dom = '<ul class="nav nav-tabs" role="tablist">'
+										+ '<li role="presentation"  class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
+										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight()">动态称重</a></li>'
+										+ '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>'
+										/* + '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>' */
+										+ '</ul>'
+								}else{
+									dom = '<ul class="nav nav-tabs" role="tablist">'
+										+ '<li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
+										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight()">动态称重</a></li>'
+										/* + '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>' */
+										/* + '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>' */
+										+ '</ul>'
+								}
 								$("#tab_ul")
-										.append(
-												'<ul class="nav nav-tabs" role="tablist">'
-														+ '<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">动态称重</a></li>'
-														+ '<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
-														+ '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>'
-														+ '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>'
-														+ '</ul>');
-								queryData();
-								initWshow();
+										.append(dom);
+								
+								
 								page_health_flag = "1";
 								$("#jiguang").bind('click',function(){
 									initJiGuangRaoDu1();
@@ -851,7 +863,7 @@ a {
 								queryData();
 								initWshow();
 								page_health_flag = "1";
-							}
+							}else
 
 							if (w == 0 && s != 0) {
 								$("#tab_ul")
@@ -866,7 +878,7 @@ a {
 										"click");
 								$("#tab_ul ul:first li:eq(0)").remove();
 								/*  $("#item_second").trigger("change"); */
-							}
+							}else
 							if (w != 0 && s == 0) {
 								page_health_flag = "2";
 								$("#tab_ul")
@@ -877,6 +889,7 @@ a {
 								queryData();
 								initWshow();
 							}
+							clickHealth();
 						}
 					});
 		}
@@ -8306,11 +8319,11 @@ a {
 				dataZoom : [
 						{
 							type : 'inside',
-							start : 0,
+							start : 95,
 							end : 100
 						},
 						{
-							start : 0,
+							start : 95,
 							end : 100,
 							handleIcon : 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
 							handleSize : '80%',
@@ -8361,11 +8374,11 @@ a {
 				dataZoom : [
 						{
 							type : 'inside',
-							start : 0,
+							start : 95,
 							end : 100
 						},
 						{
-							start : 0,
+							start : 95,
 							end : 100,
 							handleIcon : 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
 							handleSize : '80%',
@@ -8417,11 +8430,11 @@ a {
 				dataZoom : [
 						{
 							type : 'inside',
-							start : 0,
+							start : 95,
 							end : 100
 						},
 						{
-							start : 0,
+							start : 95,
 							end : 100,
 							handleIcon : 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
 							handleSize : '80%',
@@ -8579,6 +8592,7 @@ a {
 									'<option value='+arr[i].bridge_id+'>'
 											+ arr[i].bridge_name + '</option>')
 						}
+	                	/* $("#qiaoSlect4").append('<li><a target="_blank" href="http://testelectron.eicp.net:10800/SERPJ000646/login.jsp">前往裂缝监测</a></li>') */
 						$("#scanStruct").val(id).trigger("change");
 					} else {
 						toastr.error("初始桥梁出错");
@@ -9832,12 +9846,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -9940,12 +9954,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -10047,12 +10061,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -10154,12 +10168,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -10261,12 +10275,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -10368,12 +10382,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -10475,12 +10489,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -10582,12 +10596,12 @@ a {
 				dataZoom : [ {
 					show : true,
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				}, {
 					type : 'inside',
 					realtime : true,
-					start : 0,
+					start : 95,
 					end : 100
 				} ],
 				xAxis : [ {
@@ -10652,6 +10666,17 @@ a {
 			$("#xianshi").trigger("click");
 			yanshi();
 			page_health_flag = "2";
+		}
+		
+		function clickWeight() {
+			$("#home").empty();
+			$("#home").append('<div id="content">'
+					+'<div class="row">'
+					+'<iframe id="mainIframe4" name="mainIframe4" class="col-md-12" ' 
+					+'style="height: 85vh" src="https://www.jsjkyh.com:8061/login/homeApiLoginToUrl?userName=淮徐京杭&urlPrefix=https://www.jsjkyh.com:8061"></iframe>'  
+					/*  +'style="height: 85vh" src="http://localhost:8080/login/homeApi?token=jiance&ren=gaor"></iframe>'  */
+					+'</div>'
+					+'</div>');
 		}
 		function yanshi() {
 			$("#xianshi4").trigger("click");
@@ -10825,37 +10850,35 @@ a {
 		
 	    let startTime = {
 	            elem: '#reservation',
-	            type: 'date',
 	            trigger: 'click',
-	            format: 'YYYY-M-D h-mm-ss', //自动生成的时间格式
+	            format: 'yyyy-M-d', //自动生成的时间格式
 	            done: function (date) {
 	                let beginDate = date;
 	                let endDate = $("#reservationEnd").val();
 	                let d1 = beginDate;
 	                let d2 = endDate;
-	                if (beginDate != "" && endDate != "" && d1 > d2) {
+	               /*  if (beginDate != "" && endDate != "" && d1 > d2) {
 	                    toastr.error("开始时间不能大于结束时间！");
 	                    $("#reservation").val('');
 	                    return false;
-	                }
+	                } */
 	            }
 	        };
 	        // 结束时间
 	        let endTime = {
 	            elem: '#reservationEnd',
-	            type: 'date',
-	            format: 'YYYY-M-D h-mm-ss', //自动生成的时间格式
+	            format: 'yyyy-M-d', //自动生成的时间格式
 	            trigger: 'click',
 	            done: function (date) {
 	                let beginDate = $("#reservation").val();
 	                let endDate = date;
 	                let d1 = beginDate;
 	                let d2 = endDate;
-	                if (beginDate != "" && endDate != "" && d1 > d2) {
+	               /*  if (beginDate != "" && endDate != "" && d1 > d2) {
 	                    toastr.error("开始时间不能大于结束时间！");
 	                    $("#reservationEnd").val('');
 	                    return false;
-	                }
+	                } */
 	            }
 	        };
 	        laydate.render(startTime);

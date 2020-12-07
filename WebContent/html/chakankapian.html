@@ -72,9 +72,9 @@
 					      
 					    </ul>
 				  </div>
-				   <div class="box1" id="boxf" >
-		                <p><a href="./report.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->监测报告</a></p>
-		            </div>
+				   <!-- <div class="box1" id="boxf" >
+		                <p><a href="./report.html"><i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i>监测报告</a></p>
+		            </div> -->
 		            <div class="box1" id="boxg" >
 		                <p><a href="./cidian.html"><!-- <i class="iconfont icon-book-thick" style="color:white;font-size:20px;"></i> -->基础数据</a></p>
 		            </div>
@@ -4031,6 +4031,7 @@
 	                toastr.error("系统错误！");
 	            },
 	            success: function (json) {
+	            	
 	                if (json.success == "success") {
 	                	var arr = json.obj;
 	                	$("#qiaoSlect").html('');
@@ -4043,6 +4044,7 @@
 	                    	$("#qiaoSlect3").append('<li><a href="./shujuguanli.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
 	                    	$("#qiaoSlect4").append('<li><a href="./yujin.html?'+arr[i].bridge_id+'">'+arr[i].bridge_name+'</a></li>')
 	                    }
+	                	/* $("#qiaoSlect4").append('<li><a target="_blank" href="http://testelectron.eicp.net:10800/SERPJ000646/login.jsp">前往裂缝监测</a></li>') */
 	                }else {
 	                    toastr.error("初始桥梁出错");
 	                }

@@ -2,6 +2,7 @@
 package hs.bm.dao;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresGuest;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import cn.org.hsxx.bean.BrgHealthStatistic;
 import hs.bm.bean.BrgMonitor;
@@ -272,9 +276,9 @@ public class BrgMonitorDao {
 		Map<String,List> map=new HashMap<>();
 		List<String>row=new ArrayList<>();
 		List<String>line=new ArrayList<>();
-		String sql="SELECT datatime,substring_index(data, 'm', 1) as data,substring_index(datatime, '-', 3) time FROM "+tableName+" where  substring_index(datatime, '-', 3) >= ? and substring_index(datatime, '-', 3) <= ?";
+		String sql="SELECT datatime,substring_index(data, 'm', 1) as data,substring_index(datatime, '-', 3) time FROM "+tableName+" where  substring_index(datatime, '-', 3) >= ? ";
 		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance("/myDbConfig.properties").getConnection());
-		ResultSet rs =dataOperation.executeQuery(sql,new String[]{startTime,endTime});
+		ResultSet rs =dataOperation.executeQuery(sql,new String[]{startTime});
 		try {
 			while(rs.next()){
 				row.add(rs.getString("data"));
@@ -891,6 +895,238 @@ public class BrgMonitorDao {
 		dataOperation.close();
 		return list;
 	}
+
 	
+	public Map<String,Object> getBrgMsgById(String brg_id){
+		Map map = new HashMap<String, Object>();
+		String sql="";
+		sql = " SELECT "
+				+ "bcai.bridge_name brgName, "
+				+ "bcst.bridge_len brgLen, "
+			+ "bcai.span_build brgSpan, "
+			+ "bcai.longitude brgLon, "
+			+ "bcai.latitude brgLat,  "
+			+ "aa.rate dataDayIntRate, "
+			+ "bb.rate dataMonthIntRate, "
+			+ "cc.rate dataYearIntRate, "
+			+ "dd.totalSize totalSizeDay, "
+			+ " ee.totalSize totalSizeYear "
+		+ "FROM "
+			+ "brg_card_admin_id bcai "
+		+ "LEFT JOIN brg_card_struct_tech bcst ON bcai.bridge_id = bcst.bridge_id "
+		+ "LEFT JOIN ( "
+			+ "SELECT  "
+			+ "	* "
+			+ "FROM  "
+				+ "(  "
+					+ "SELECT  "
+					+ "* "
+						+ "FROM "
+						+ "brg_health_dayrate  "
+						+ "ORDER BY "
+						+ "rq DESC  "
+				+ ") a "
+			+ "GROUP BY  "
+				+ "brg_id  "
+		+ ") aa ON aa.brg_id = bcai.bridge_id  "
+		+ "LEFT JOIN (  "
+			+ "SELECT  "
+			+ "	*  "
+			+ "FROM  "
+				+ "(  "
+				+ "	SELECT "
+					+ "	*  "
+						+ "FROM "
+						+ "brg_health_monthrate  "
+					+ "ORDER BY  "
+					+ "	rq DESC  "
+				+ ") b  "
+			+ "GROUP BY  "
+			+ "	brg_id  "
+		+ ") bb ON bb.brg_id = bcai.bridge_id  "
+		+ "LEFT JOIN (  "
+			+ "SELECT  "
+			+ "	*  "
+			+ "FROM  "
+			+ "	(  "
+						+ "	SELECT  "
+				+ "		*  "
+					+ "FROM  "
+					+ "	brg_health_currate  "
+				+ "	ORDER BY  "
+					+ "	rq DESC  "
+				+ ") c  "
+			+ "GROUP BY  "
+				+ "brg_id  "
+		+ ") cc ON cc.brg_id = bcai.bridge_id  "
+		+" LEFT JOIN (\r\n" + 
+		" SELECT\r\n" + 
+		"		SUM(file_size) totalSize\r\n" + 
+		"	FROM\r\n" + 
+		"		brg_health_statistic\r\n" + 
+		"	WHERE\r\n" + 
+		"		bridge_id = ? and file_time LIKE \r\n" + 
+		" CONCAT(SUBSTR((SELECT file_time FROM brg_health_statistic ORDER BY file_time desc LIMIT 1),1,10),\"%\")\r\n" + 
+		" ) dd ON 1=1"+
+		" LEFT JOIN (\r\n" + 
+		" SELECT\r\n" + 
+		"		SUM(file_size) totalSize\r\n" + 
+		"	FROM\r\n" + 
+		"		brg_health_statistic\r\n" + 
+		"	WHERE\r\n" + 
+		"		bridge_id = ? and file_time LIKE \r\n" + 
+		" CONCAT(SUBSTR((SELECT file_time FROM brg_health_statistic ORDER BY file_time desc LIMIT 1),1,4),\"%\")\r\n" + 
+		" ) ee ON 1=1 "		
+		+ " where bcai.bridge_id = ? ";
+		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance().getConnection());
+		ResultSet rs =dataOperation.executeQuery(sql,new String[]{brg_id,brg_id,brg_id});
+		ResultSetMetaData rsmd = null;
+		try {
+			rsmd = rs.getMetaData();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			if(rs.next()){
+				for (int i = 1; i < rsmd.getColumnCount() + 1; i++) {
+					String columnName = rsmd.getColumnName(i).toLowerCase();
+					map.put(columnName, rs.getString(i));
+				}
+				map.put("dataDayIntRate", rs.getString("dataDayIntRate"));
+				map.put("dataMonthIntRate", rs.getString("dataMonthIntRate"));
+				map.put("dataYearIntRate", rs.getString("dataYearIntRate"));
+				map.put("totalSizeDay", rs.getString("totalSizeDay"));
+				map.put("totalSizeYear", rs.getString("totalSizeYear"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		dataOperation.close();
+		return map;
+	}
+	
+	public List<Map> getBrgMonitorMsgById(String brg_id){
+		
+		String sql="";
+		sql = " SELECT\r\n" + 
+				"	item_id,ChanelNum,pointsNo,bcai.bridge_no\r\n" + 
+				" FROM\r\n" + 
+				"	brg_monitor bm LEFT JOIN brg_card_admin_id bcai on  bcai.bridge_id = bm.brg_id \r\n" + 
+				" WHERE\r\n" + 
+				"	brg_id = ? ";
+		MyDataOperation dataOperation = new MyDataOperation(MyDataSource.getInstance().getConnection());
+		MyDataOperation dataOperation1 = new MyDataOperation(MyDataSource.getInstance().getConnection());
+		ResultSet rs =dataOperation.executeQuery(sql,new String[]{brg_id});
+		List<Map> mapMain = new ArrayList();
+		try {
+			while(rs.next()){
+				Map map = new HashMap<String, Object>();
+				String tableNameEnd = "";
+				String item_id = rs.getString("item_id");
+				String bridge_no = rs.getString("bridge_no");
+				String brgMonType = "";
+				switch (item_id) {
+				case "8":
+					tableNameEnd = "strainc";
+					brgMonType ="混凝土应变";
+					break;
+				case "9":
+					tableNameEnd = "strains";
+					brgMonType ="钢应变";
+					break;
+				case "12":
+					tableNameEnd = "angle";
+					brgMonType ="倾角";
+					break;
+				case "13":
+					tableNameEnd = "crack";
+					brgMonType ="裂缝";
+					break;
+				case "4":
+					tableNameEnd = "dynadisp ";
+					brgMonType ="动位移";
+					break;
+				case "11":
+					tableNameEnd = "staticdisp";
+					brgMonType ="静位移";
+					break;
+				case "3":
+					tableNameEnd = "temp";
+					brgMonType ="温度";
+					break;
+				case "10":
+					tableNameEnd = "calberforce ";
+					brgMonType ="索力";
+					break;
+				default:
+					break;
+				}
+				map.put("brgMonType", brgMonType);
+				tableNameEnd = "brg_monitor_"+tableNameEnd;
+				String ChannelNum = rs.getString("ChanelNum");
+				if(null!=ChannelNum&&!"".equals(ChannelNum.trim())&&ChannelNum.contains(",")) {
+					String[] nums = ChannelNum.split(",");
+					Integer length = nums.length;
+					String sql1 = " SELECT\r\n" + 
+							"	*\r\n" + 
+							" FROM\r\n" + 
+							"	(\r\n" + 
+							"		SELECT\r\n" + 
+							"			*\r\n" + 
+							"		FROM\r\n" + 
+							"			brg_monitor_dynadisp\r\n" + 
+							"		WHERE\r\n" + 
+							"			monitor_id = ? \r\n" + 
+							"		ORDER BY\r\n" + 
+							"			time DESC\r\n" + 
+							"		LIMIT ? \r\n" + 
+							"	)a ORDER BY a.sort";
+					
+					ResultSet rs1 =dataOperation1.executeQuery(sql1,new Object[]{bridge_no,length});
+					ResultSetMetaData rsmd = null;
+					try {
+						rsmd = rs1.getMetaData();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					int k = 0;
+					List<Map> mapList = new ArrayList<Map>();
+					while(rs1.next()){
+						
+						Map map1 = new HashMap();
+						Integer count = rsmd.getColumnCount();
+						for (int i = 1; i < count + 1; i++) {
+							String columnName = rsmd.getColumnName(i).toLowerCase();
+							map1.put(columnName, rs1.getString(i));
+						}
+						map1.put("chnelNum",nums[k]);
+						k++;
+						mapList.add(map1);
+					}
+					map.put("dataMonNums", mapList);
+					mapMain.add(map);
+				}
+			   
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		dataOperation.close();
+		dataOperation1.close();
+		return mapMain;
+	}
+	
+	public static void main(String[] args) {
+		BrgMonitorDao brgMonitorDao = new BrgMonitorDao();
+		Map map = brgMonitorDao.getBrgMsgById("6f78200f27d54b5394ba8200162cb917");
+		
+		List list = brgMonitorDao.getBrgMonitorMsgById("6f78200f27d54b5394ba8200162cb917");
+		
+		JSONObject json = new JSONObject();
+		String str = JSONObject.toJSONString(map);
+		System.out.println(str);
+	}
 	
 }

@@ -1001,7 +1001,9 @@ public class Index2Servlet extends HttpServlet {
 			String mode = request.getParameter("mode");
 			List<Connect> list =new ArrayList<>();
 			List<Connect> lb = GetFileSizeDao.getInstance().initDataFullIndex("brg_health_currate", manage_id);
+			
 			List<Connect> lb1 = GetFileSizeDao.getInstance().initDataFullIndex("brg_weight_currate", manage_id);
+			
 			List<Connect> lb2 = GetFileSizeDao.getInstance().initDataFullIndex("brg_gps_curyrate", manage_id);
 			for(int i=0;i<lb.size();i++){
 				Connect con=lb.get(i);
@@ -1009,7 +1011,9 @@ public class Index2Servlet extends HttpServlet {
 			}
 			for(int i=0;i<lb1.size();i++){
 				Connect con=lb1.get(i);
-				list.add(con);
+				if(!"淮安大桥".equals(con.getBridge_name())) {
+					list.add(con);
+				}
 			}
 			for(int i=0;i<lb2.size();i++){
 				Connect con=lb2.get(i);

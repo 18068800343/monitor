@@ -558,7 +558,7 @@ public class BrgMonitorServlet extends HttpServlet {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
 			Calendar c = Calendar.getInstance();
 			c.setTime(new Date());
-			c.add(Calendar.MONTH, -1);
+			c.add(Calendar.MONTH, -2);
 			Date m = c.getTime();
 			String lastDayStr = sdf.format(m);
 			String todayStr = sdf.format(new Date());
