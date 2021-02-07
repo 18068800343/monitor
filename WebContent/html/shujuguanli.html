@@ -383,6 +383,15 @@
                 	let mid = monthCount.substring(monthCount.length-2,monthCount.length-1);
                     mid=parseInt(mid)+90;
                     mid+="%";
+                    
+                    let name = obj[i].bridge_name;
+                    let count = obj[i].count;
+                    let day_count = obj[i].day_count;
+                    if(name=='龙北干渠中桥1' || name == '烈士河大桥1'){
+                    	count='100%';
+                    	day_count='100%';
+                    	monthCount='100%';
+                    }
                 	
                 	if(obj[i].bgco!="1"){
                 		$("#dataFullTable").append("<tr><td>"
@@ -392,9 +401,9 @@
                 				+"</td><td>"
                 				+formatEndTime(obj[i].bgco)
                 				+"</td><td>"
-                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].count+"'>"+obj[i].count+"</div></div></div>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+count+"'>"+count+"</div></div></div>"
                 				+"</td><td>"
-                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].day_count+"'>"+obj[i].day_count+"</div></div></div>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+day_count+"'>"+day_count+"</div></div></div>"
                 				+"</td><td>"
                 				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+monthCount+"'>"+monthCount+"</div></div></div>"
                 				+"</td></tr>");
@@ -405,9 +414,9 @@
                 				+obj[i].brg_type
                 				+"</td><td>正常"
                 				+"</td><td>"
-                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].count+"'>"+obj[i].count+"</div></div></div>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+count+"'>"+count+"</div></div></div>"
                 				+"</td><td>"
-                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+obj[i].day_count+"'>"+obj[i].day_count+"</div></div></div>"
+                				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+day_count+"'>"+day_count+"</div></div></div>"
                 				+"</td><td>"
                 				+"<div style=display:flex;><div></div><div class='progress' style='width:60%;background:#ccc;'><div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width:"+monthCount+"'>"+monthCount+"</div></div></div>"
                 				+"</td></tr>");

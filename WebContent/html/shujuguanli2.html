@@ -140,6 +140,15 @@
 													<a class="btn btn-primary btn-sm"  onclick="searchFile()">检索</a>
 												</div>
 										</div>
+										<div style="margin-left: 3%;">
+											<select class="input-sm form-control" style="width: 100%;" onchange="table.page.len( this.value ).draw( false );">
+											<option value=10>10</option>
+											<option value=20>20</option>
+											<option value=50>50</option>
+											<option value=100>100</option>
+											<option value=200>200</option>
+											</select>
+										</div>
 										<div style="margin-left: 2%;">
 												<div>
 													<input class="form-control" id="searchData" value="" placeholder="搜索" type="text">
@@ -147,6 +156,7 @@
 										</div>
 										<div style="width: 35%">
 											<a class="btn btn-primary btn-sm pull-right" data-clipboard-text=""  id="thunderDownload">复制迅雷下载链接</a>
+											<a href="" target="_blank" class="btn btn-primary btn-sm pull-right"  id="guangdiannaodu">光电挠度</a>
 										</div>
 									</div>
 
@@ -258,6 +268,18 @@
 	    	//getBrgName();
 	    	initModeType();
 	    	initCopy();
+	    	
+	    	if(id.indexOf("_01")>0||id=="d01871ac123143059754de9c218bb1db"){
+	    		if(id=="d01871ac123143059754de9c218bb1db"){
+		    		$("#guangdiannaodu").attr("href","http://47.92.137.78:3000/#/noLogin?id=368");	    			
+	    		}else{
+	    			$("#guangdiannaodu").attr("href","http://47.92.137.78:3000/#/noLogin?id=366");	    		
+	    		}
+		    		$("#guangdiannaodu").show();
+	    	}else{
+	    		
+	    		$("#guangdiannaodu").hide();
+	    	}
 		});
 		
 	 function getBrgName(){
@@ -329,13 +351,13 @@
 	var table;
 	function selectFileList(){
 		myTool.mask.show('查询中...');
-		table=$('#maincontent').dataTable({
+		table=$('#maincontent').DataTable({
 			"deferRender": true,
 	        "processing": true,
 	        "bDestroy": true,
 	        "iDisplayLength": 10,
 	        "searching": true,
-	        "lengthChange": false,
+	        "lengthChange": true,
 	        "sDom": 
 				"t"+
 				"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
@@ -444,9 +466,9 @@
 	$('#maincontent').delegate('.cbox', 'change', function(){
 		 var state = $(this).prop('checked');
 		 var tr = $(this).closest('tr');
-		 //table.row(tr).data().state=state;
+		 table.row(tr).data().state=state;
 		 autoChk();
-		 //table.cell(tr, 5).data(state);
+		 table.cell(tr, 4).data(state);
 	 });
 	$('#maincontent').on('draw.dt',function() {
 		autoChk()

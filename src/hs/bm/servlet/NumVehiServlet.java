@@ -61,9 +61,11 @@ public class NumVehiServlet extends HttpServlet {
 			String id=request.getParameter("id");
 			int w=BrgCardDao.getInstance().modeCount(id, "w");
 			int s=BrgCardDao.getInstance().modeCount(id, "s");
+			int r=BrgCardDao.getInstance().modeCount(id, "r");
 			Map<String,Object> map=new HashedMap();
 			map.put("w", w);
 			map.put("s", s);
+			map.put("r", r);
 			ro.setObj(map);
 			ro.ToJsp(response);
 			return;

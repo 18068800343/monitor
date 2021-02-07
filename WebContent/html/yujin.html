@@ -827,25 +827,38 @@ a {
 							var w = obj.w;
 							var s = obj.s;
 							$("#tab_ul").html('');
-							if (brgName == '淮徐高速京杭运河特大桥'||brgName == '淮安大桥' ) {
+							if (brgName == '淮徐高速京杭运河特大桥'||brgName == '淮安大桥'||brgName == '锡澄运河大桥' ||brgName == '205省道分离式立交') {
 								let dom="";
+								let urlName="";
 								if(brgName == '淮徐高速京杭运河特大桥'){
+									urlName = '淮徐京杭';
 									dom = '<ul class="nav nav-tabs" role="tablist">'
 										+ '<li role="presentation"  class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
-										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight()">动态称重</a></li>'
-										+ '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>'
+										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight(\''+urlName+'\')">动态称重</a></li>'
+										+ '<li role="presentation"><a href="#guangdianraodu" onclick="replaceUrl(2)"  aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>'
 										/* + '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>' */
 										+ '</ul>'
+								}else if(brgName == '205省道分离式立交'){
+									dom = '<ul class="nav nav-tabs" role="tablist">'
+									    + '<li role="presentation"><a href="#guangdianraodu"  id="replace" onclick="replaceUrl(1)" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>'
+										/* + '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>' */
+										+ '</ul>'
+										
 								}else{
+									urlName = '沿江锡澄';
 									dom = '<ul class="nav nav-tabs" role="tablist">'
 										+ '<li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
-										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight()">动态称重</a></li>'
+										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight(\''+urlName+'\')">动态称重</a></li>'
 										/* + '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>' */
 										/* + '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>' */
 										+ '</ul>'
 								}
 								$("#tab_ul")
 										.append(dom);
+								
+								if(brgName == '205省道分离式立交'){
+									replaceUrl(1);
+								}
 								
 								
 								page_health_flag = "1";
@@ -889,7 +902,11 @@ a {
 								queryData();
 								initWshow();
 							}
-							clickHealth();
+							if(brgName != '205省道分离式立交'){
+								clickHealth();
+							}else{
+								$("#replace").trigger('click')
+							}
 						}
 					});
 		}
@@ -8205,7 +8222,7 @@ a {
 						item_second : item_second
 					},
 					error : function(msg) {
-						errMessage("请求BrgMonitorServlet失败");
+						hidMask();
 					},
 					success : function(json) {
 						initMyChart(json.obj);
@@ -8237,7 +8254,7 @@ a {
 					item_second : it_second
 				},
 				error : function(msg) {
-					errMessage("请求BrgMonitorServlet失败");
+					hidMask();
 				},
 				success : function(json) {
 					initMyChart(json.obj);
@@ -8259,7 +8276,7 @@ a {
 					endTime:endTime
 				},
 				error : function(msg) {
-					errMessage("请求BrgMonitorServlet失败");
+					hidMask();
 				},
 				success : function(json) {
 					initMyChartJiGuangRaoDu1(json.obj);
@@ -8280,7 +8297,7 @@ a {
 					endTime:endTime
 				},
 				error : function(msg) {
-					errMessage("请求BrgMonitorServlet失败");
+					hidMask();
 				},
 				success : function(json) {
 					initMyChartJiGuangRaoDu2(json.obj);
@@ -8473,7 +8490,9 @@ a {
 						dataName : dataName
 					},
 					error : function(msg) {
-						errMessage("请求BrgMonitorServlet失败");
+						
+					
+						hidMask();
 					},
 					success : function(json) {
 						initMyChart(json.obj);
@@ -9324,6 +9343,7 @@ a {
 								sort : $("#item_tdCode1").val()
 							},
 							error : function(msg) {
+								hidMask();
 							},
 							success : function(json) {
 								if (null != json && json != undefined) {
@@ -9587,7 +9607,7 @@ a {
 							sort : $("#item_tdCode").val()
 						},
 						error : function(msg) {
-							errMessage("请求BrgMonitorServlet失败");
+							hidMask();
 						},
 						success : function(json) {
 							if (null != json && json != undefined) {
@@ -10668,12 +10688,12 @@ a {
 			page_health_flag = "2";
 		}
 		
-		function clickWeight() {
+		function clickWeight(name) {
 			$("#home").empty();
 			$("#home").append('<div id="content">'
 					+'<div class="row">'
 					+'<iframe id="mainIframe4" name="mainIframe4" class="col-md-12" ' 
-					+'style="height: 85vh" src="https://www.jsjkyh.com:8061/login/homeApiLoginToUrl?userName=淮徐京杭&urlPrefix=https://www.jsjkyh.com:8061"></iframe>'  
+					+'style="height: 85vh" src="https://www.jsjkyh.com:8061/login/homeApiLoginToUrl?userName='+name+'&urlPrefix=https://www.jsjkyh.com:8061"></iframe>'  
 					/*  +'style="height: 85vh" src="http://localhost:8080/login/homeApi?token=jiance&ren=gaor"></iframe>'  */
 					+'</div>'
 					+'</div>');
@@ -10914,6 +10934,13 @@ a {
 	        }
 			
 
+	        function replaceUrl(e){
+	        	if(e==1){
+		        	$('#mainIframe3').attr('src','http://47.92.137.78:3000/#/noLogin?id=369');
+	        	}else{
+	        		$('#mainIframe3').attr('src','http://47.92.137.78:3000/#/noLogin?id=251')
+	        	}
+	        }
 	</script>
 
 
