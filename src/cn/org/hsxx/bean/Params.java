@@ -28,8 +28,5 @@ public class Params {
 	}
 	public void setiDisplayLength(int iDisplayLength) {
 		this.iDisplayLength = iDisplayLength;
-	}
-	
-	
-	
+	}	
 }

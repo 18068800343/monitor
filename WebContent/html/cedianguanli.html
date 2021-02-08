@@ -1170,6 +1170,7 @@ function toogle(th){
             return false;
         }
      
+        showMask();
         $.ajax({
             type: 'POST',
             url: '../TestPointServlet',
@@ -1197,6 +1198,7 @@ function toogle(th){
             },
             error: function (msg) {
                 toastr.error("请求TestPointServlet失败");
+                hidMask()
             },
             success: function (json) {
                 if (json.success == "success") {
@@ -1209,6 +1211,7 @@ function toogle(th){
                 } else {
                     toastr.error("添加监测点失败");
                 }
+                hidMask() 
             }
         });
     }
@@ -1439,6 +1442,13 @@ function toogle(th){
 	  
 
    }
+   
+	function showMask() {
+		myTool.mask.show('...');
+	}
+	function hidMask() {
+		myTool.mask.hide();
+	}
 </script>
 </body>
 </html>
