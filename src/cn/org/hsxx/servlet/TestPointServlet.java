@@ -37,6 +37,7 @@ public class TestPointServlet extends HttpServlet {
 		ResObj ro = new ResObj();
 		if (type.equals("select_Test")) {
 			String bridge_id = request.getParameter("bridge_id");
+			
 			String cd_f_type_id = request.getParameter("cd_f_type_id");
 			List<TestPoint> list = TestPointDao.getInstance().getTestPointData(bridge_id, cd_f_type_id);
 			for (int i = 0; i < list.size(); i++) {
