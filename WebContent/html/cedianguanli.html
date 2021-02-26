@@ -216,7 +216,8 @@ tr.focus{
 											<th>通道编号</th>
 											<th>测点位置</th>
 											<th>监测点类型</th>
-											<th>阈值</th>
+											<th>阈值下限</th>
+											<th>阈值上限</th>
 											<th>测点描述</th>
 											<th>采样频率</th>
 											<th>设备型号</th>
@@ -748,6 +749,7 @@ function toogle(th){
 		             { "data": "cd_span_no"}, 
 		             { "data": "base_dataName"},
 		             { "data": "fz"}, 
+		             { "data": "fz2"}, 
 		             { "data": "cd_describe"}, 
 		             { "data": "cypl"}, 
 		             { "data": "sbxh"},
@@ -789,7 +791,7 @@ function toogle(th){
 		         "columnDefs": [
 		 						{
 		 								 "class": "tcenter",
-		 								    "targets": 12,
+		 								    "targets": 13,
 		 								    "searchable": true,
 		 								    "render": function(data, type, full) {
 		 								  	  		return edit1;

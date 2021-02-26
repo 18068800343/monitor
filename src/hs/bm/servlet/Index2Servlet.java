@@ -180,14 +180,14 @@ public class Index2Servlet extends HttpServlet {
 			String tableName3 = Index2Servlet.getTableNameByMode("g");
 			String tableName4 = Index2Servlet.getTableNameByMode("f");
 			List<Connect> list=new ArrayList<>();
-			List<Connect> lb = GetFileSizeDao.getInstance().initIndexModeMap("w",tableName,manage_id);
+//			List<Connect> lb = GetFileSizeDao.getInstance().initIndexModeMap("w",tableName,manage_id);
 			List<Connect> lb2 = GetFileSizeDao.getInstance().initIndexModeMap("s",tableName2,manage_id);
 			List<Connect> lb3 = GetFileSizeDao.getInstance().initIndexModeMap("g",tableName3,manage_id);
 			List<Connect> lb4 = GetFileSizeDao.getInstance().initIndexModeMap("f",tableName4,manage_id);
-			for(int i=0;i<lb.size();i++){
-				Connect con=lb.get(i);
-				list.add(con);
-			}
+//			for(int i=0;i<lb.size();i++){
+//				Connect con=lb.get(i);
+//				list.add(con);
+//			}
 			for(int i=0;i<lb2.size();i++){
 				Connect con=lb2.get(i);
 				list.add(con);
@@ -1002,19 +1002,19 @@ public class Index2Servlet extends HttpServlet {
 			List<Connect> list =new ArrayList<>();
 			List<Connect> lb = GetFileSizeDao.getInstance().initDataFullIndex("brg_health_currate", manage_id);
 			
-			List<Connect> lb1 = GetFileSizeDao.getInstance().initDataFullIndex("brg_weight_currate", manage_id);
+//			List<Connect> lb1 = GetFileSizeDao.getInstance().initDataFullIndex("brg_weight_currate", manage_id);
 			
 			List<Connect> lb2 = GetFileSizeDao.getInstance().initDataFullIndex("brg_gps_curyrate", manage_id);
 			for(int i=0;i<lb.size();i++){
 				Connect con=lb.get(i);
 				list.add(con);
 			}
-			for(int i=0;i<lb1.size();i++){
-				Connect con=lb1.get(i);
-				if(!"淮安大桥".equals(con.getBridge_name())) {
-					list.add(con);
-				}
-			}
+//			for(int i=0;i<lb1.size();i++){
+//				Connect con=lb1.get(i);
+//				if(!"淮安大桥".equals(con.getBridge_name())) {
+//					list.add(con);
+//				}
+//			}
 			for(int i=0;i<lb2.size();i++){
 				Connect con=lb2.get(i);
 				list.add(con);
@@ -1084,14 +1084,14 @@ public class Index2Servlet extends HttpServlet {
 			String tableName3 = Index2Servlet.getTableNameByMode("g");
 			String tableName4 = Index2Servlet.getTableNameByMode("f");
 			List<Connect> list =new ArrayList<>();
-			List<Connect> lb = GetFileSizeDao.getInstance().initDataManageTableNew("w",tableName,manage_id,brg_id);
+//			List<Connect> lb = GetFileSizeDao.getInstance().initDataManageTableNew("w",tableName,manage_id,brg_id);
 			List<Connect> lb2 = GetFileSizeDao.getInstance().initDataManageTableNew("s",tableName2,manage_id,brg_id);
 			List<Connect> lb3 = GetFileSizeDao.getInstance().initDataManageTableNew("g",tableName3,manage_id,brg_id);
 			/*List<Connect> lb4 = GetFileSizeDao.getInstance().initDataManageTableNew("f",tableName4,manage_id,brg_id);*/
-			for(int i=0;i<lb.size();i++){
-				Connect con=lb.get(i);
-				list.add(con);
-			}
+//			for(int i=0;i<lb.size();i++){
+//				Connect con=lb.get(i);
+//				list.add(con);
+//			}
 			for(int i=0;i<lb2.size();i++){
 				Connect con=lb2.get(i);
 				list.add(con);
