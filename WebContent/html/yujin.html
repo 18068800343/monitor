@@ -834,7 +834,7 @@ a {
 									urlName = '淮徐京杭';
 									dom = '<ul class="nav nav-tabs" role="tablist">'
 										+ '<li role="presentation"  class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
-										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight(\''+urlName+'\')">动态称重</a></li>'
+										/* + '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight(\''+urlName+'\')">动态称重</a></li>' */
 										+ '<li role="presentation"><a href="#guangdianraodu" onclick="replaceUrl(2)"  aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>'
 										/* + '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>' */
 										+ '</ul>'
@@ -848,7 +848,7 @@ a {
 									urlName = '沿江锡澄';
 									dom = '<ul class="nav nav-tabs" role="tablist">'
 										+ '<li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
-										+ '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight(\''+urlName+'\')">动态称重</a></li>'
+										/* + '<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="clickWeight(\''+urlName+'\')">动态称重</a></li>' */
 										/* + '<li role="presentation"><a href="#guangdianraodu" aria-controls="profile" role="tab" data-toggle="tab">光电挠度</a></li>' */
 										/* + '<li role="presentation" id="jiguang"><a href="#jiguangraodu"  aria-controls="profile" role="tab" data-toggle="tab">激光挠度</a></li>' */
 										+ '</ul>'
@@ -870,7 +870,7 @@ a {
 								$("#tab_ul")
 										.append(
 												'<ul class="nav nav-tabs" role="tablist">'
-														+ '<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">动态称重</a></li>'
+														/* + '<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">动态称重</a></li>' */
 														+ '<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="clickHealth()">健康监测</a></li>'
 														+ '</ul>');
 								queryData();
@@ -882,7 +882,7 @@ a {
 								$("#tab_ul")
 										.append(
 												'<ul class="nav nav-tabs" role="tablist">'
-														+ '<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">动态称重</a></li>'
+														/* + '<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">动态称重</a></li>' */
 														+ '<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">健康监测</a></li>'
 														+ '</ul>');
 								$("#home").remove();
@@ -10812,7 +10812,7 @@ a {
 				return "YCD";
 			} else if (id == "G15320682L0130") {
 				return "LSH";
-			}else if(id="9dbc0a344a7449359a849c5c4f5a9a26"){
+			}else if(id == "9dbc0a344a7449359a849c5c4f5a9a26"){
 				return "XSH";
 			} else if (id == "G15320921L0010") {
 				return "GHT";
